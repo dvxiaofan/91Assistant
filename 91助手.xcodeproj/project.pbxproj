@@ -13,6 +13,9 @@
 		9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */; };
 		9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */; };
 		9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */; };
+		9C0DD7101CFC4A080028E515 /* YKStartPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD70F1CFC4A080028E515 /* YKStartPageViewController.m */; };
+		9C0DD7131CFC4A120028E515 /* YKStartPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7121CFC4A120028E515 /* YKStartPageScrollView.m */; };
+		9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */; };
 		9C40AD431CF82C5700AF23DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD421CF82C5700AF23DE /* Assets.xcassets */; };
 		9C40AD461CF82C5700AF23DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD441CF82C5700AF23DE /* LaunchScreen.storyboard */; };
 		9C40AD511CF82C5800AF23DE /* _1__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C40AD501CF82C5800AF23DE /* _1__Tests.m */; };
@@ -51,6 +54,13 @@
 		9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKHomeViewController.m; sourceTree = "<group>"; };
 		9C0DD6FF1CFBF73F0028E515 /* YKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchViewController.h; sourceTree = "<group>"; };
 		9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchViewController.m; sourceTree = "<group>"; };
+		9C0DD70E1CFC4A080028E515 /* YKStartPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageViewController.h; sourceTree = "<group>"; };
+		9C0DD70F1CFC4A080028E515 /* YKStartPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageViewController.m; sourceTree = "<group>"; };
+		9C0DD7111CFC4A120028E515 /* YKStartPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageScrollView.h; sourceTree = "<group>"; };
+		9C0DD7121CFC4A120028E515 /* YKStartPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageScrollView.m; sourceTree = "<group>"; };
+		9C0DD7141CFC4A290028E515 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9C0DD7161CFC4A930028E515 /* UIView+YKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YKExtension.h"; sourceTree = "<group>"; };
+		9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YKExtension.m"; sourceTree = "<group>"; };
 		9C40AD331CF82C5700AF23DE /* 91助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "91助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C40AD421CF82C5700AF23DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C40AD451CF82C5700AF23DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -91,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C0DD7151CFC4A930028E515 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9C0DD7161CFC4A930028E515 /* UIView+YKExtension.h */,
+				9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		9C40AD2A1CF82C5700AF23DE = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +148,7 @@
 		9C40AD361CF82C5700AF23DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C0DD7141CFC4A290028E515 /* PrefixHeader.pch */,
 				9C40AD421CF82C5700AF23DE /* Assets.xcassets */,
 				9C40AD441CF82C5700AF23DE /* LaunchScreen.storyboard */,
 				9C40AD471CF82C5700AF23DE /* Info.plist */,
@@ -237,6 +257,8 @@
 				9C0DD6F41CFBF1BF0028E515 /* YKBaseViewController.m */,
 				9C0DD6F51CFBF1BF0028E515 /* YKRootViewController.h */,
 				9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */,
+				9C0DD70E1CFC4A080028E515 /* YKStartPageViewController.h */,
+				9C0DD70F1CFC4A080028E515 /* YKStartPageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,6 +273,8 @@
 		9C5BDD631CF9D928008CE12F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C0DD7111CFC4A120028E515 /* YKStartPageScrollView.h */,
+				9C0DD7121CFC4A120028E515 /* YKStartPageScrollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +358,7 @@
 		9C5BDD701CF9D928008CE12F /* Until(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				9C0DD7151CFC4A930028E515 /* Category */,
 			);
 			path = "Until(工具类)";
 			sourceTree = "<group>";
@@ -470,12 +495,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */,
 				9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */,
+				9C0DD7131CFC4A120028E515 /* YKStartPageScrollView.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,
 				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
+				9C0DD7101CFC4A080028E515 /* YKStartPageViewController.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
 			);
@@ -608,6 +636,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/91助手/PrefixHeader.pch";
 				INFOPLIST_FILE = "91助手/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91zhushou";
@@ -619,6 +649,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/91助手/PrefixHeader.pch";
 				INFOPLIST_FILE = "91助手/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91zhushou";

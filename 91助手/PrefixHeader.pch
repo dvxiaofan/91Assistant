@@ -1,0 +1,25 @@
+//
+//  PrefixHeader.pch
+//  91助手
+//
+//  Created by xiaofan on 16/5/30.
+//  Copyright © 2016年 YK. All rights reserved.
+//
+
+#ifdef DEBUG
+#define YKLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define YKLog(...)
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#define SCREEN [UIScreen mainScreen].bounds.size
+
+
+
+
+
+#endif /* PrefixHeader_pch */

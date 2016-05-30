@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "YKRootViewController.h"
+#import "YKStartPageViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,8 +21,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     
-    YKRootViewController *rootVC = [[YKRootViewController alloc] init];
-    self.window.rootViewController = rootVC;
+    //YKRootViewController *rootVC = [[YKRootViewController alloc] init];
+    //self.window.rootViewController = rootVC;
+    
+    YKStartPageViewController *startVC = [[YKStartPageViewController alloc] init];
+    self.window.rootViewController = startVC;
     
     // 自定义导航栏背景颜色和字体大小和颜色
     [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
