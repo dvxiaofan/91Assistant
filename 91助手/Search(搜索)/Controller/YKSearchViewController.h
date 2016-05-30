@@ -6,8 +6,8 @@
 //  Copyright © 2016年 YK. All rights reserved.
 //
 
-#import "YKBaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface YKSearchViewController : YKBaseViewController
+@interface YKSearchViewController : UIViewController
 
 @end

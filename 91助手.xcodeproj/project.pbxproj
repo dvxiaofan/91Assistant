@@ -12,7 +12,7 @@
 		9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6F41CFBF1BF0028E515 /* YKBaseViewController.m */; };
 		9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */; };
 		9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */; };
-		9C0DD6FE1CFBF1E00028E515 /* YKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6FD1CFBF1E00028E515 /* YKSearchViewController.m */; };
+		9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */; };
 		9C40AD431CF82C5700AF23DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD421CF82C5700AF23DE /* Assets.xcassets */; };
 		9C40AD461CF82C5700AF23DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD441CF82C5700AF23DE /* LaunchScreen.storyboard */; };
 		9C40AD511CF82C5800AF23DE /* _1__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C40AD501CF82C5800AF23DE /* _1__Tests.m */; };
@@ -49,8 +49,8 @@
 		9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKRootViewController.m; sourceTree = "<group>"; };
 		9C0DD6F91CFBF1CF0028E515 /* YKHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKHomeViewController.h; sourceTree = "<group>"; };
 		9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKHomeViewController.m; sourceTree = "<group>"; };
-		9C0DD6FC1CFBF1E00028E515 /* YKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchViewController.h; sourceTree = "<group>"; };
-		9C0DD6FD1CFBF1E00028E515 /* YKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchViewController.m; sourceTree = "<group>"; };
+		9C0DD6FF1CFBF73F0028E515 /* YKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchViewController.h; sourceTree = "<group>"; };
+		9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchViewController.m; sourceTree = "<group>"; };
 		9C40AD331CF82C5700AF23DE /* 91助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "91助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C40AD421CF82C5700AF23DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C40AD451CF82C5700AF23DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -311,8 +311,8 @@
 		9C5BDD6D1CF9D928008CE12F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9C0DD6FC1CFBF1E00028E515 /* YKSearchViewController.h */,
-				9C0DD6FD1CFBF1E00028E515 /* YKSearchViewController.m */,
+				9C0DD6FF1CFBF73F0028E515 /* YKSearchViewController.h */,
+				9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,
-				9C0DD6FE1CFBF1E00028E515 /* YKSearchViewController.m in Sources */,
+				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
