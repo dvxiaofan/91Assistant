@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "YKRootViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,20 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    
+    YKRootViewController *rootVC = [[YKRootViewController alloc] init];
+    self.window.rootViewController = rootVC;
+    
+    // 自定义导航栏背景颜色和字体大小和颜色
+    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:19.0], NSFontAttributeName,nil]];
+    
+    // 自定义tabbar背景颜色
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tab_background"]]];
+    
+
     // Override point for customization after application launch.
     return YES;
 }
