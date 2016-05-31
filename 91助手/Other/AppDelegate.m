@@ -21,11 +21,40 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     
-    //YKRootViewController *rootVC = [[YKRootViewController alloc] init];
-    //self.window.rootViewController = rootVC;
-    
-    YKStartPageViewController *startVC = [[YKStartPageViewController alloc] init];
-    self.window.rootViewController = startVC;
+    // 根据当前版本信息，判断是否显示开始页面
+    // 保存版本信息
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    docPath = [docPath stringByAppendingPathComponent:@"version.plist"];
+    // 保存版本号的字典
+    NSDictionary *versionDict = [NSBundle mainBundle].infoDictionary;
+    // 获得当前版本号
+    NSString *currentVersion = versionDict[@"CFBundleVersion"];
+    // 获得上次的版本号
+    NSMutableDictionary *oldVersionDict = [NSMutableDictionary dictionaryWithContentsOfFile:docPath];
+    // 老版存在，不是第一次安装
+    if (oldVersionDict) {
+        // 判断是否与当前版本号一致   先获得老版本号
+        NSString *oldVersion = oldVersionDict[@"CFBundleVersion"];
+        // 相同，不显示开始页  且不用保存当前版本号
+        if ([currentVersion isEqualToString:oldVersion]) {
+            YKRootViewController *rootVC = [[YKRootViewController alloc] init];
+            self.window.rootViewController = rootVC;
+        } else { // 不相同 显示
+            YKStartPageViewController *startVC = [[YKStartPageViewController alloc] init];
+            self.window.rootViewController = startVC;
+            // 保存当前版本号
+            oldVersionDict[@"CFBundleVersion"] = currentVersion;
+            [oldVersionDict writeToFile:docPath atomically:YES];
+        }
+    } else {  // 老版本不存在，是第一次安装  显示
+        YKStartPageViewController *startVC = [[YKStartPageViewController alloc] init];
+        self.window.rootViewController = startVC;
+        
+        // 构建版本字典  并保存当前版本到文件
+        NSMutableDictionary *versionDict = [NSMutableDictionary dictionary];
+        versionDict[@"CFBundleVersion"] = currentVersion;
+        [versionDict writeToFile:docPath atomically:YES];
+    }
     
     // 自定义导航栏背景颜色和字体大小和颜色
     [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
