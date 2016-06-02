@@ -19,7 +19,6 @@
 		9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDAF1CFFD5AE0016C0F7 /* YKStartPageViewController.m */; };
 		9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDB31CFFD5AE0016C0F7 /* YKStartPageScrollView.m */; };
 		9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */; };
-		9C27BDBA1CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C27BDB91CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg */; };
 		9C40AD431CF82C5700AF23DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD421CF82C5700AF23DE /* Assets.xcassets */; };
 		9C40AD461CF82C5700AF23DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD441CF82C5700AF23DE /* LaunchScreen.storyboard */; };
 		9C40AD511CF82C5800AF23DE /* _1__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C40AD501CF82C5800AF23DE /* _1__Tests.m */; };
@@ -75,7 +74,6 @@
 		9C27BDB31CFFD5AE0016C0F7 /* YKStartPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageScrollView.m; sourceTree = "<group>"; };
 		9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKScrollPagingView.m; sourceTree = "<group>"; };
 		9C27BDB81CFFECF20016C0F7 /* YKScrollPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKScrollPagingView.h; sourceTree = "<group>"; };
-		9C27BDB91CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg; sourceTree = "<group>"; };
 		9C40AD331CF82C5700AF23DE /* 91助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "91助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C40AD421CF82C5700AF23DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C40AD451CF82C5700AF23DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 		9C40AD361CF82C5700AF23DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9C27BDB91CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg */,
 				9C0DD7141CFC4A290028E515 /* PrefixHeader.pch */,
 				9C40AD421CF82C5700AF23DE /* Assets.xcassets */,
 				9C40AD441CF82C5700AF23DE /* LaunchScreen.storyboard */,
@@ -557,7 +554,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C27BDBA1CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg in Resources */,
 				9C40AD461CF82C5700AF23DE /* LaunchScreen.storyboard in Resources */,
 				9C40AD431CF82C5700AF23DE /* Assets.xcassets in Resources */,
 			);

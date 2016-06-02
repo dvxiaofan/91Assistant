@@ -6,6 +6,8 @@
 target '91助手' do
 
 pod 'SDWebImage'
+pod 'AFNetworking'
+pod 'MJRefresh'
 
 end
 

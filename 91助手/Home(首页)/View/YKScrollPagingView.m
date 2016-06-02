@@ -15,7 +15,8 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, assign) int imageCount;
+//@property (nonatomic, assign) int imageCount;
+@property (nonatomic, strong) NSArray *imageUrlArray;
 
 @end
 
@@ -37,21 +38,22 @@
     CGFloat imageWidth = self.bounds.size.width;
     CGFloat imageHeight = self.bounds.size.height;
     
-    self.imageCount = 3;
+    //self.imageCount = 3;
     
     NSURL *urlOne = [NSURL URLWithString:@"http://bcs.91.com/rbpiczy/tagpic/2016/3/94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg"];
     NSURL *urlTwo = [NSURL URLWithString:@"http://bcs.91.com/rbpiczy/tagpic/2015/10/42b773e2c87b485b9a4c7e2669935b73_294_640x256.jpg"];
     NSURL *urlThree = [NSURL URLWithString:@"http://bcs.91.com/rbpiczy/commonpics/2016/3/17/fc9b106c038a434fa6709a0843d7881d.jpg"];
     
-    NSArray *imgUrlArray = @[urlOne, urlTwo, urlThree];
+    //NSArray *imgUrlArray = @[urlOne, urlTwo, urlThree];
+    self.imageUrlArray = @[urlOne, urlTwo, urlThree];
     
-    for (NSInteger i = 0; i < self.imageCount; i++)
+    for (NSInteger i = 0; i < self.imageUrlArray.count; i++)
     {
         CGFloat imageX = i * imageWidth;
         CGFloat imageY = 0;
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageWidth, imageHeight)];
-        [imageView sd_setImageWithURL:imgUrlArray[i]];
+        [imageView sd_setImageWithURL:self.imageUrlArray[i]];
         
         
         imageView.tag = IMAGE_TAG + i;
@@ -66,7 +68,7 @@
         
         
     }
-    scrollView.contentSize = CGSizeMake(self.imageCount * imageWidth, imageHeight);
+    scrollView.contentSize = CGSizeMake(self.imageUrlArray.count * imageWidth, imageHeight);
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.bounces = NO;
@@ -76,7 +78,7 @@
     CGFloat pageControlH = 30;
     UIPageControl *pageControl = [[UIPageControl alloc] init];
     pageControl.frame = CGRectMake((self.bounds.size.width - pageControlW) / 2, self.bounds.size.height - pageControlH, pageControlW, pageControlH);
-    pageControl.numberOfPages = self.imageCount;
+    pageControl.numberOfPages = self.imageUrlArray.count;
     pageControl.userInteractionEnabled = NO;
     pageControl.pageIndicatorTintColor = [UIColor grayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
@@ -105,13 +107,13 @@
 - (void)nextPage {
     NSInteger index = self.scrollView.contentOffset.x / self.bounds.size.width;
     index ++;
-    if (index == self.imageCount) {
+    if (index == self.imageUrlArray.count) {
         index = 0;
     }
     [self.scrollView setContentOffset:CGPointMake(index * self.bounds.size.width, 0) animated:YES];
 }
 
-#pragma mark - UIScrollViewDelegate
+#pragma mark - UIScrollView 代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     NSInteger currentPage = (scrollView.contentOffset.x + SCREEN.width * 0.5) / SCREEN.width;

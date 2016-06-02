@@ -27,7 +27,8 @@
 
 #define SCREEN [UIScreen mainScreen].bounds.size
 
-
+#define NAVBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
+#define TABBAR_HEIGHT self.tabBarController.tabBar.frame.size.height
 
 
 
