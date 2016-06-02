@@ -7,8 +7,9 @@
 //
 
 #import "YKHomeViewController.h"
+#import "YKScrollPagingView.h"
 
-@interface YKHomeViewController ()
+@interface YKHomeViewController ()<YKScrollPagingViewDelegate>
 
 @end
 
@@ -16,9 +17,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"9 1助手";
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"9 1助手";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    [self setupScrollView];
+    
+    
 }
+
+#pragma mark - 设置顶部滚动视图
+- (void)setupScrollView {
+    
+    YKScrollPagingView *scrollPV = [[YKScrollPagingView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height * 4.5 / 16)];
+    scrollPV.backgroundColor = [UIColor yellowColor];
+    [scrollPV setImageView];
+    // 设置代理
+    scrollPV.delegate = self;
+    [self.view addSubview:scrollPV];
+}
+
+#pragma mark - YKScrollPagingView 代理方法
+
+- (void)scrollPagingViewImageTapIndex:(NSInteger)index {
+    YKLog(@"第%ld张图被点击",(long)index);
+}
+
+
+
 
 
 

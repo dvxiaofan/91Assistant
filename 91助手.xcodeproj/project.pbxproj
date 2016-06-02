@@ -7,21 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10F0623A937DFEA5D1368BD1 /* libPods-91助手Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F1C016BD6DC6BCB108BEFA /* libPods-91助手Tests.a */; };
+		2F37A206ACFC7F046691154B /* libPods-91助手UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7516E2DFAB4115C84C5CDB2D /* libPods-91助手UITests.a */; };
 		9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6EE1CFBF19A0028E515 /* YKChatViewController.m */; };
 		9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6F11CFBF1AF0028E515 /* YKClassifyViewController.m */; };
 		9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6F41CFBF1BF0028E515 /* YKBaseViewController.m */; };
 		9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */; };
 		9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */; };
 		9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */; };
-		9C0DD7101CFC4A080028E515 /* YKStartPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD70F1CFC4A080028E515 /* YKStartPageViewController.m */; };
-		9C0DD7131CFC4A120028E515 /* YKStartPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7121CFC4A120028E515 /* YKStartPageScrollView.m */; };
 		9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */; };
+		9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDAF1CFFD5AE0016C0F7 /* YKStartPageViewController.m */; };
+		9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDB31CFFD5AE0016C0F7 /* YKStartPageScrollView.m */; };
+		9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */; };
+		9C27BDBA1CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C27BDB91CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg */; };
 		9C40AD431CF82C5700AF23DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD421CF82C5700AF23DE /* Assets.xcassets */; };
 		9C40AD461CF82C5700AF23DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C40AD441CF82C5700AF23DE /* LaunchScreen.storyboard */; };
 		9C40AD511CF82C5800AF23DE /* _1__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C40AD501CF82C5800AF23DE /* _1__Tests.m */; };
 		9C40AD5C1CF82C5800AF23DE /* _1__UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C40AD5B1CF82C5800AF23DE /* _1__UITests.m */; };
 		9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BDD6A1CF9D928008CE12F /* AppDelegate.m */; };
 		9C5BDD721CF9D928008CE12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BDD6B1CF9D928008CE12F /* main.m */; };
+		E264DAD969B727EF07675E48 /* libPods-91助手.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3A9C298613768F3D499A30 /* libPods-91助手.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08F1C016BD6DC6BCB108BEFA /* libPods-91助手Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-91助手Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CFD8B700015DDD923ED7E4C /* Pods-91助手Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests.release.xcconfig"; sourceTree = "<group>"; };
+		5FE7BE38F5467DC28C57E3D4 /* Pods-91助手UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7516E2DFAB4115C84C5CDB2D /* libPods-91助手UITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-91助手UITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B3A9C298613768F3D499A30 /* libPods-91助手.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-91助手.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91A97F5ADB0EACD582C0C33E /* Pods-91助手.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手.debug.xcconfig"; path = "Pods/Target Support Files/Pods-91助手/Pods-91助手.debug.xcconfig"; sourceTree = "<group>"; };
+		99979C71D0B096DA5618EAC6 /* Pods-91助手.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手/Pods-91助手.release.xcconfig"; sourceTree = "<group>"; };
 		9C0DD6ED1CFBF19A0028E515 /* YKChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatViewController.h; sourceTree = "<group>"; };
 		9C0DD6EE1CFBF19A0028E515 /* YKChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatViewController.m; sourceTree = "<group>"; };
 		9C0DD6F01CFBF1AF0028E515 /* YKClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyViewController.h; sourceTree = "<group>"; };
@@ -54,13 +66,16 @@
 		9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKHomeViewController.m; sourceTree = "<group>"; };
 		9C0DD6FF1CFBF73F0028E515 /* YKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchViewController.h; sourceTree = "<group>"; };
 		9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchViewController.m; sourceTree = "<group>"; };
-		9C0DD70E1CFC4A080028E515 /* YKStartPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageViewController.h; sourceTree = "<group>"; };
-		9C0DD70F1CFC4A080028E515 /* YKStartPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageViewController.m; sourceTree = "<group>"; };
-		9C0DD7111CFC4A120028E515 /* YKStartPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageScrollView.h; sourceTree = "<group>"; };
-		9C0DD7121CFC4A120028E515 /* YKStartPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageScrollView.m; sourceTree = "<group>"; };
 		9C0DD7141CFC4A290028E515 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		9C0DD7161CFC4A930028E515 /* UIView+YKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YKExtension.h"; sourceTree = "<group>"; };
 		9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YKExtension.m"; sourceTree = "<group>"; };
+		9C27BDAE1CFFD5AE0016C0F7 /* YKStartPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageViewController.h; sourceTree = "<group>"; };
+		9C27BDAF1CFFD5AE0016C0F7 /* YKStartPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageViewController.m; sourceTree = "<group>"; };
+		9C27BDB21CFFD5AE0016C0F7 /* YKStartPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageScrollView.h; sourceTree = "<group>"; };
+		9C27BDB31CFFD5AE0016C0F7 /* YKStartPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageScrollView.m; sourceTree = "<group>"; };
+		9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKScrollPagingView.m; sourceTree = "<group>"; };
+		9C27BDB81CFFECF20016C0F7 /* YKScrollPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKScrollPagingView.h; sourceTree = "<group>"; };
+		9C27BDB91CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg; sourceTree = "<group>"; };
 		9C40AD331CF82C5700AF23DE /* 91助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "91助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C40AD421CF82C5700AF23DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C40AD451CF82C5700AF23DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +89,8 @@
 		9C5BDD691CF9D928008CE12F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C5BDD6A1CF9D928008CE12F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9C5BDD6B1CF9D928008CE12F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests.release.xcconfig"; sourceTree = "<group>"; };
+		F896CE6D5BF04B715F6FD1E6 /* Pods-91助手Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E264DAD969B727EF07675E48 /* libPods-91助手.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10F0623A937DFEA5D1368BD1 /* libPods-91助手Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,12 +114,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F37A206ACFC7F046691154B /* libPods-91助手UITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		785963020F6708EF208A7D92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91A97F5ADB0EACD582C0C33E /* Pods-91助手.debug.xcconfig */,
+				99979C71D0B096DA5618EAC6 /* Pods-91助手.release.xcconfig */,
+				F896CE6D5BF04B715F6FD1E6 /* Pods-91助手Tests.debug.xcconfig */,
+				5CFD8B700015DDD923ED7E4C /* Pods-91助手Tests.release.xcconfig */,
+				5FE7BE38F5467DC28C57E3D4 /* Pods-91助手UITests.debug.xcconfig */,
+				E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9C0DD7151CFC4A930028E515 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +143,41 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		9C27BDAC1CFFD5AE0016C0F7 /* StartPage(启动页) */ = {
+			isa = PBXGroup;
+			children = (
+				9C27BDAD1CFFD5AE0016C0F7 /* Controller */,
+				9C27BDB01CFFD5AE0016C0F7 /* Model */,
+				9C27BDB11CFFD5AE0016C0F7 /* View */,
+			);
+			path = "StartPage(启动页)";
+			sourceTree = "<group>";
+		};
+		9C27BDAD1CFFD5AE0016C0F7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C27BDAE1CFFD5AE0016C0F7 /* YKStartPageViewController.h */,
+				9C27BDAF1CFFD5AE0016C0F7 /* YKStartPageViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9C27BDB01CFFD5AE0016C0F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C27BDB11CFFD5AE0016C0F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C27BDB21CFFD5AE0016C0F7 /* YKStartPageScrollView.h */,
+				9C27BDB31CFFD5AE0016C0F7 /* YKStartPageScrollView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9C40AD2A1CF82C5700AF23DE = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +185,8 @@
 				9C40AD4F1CF82C5800AF23DE /* 91助手Tests */,
 				9C40AD5A1CF82C5800AF23DE /* 91助手UITests */,
 				9C40AD341CF82C5700AF23DE /* Products */,
+				785963020F6708EF208A7D92 /* Pods */,
+				A5EBB4C5EB3378E77D4F2C44 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +205,7 @@
 			children = (
 				9C5BDD601CF9D928008CE12F /* Common(公用类) */,
 				9C5BDD701CF9D928008CE12F /* Until(工具类) */,
+				9C27BDAC1CFFD5AE0016C0F7 /* StartPage(启动页) */,
 				9C5BDD641CF9D928008CE12F /* Home(首页) */,
 				9C5BDD581CF9D928008CE12F /* Chat(聊吧) */,
 				9C5BDD5C1CF9D928008CE12F /* Classify(分类) */,
@@ -148,6 +219,7 @@
 		9C40AD361CF82C5700AF23DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C27BDB91CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg */,
 				9C0DD7141CFC4A290028E515 /* PrefixHeader.pch */,
 				9C40AD421CF82C5700AF23DE /* Assets.xcassets */,
 				9C40AD441CF82C5700AF23DE /* LaunchScreen.storyboard */,
@@ -257,8 +329,6 @@
 				9C0DD6F41CFBF1BF0028E515 /* YKBaseViewController.m */,
 				9C0DD6F51CFBF1BF0028E515 /* YKRootViewController.h */,
 				9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */,
-				9C0DD70E1CFC4A080028E515 /* YKStartPageViewController.h */,
-				9C0DD70F1CFC4A080028E515 /* YKStartPageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,8 +343,6 @@
 		9C5BDD631CF9D928008CE12F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9C0DD7111CFC4A120028E515 /* YKStartPageScrollView.h */,
-				9C0DD7121CFC4A120028E515 /* YKStartPageScrollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +376,8 @@
 		9C5BDD671CF9D928008CE12F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C27BDB81CFFECF20016C0F7 /* YKScrollPagingView.h */,
+				9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +433,16 @@
 			path = "Until(工具类)";
 			sourceTree = "<group>";
 		};
+		A5EBB4C5EB3378E77D4F2C44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B3A9C298613768F3D499A30 /* libPods-91助手.a */,
+				08F1C016BD6DC6BCB108BEFA /* libPods-91助手Tests.a */,
+				7516E2DFAB4115C84C5CDB2D /* libPods-91助手UITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -370,9 +450,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C40AD601CF82C5800AF23DE /* Build configuration list for PBXNativeTarget "91助手" */;
 			buildPhases = (
+				5A8FEE369919CC2AA5DBCD37 /* 📦 Check Pods Manifest.lock */,
 				9C40AD2F1CF82C5700AF23DE /* Sources */,
 				9C40AD301CF82C5700AF23DE /* Frameworks */,
 				9C40AD311CF82C5700AF23DE /* Resources */,
+				BF5461283A65A58D3EA5A80C /* 📦 Embed Pods Frameworks */,
+				8B6512CD4203962763C8985D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -387,9 +470,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C40AD631CF82C5800AF23DE /* Build configuration list for PBXNativeTarget "91助手Tests" */;
 			buildPhases = (
+				D91B6793068069776752ACBE /* 📦 Check Pods Manifest.lock */,
 				9C40AD481CF82C5800AF23DE /* Sources */,
 				9C40AD491CF82C5800AF23DE /* Frameworks */,
 				9C40AD4A1CF82C5800AF23DE /* Resources */,
+				3ABC79B9AE1BBF4B920B3797 /* 📦 Embed Pods Frameworks */,
+				956F3CCEABE529B2147CB93E /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -405,9 +491,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9C40AD661CF82C5800AF23DE /* Build configuration list for PBXNativeTarget "91助手UITests" */;
 			buildPhases = (
+				95AE4E3643349BC7B42E7039 /* 📦 Check Pods Manifest.lock */,
 				9C40AD531CF82C5800AF23DE /* Sources */,
 				9C40AD541CF82C5800AF23DE /* Frameworks */,
 				9C40AD551CF82C5800AF23DE /* Resources */,
+				F0EC2814D622DDEB5742C45B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,6 +557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C27BDBA1CFFF38F0016C0F7 /* 94e20eaafb904226a6d2574a64f5a2e2_294_640x256.jpg in Resources */,
 				9C40AD461CF82C5700AF23DE /* LaunchScreen.storyboard in Resources */,
 				9C40AD431CF82C5700AF23DE /* Assets.xcassets in Resources */,
 			);
@@ -490,20 +579,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3ABC79B9AE1BBF4B920B3797 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A8FEE369919CC2AA5DBCD37 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8B6512CD4203962763C8985D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-91助手/Pods-91助手-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		956F3CCEABE529B2147CB93E /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95AE4E3643349BC7B42E7039 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BF5461283A65A58D3EA5A80C /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-91助手/Pods-91助手-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D91B6793068069776752ACBE /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0EC2814D622DDEB5742C45B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9C40AD2F1CF82C5700AF23DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
 				9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */,
 				9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */,
-				9C0DD7131CFC4A120028E515 /* YKStartPageScrollView.m in Sources */,
+				9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
+				9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,
 				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
-				9C0DD7101CFC4A080028E515 /* YKStartPageViewController.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
 			);
@@ -634,6 +847,7 @@
 		};
 		9C40AD611CF82C5800AF23DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91A97F5ADB0EACD582C0C33E /* Pods-91助手.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -647,6 +861,7 @@
 		};
 		9C40AD621CF82C5800AF23DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99979C71D0B096DA5618EAC6 /* Pods-91助手.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -660,6 +875,7 @@
 		};
 		9C40AD641CF82C5800AF23DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F896CE6D5BF04B715F6FD1E6 /* Pods-91助手Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "91助手Tests/Info.plist";
@@ -672,6 +888,7 @@
 		};
 		9C40AD651CF82C5800AF23DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CFD8B700015DDD923ED7E4C /* Pods-91助手Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "91助手Tests/Info.plist";
@@ -684,6 +901,7 @@
 		};
 		9C40AD671CF82C5800AF23DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FE7BE38F5467DC28C57E3D4 /* Pods-91助手UITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "91助手UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -696,6 +914,7 @@
 		};
 		9C40AD681CF82C5800AF23DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "91助手UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

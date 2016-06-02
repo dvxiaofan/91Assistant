@@ -16,10 +16,55 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+
+#import <UIImageView+WebCache.h>
+
+
+
+
+
+
+
 #define SCREEN [UIScreen mainScreen].bounds.size
 
 
 
+
+
+
+
+
+
+
+// 首页 总分布页面
+#define HOME_ZONG_URL @"http://applebbx.sj.91.com/api/?cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&act=1&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&spid=2&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
+
+// 首页 限时免费
+#define HOME_LIMIT_URE @"http://applebbx.sj.91.com/api/?act=236&cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&spid=2&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&top=15&mt=1&nt=10&pid=2"
+
+// 首页 精品推荐
+#define HOME_JINGPIN_URL @"http://applebbx.sj.91.com/soft/phone/list.aspx?cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&act=244&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&spid=2&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&top=20&mt=1&nt=10&pid=2"
+
+// 首页 装机必备
+#define HOME_BIBEI_URL @"http://applebbx.sj.91.com/api/?act=236&cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&spid=2&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&top=15&mt=1&nt=10&pid=2"
+
+// 首页  应用专题
+#define HOME_APP_URL @"http://applebbx.sj.91.com/soft/phone/tag.aspx?cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&act=212&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&spid=2&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
+
+// 首页 黑马闯入
+#define HOME_DARKHORSE_URL @"http://applebbx.sj.91.com/soft/phone/list.aspx?cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&act=245&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&spid=2&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&top=10&mt=1&nt=10&pid=2"
+
+// 首页  编辑推荐
+#define HOME_EDITOR_URL @"http://applebbx.sj.91.com/soft/phone/list.aspx?skip=10&mt=1&spid=2&osv=8.4.1&cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&dm=iPhone7,2&sv=3.1.3&act=244&nt=10&pid=2&top=10"
+
+// 聊吧 总页面
+#define CHAT_URL @"http://applebbx.sj.91.com/api/?act=702&cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&spid=2&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
+
+// 分类 应用页面
+#define CLASSIFY_URL @"http://applebbx.sj.91.com/soft/phone/cat.aspx?act=213&cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&pi=1&spid=2&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
+
+// 搜索 之 聊吧/应用
+#define SEARCH_URL @"http://applebbx.sj.91.com/soft/phone/cat.aspx?act=218&cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&pi=1&spid=2&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
 
 
 #endif /* PrefixHeader_pch */
