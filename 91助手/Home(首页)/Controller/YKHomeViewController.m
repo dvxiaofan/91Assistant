@@ -21,7 +21,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"9 1助手";
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self setupTableView];
     
@@ -58,7 +57,7 @@
 
 #pragma mark - 创建TableView
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN.width * 4.5 / 16, SCREEN.width, SCREEN.height - NAVBAR_HEIGHT - TABBAR_HEIGHT - SCREEN.width * 4.5 / 16) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN.width * 4.5 / 16, SCREEN.width, SCREEN.height - NAVBAR_HEIGHT - TABBAR_HEIGHT - SCREEN.width * 4.5 / 16) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -68,8 +67,24 @@
 
 #pragma mark - UITableView 代理方法
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 5;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    
+    if (section == 0) {
+        return 3;
+    } else if (section == 1) {
+        return 2;
+    } else if (section == 2) {
+        return 1;
+    } else {
+        return 4;
+    }
+    
+    
+    //return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,13 +93,27 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    cell.textLabel.text = @"xiaofan";
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (indexPath.section == 0) {
+        cell.textLabel.text = @"one";
+    } else if (indexPath.section == 1) {
+        cell.textLabel.text = @"two";
+    } else if (indexPath.section == 2) {
+        cell.textLabel.text = @"three";
+    } else {
+        cell.textLabel.text = @"hahahahhah";
+    }
+    
+    
+    //cell.textLabel.text = @"xiaofan";
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120;
+    return 80;
 }
 
 
