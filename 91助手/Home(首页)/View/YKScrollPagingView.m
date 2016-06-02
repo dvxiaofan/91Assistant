@@ -100,7 +100,7 @@
 
 #pragma mark - 设置定时自动轮播
 - (void)createTimer {
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
     self.timer = timer;
 }
 
