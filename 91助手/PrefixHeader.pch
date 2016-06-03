@@ -24,14 +24,17 @@
 
 
 
-
+// 屏幕尺寸
 #define SCREEN [UIScreen mainScreen].bounds.size
-
+// 导航和标签栏高度
 #define NAVBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
 #define TABBAR_HEIGHT self.tabBarController.tabBar.frame.size.height
 
-
-
+// 自定义cell的标题和按钮属性
+#define CELL_NAME_FONT [UIFont boldSystemFontOfSize:14.0]
+#define CELL_NAME_COLOR [UIColor blackColor]
+#define CELL_BTN_FONT [UIFont systemFontOfSize:12.0]
+#define CELL_BTN_COLOR [UIColor grayColor]
 
 
 

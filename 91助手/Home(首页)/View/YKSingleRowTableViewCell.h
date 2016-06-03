@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol YKSingleRowTableViewCellDelegate;
+@protocol YKSingleRowTableViewCellDelegate <NSObject>
+
+- (void)showAppScrollViewImageTapIndex:(NSInteger)index;
+
+@end
 
 @interface YKSingleRowTableViewCell : UITableViewCell
 
@@ -19,8 +23,3 @@
 
 @end
 
-@protocol YKSingleRowTableViewCellDelegate <NSObject>
-
-- (void)singleRowTableViewCell:(YKSingleRowTableViewCell *)cell;
-
-@end

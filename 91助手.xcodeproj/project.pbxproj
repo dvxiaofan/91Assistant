@@ -26,7 +26,6 @@
 		9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BDD6A1CF9D928008CE12F /* AppDelegate.m */; };
 		9C5BDD721CF9D928008CE12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BDD6B1CF9D928008CE12F /* main.m */; };
 		9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */; };
-		9CCFECD51D0134EF00D1BFA1 /* YKTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD41D0134EF00D1BFA1 /* YKTwoTableViewCell.m */; };
 		E264DAD969B727EF07675E48 /* libPods-91助手.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3A9C298613768F3D499A30 /* libPods-91助手.a */; };
 /* End PBXBuildFile section */
 
@@ -91,8 +90,6 @@
 		9C5BDD6B1CF9D928008CE12F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowTableViewCell.h; sourceTree = "<group>"; };
 		9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowTableViewCell.m; sourceTree = "<group>"; };
-		9CCFECD31D0134EF00D1BFA1 /* YKTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTwoTableViewCell.h; sourceTree = "<group>"; };
-		9CCFECD41D0134EF00D1BFA1 /* YKTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTwoTableViewCell.m; sourceTree = "<group>"; };
 		E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests.release.xcconfig"; sourceTree = "<group>"; };
 		F896CE6D5BF04B715F6FD1E6 /* Pods-91助手Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -383,8 +380,6 @@
 				9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */,
 				9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */,
 				9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */,
-				9CCFECD31D0134EF00D1BFA1 /* YKTwoTableViewCell.h */,
-				9CCFECD41D0134EF00D1BFA1 /* YKTwoTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -725,7 +720,6 @@
 				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
-				9CCFECD51D0134EF00D1BFA1 /* YKTwoTableViewCell.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
