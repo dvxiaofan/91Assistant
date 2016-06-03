@@ -8,8 +8,10 @@
 
 #import "YKHomeViewController.h"
 #import "YKScrollPagingView.h"
+#import "YKSingleRowTableViewCell.h"
+#import "YKTwoTableViewCell.h"
 
-@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKTwoTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -22,8 +24,10 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"9 1助手";
     
+    // 创建TableView
     [self setupTableView];
     
+    // 创建头部滚动视图
     [self setupScrollView];
     
     
@@ -34,17 +38,17 @@
 #pragma mark - 设置顶部滚动视图
 - (void)setupScrollView {
     
-    YKScrollPagingView *scrollPV = [[YKScrollPagingView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height * 4.5 / 16)];
-    scrollPV.backgroundColor = [UIColor yellowColor];
+    YKScrollPagingView *scrollPV = [[YKScrollPagingView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.width * 7 / 16)];
     [scrollPV setImageView];
     // 设置代理
     scrollPV.delegate = self;
     
     // 设置 tableView 的头视图为滚动视图
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.width * 4.5 / 16)];
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.width * 7 / 16)];
     [self.tableView.tableHeaderView addSubview:scrollPV];
     
-    self.tableView.frame = CGRectMake(0, 0, SCREEN.width, SCREEN.height - NAVBAR_HEIGHT - TABBAR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, 0, SCREEN.width, SCREEN.height);
+    
     
 }
 
@@ -57,18 +61,17 @@
 
 #pragma mark - 创建TableView
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN.width * 4.5 / 16, SCREEN.width, SCREEN.height - NAVBAR_HEIGHT - TABBAR_HEIGHT - SCREEN.width * 4.5 / 16) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN.width * 7 / 16, SCREEN.width, SCREEN.height - NAVBAR_HEIGHT - TABBAR_HEIGHT - SCREEN.width * 7 / 16) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
-    
 }
 
 #pragma mark - UITableView 代理方法
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -79,44 +82,78 @@
         return 2;
     } else if (section == 2) {
         return 1;
+    } else if (section == 3) {
+        return 2;
+    } else if (section == 4) {
+        return 2;
+    } else if (section == 5) {
+        return 2;
     } else {
         return 4;
     }
+    
     
     
     //return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    if (indexPath.section == 0) {
-        cell.textLabel.text = @"one";
-    } else if (indexPath.section == 1) {
-        cell.textLabel.text = @"two";
-    } else if (indexPath.section == 2) {
-        cell.textLabel.text = @"three";
+    if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
+        
+        YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+        if (!cell) {
+            cell = [[YKSingleRowTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
+        }
+        cell.delegate = self;
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
     } else {
-        cell.textLabel.text = @"hahahahhah";
+        YKTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellItwo"];
+        if (!cell) {
+            cell = [[YKTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIDtwo"];
+        }
+        cell.delegate = self;
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+        
     }
     
     
-    //cell.textLabel.text = @"xiaofan";
     
-    return cell;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    //return 80;
+    
+    if (indexPath.section == 0) {
+        return 80;
+        
+    } else if (indexPath.section == 1) {
+        return 80;
+        
+    } else if (indexPath.section == 2) {
+        return 80;
+        
+    } else if (indexPath.section == 3) {
+        return 80;
+        
+    } else if (indexPath.section == 4) {
+        return 80;
+        
+    } else if (indexPath.section == 5) {
+        return 80;
+        
+    } else {
+        return 80;
+        
+    }
 }
-
-
 
 
 - (void)didReceiveMemoryWarning {
