@@ -11,16 +11,16 @@
 
 
 
-#define APP_NAME_FONT [UIFont systemFontOfSize:11.0]
+#define APP_NAME_FONT [UIFont systemFontOfSize:12.0]
 #define APP_NAME_COLOR [UIColor blackColor]
 
 #define ICON_TAG 100
 
 @interface YKSingleRowTableViewCell ()
 
-@property (nonatomic, strong) UIScrollView *showAppSV;  // 显示app的滚动视图
-@property (nonatomic, strong) UIImageView *iconView;    // APP 图标
-@property (nonatomic, strong) UILabel *appNameLabel;    // APP 名字
+@property (nonatomic, weak) UIScrollView *showAppSV;  // 显示app的滚动视图
+@property (nonatomic, weak) UIImageView *iconView;    // APP 图标
+@property (nonatomic, weak) UILabel *appNameLabel;    // APP 名字
 
 @property (nonatomic, assign) CGFloat far;              // 固定间隔
 
@@ -59,10 +59,10 @@
     
     for (int i = 0; i < count; i ++) {
         UIImageView *iconView = [[UIImageView alloc] init];
-        CGFloat imgViewWH = 60;
-        CGFloat imgViewX = i * imgViewWH + far * i;
-        CGFloat imgViewY = 8;
-        iconView.frame = CGRectMake(imgViewX, imgViewY, imgViewWH, imgViewWH);
+        //CGFloat imgViewWH = 60;
+        CGFloat imgViewX = i * ICONVIEW_WH + far * i;
+        CGFloat imgViewY = far / 2;
+        iconView.frame = CGRectMake(imgViewX, imgViewY, ICONVIEW_WH, ICONVIEW_WH);
         iconView.image = [UIImage imageNamed:@"icon-29"];
         iconView.clipsToBounds = YES;
         iconView.layer.cornerRadius = 8.0;
@@ -80,10 +80,10 @@
         // app名字
         UILabel *appNameLebal = [[UILabel alloc] init];
         CGFloat appNameY = CGRectGetMaxY(iconView.frame) + 8;
-        appNameLebal.frame = CGRectMake(imgViewX, appNameY, imgViewWH, 10);
+        appNameLebal.frame = CGRectMake(imgViewX, appNameY, ICONVIEW_WH, 10);
         appNameLebal.text = @"正确打领带";
-        appNameLebal.font = [UIFont systemFontOfSize:12.0];
-        appNameLebal.textColor = [UIColor blackColor];
+        appNameLebal.font = APP_NAME_FONT;
+        appNameLebal.textColor = APP_NAME_COLOR;
         [showAppSV addSubview:appNameLebal];
         self.appNameLabel = appNameLebal;
         
@@ -91,7 +91,7 @@
     showAppSV.contentSize = CGSizeMake(self.iconView.frame.size.width * count + far * (count - 1), 0);
     showAppSV.showsHorizontalScrollIndicator = NO;
     
-    self.SingleRowCellHeight = CGRectGetMaxY(self.appNameLabel.frame) + far;
+    self.rowHeight = CGRectGetMaxY(self.appNameLabel.frame) + far;
 }
 
 #pragma mark - APP 点击事件

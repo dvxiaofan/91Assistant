@@ -17,7 +17,7 @@
 
 @interface YKSingleRowTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) CGFloat SingleRowCellHeight;
+@property (nonatomic, assign) CGFloat rowHeight;
 
 @property (nonatomic, assign) id <YKSingleRowTableViewCellDelegate> delegate;
 
