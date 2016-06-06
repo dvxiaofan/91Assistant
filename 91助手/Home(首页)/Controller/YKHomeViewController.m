@@ -11,10 +11,9 @@
 #import "YKSingleRowTableViewCell.h"
 #import "YKTenRowsTableViewCell.h"
 #import "YKOtherTableViewCell.h"
-#import "YKSectionHeaderView.h"
 
 
-@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKTenRowsTableViewCellDelegate,YKOtherTableViewCellDelegate,YKSectionHeaderViewDelegate>
+@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKTenRowsTableViewCellDelegate,YKOtherTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -24,7 +23,9 @@
 
 @property (nonatomic, strong) YKOtherTableViewCell *cellOther;
 
-@property (nonatomic, strong) YKSectionHeaderView *headerView;
+@property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIButton *moreBtn;
 
 @end
 
@@ -69,42 +70,63 @@
     self.tableView = tableView;
 }
 
-#pragma mark - 分区的头视图
+#pragma mark - 分区头视图
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    YKSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"headerview"];
-    if (!headerView) {
-        headerView = [[YKSectionHeaderView alloc] initWithReuseIdentifier:@"headerview"];
-    }
-    self.headerView = headerView;
-    headerView.delegate = self;
     
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:headerView];
+    self.headerView = headerView;
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, SCREEN.width - 30, 20)];
+    titleLabel.font = CELL_NAME_FONT;
     switch (section) {
         case 0:
-            headerView.text = @"热门应用";
+            titleLabel.text = @"热门应用";
             break;
         case 1:
-            headerView.text = @"精品推荐";
+            titleLabel.text = @"精品推荐";
             break;
         case 2:
-            headerView.text = @"限时免费";
+            titleLabel.text = @"限时免费";
             break;
         case 3:
-            headerView.text = @"装机必备";
+            titleLabel.text = @"装机必备";
             break;
         case 4:
-            headerView.text = @"应用专题";
+            titleLabel.text = @"应用专题";
             break;
         case 5:
-            headerView.text = @"黑马闯入";
+            titleLabel.text = @"黑马闯入";
             break;
         case 6:
-            headerView.text = @"编辑推荐";
+            titleLabel.text = @"编辑推荐";
             break;
     }
+    [headerView addSubview:titleLabel];
+    self.titleLabel = titleLabel;
+    
+    UIButton *moreBtn = [[UIButton alloc] init];
+    moreBtn.frame = CGRectMake(SCREEN.width - 60, 12, 25, 16);
+    [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
+    [moreBtn setBackgroundColor:[UIColor clearColor]];
+    moreBtn.titleLabel.font = CELL_BTN_FONT;
+    [moreBtn setTitleColor:CELL_BTN_COLOR forState:UIControlStateNormal];
+    [moreBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:moreBtn];
+    self.moreBtn = moreBtn;
+    
+    UIImageView *imgView = [[UIImageView alloc] init];
+    imgView.frame = CGRectMake(CGRectGetMaxX(moreBtn.frame), 15, 12, 10);
+    imgView.image = [UIImage imageNamed:@"web_next_nor"];
+    imgView.clipsToBounds = YES;
+    [headerView addSubview:imgView];
     
     return headerView;
+    
 }
+
 // header 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 38;
@@ -112,6 +134,12 @@
 // footer 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.0001;
+}
+
+#pragma mark - 分区头视图上 更多 按钮点击事件
+
+- (void)btnClick:(UIButton *)button {
+    YKLog(@"你点击了更多按钮");
 }
 
 #pragma mark - UITableView 代理方法
@@ -207,19 +235,13 @@
 #pragma mark - YKOtherTableViewCell 代理方法
 
 - (void)imgViewTapIndex:(NSInteger)index {
-    YKLog(@"点击了四张图中的第-%d-张", index + 1);
+    YKLog(@"点击了四张图中的第-%ld-张", index + 1);
 }
 
-#pragma mark - YKSingleRowTableViewCell 代理事件 
+#pragma mark - YKSingleRowTableViewCell 代理方法
 
 - (void)showAppScrollViewImageTapIndex:(NSInteger)index {
     YKLog(@"点击了cell中的app的第-%ld-个", (long)index + 1);
-}
-
-#pragma mark - YKSectionHeaderView.h 代理事件
-
-- (void)sectionHeaderView:(YKSectionHeaderView *)view {
-    YKLog(@"点击了更多按钮");
 }
 
 - (void)didReceiveMemoryWarning {
