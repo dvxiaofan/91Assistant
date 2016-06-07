@@ -1,12 +1,12 @@
 //
-//  YKTenRowsTableViewCell.m
+//  YKRowsTableViewCell.m
 //  91助手
 //
 //  Created by xiaofan on 16/6/6.
 //  Copyright © 2016年 YK. All rights reserved.
 //
 
-#import "YKTenRowsTableViewCell.h"
+#import "YKRowsTableViewCell.h"
 #import "YKStarView.h"
 #import "NSString+YKExtension.h"
 
@@ -16,7 +16,7 @@
 #define CELL_INFO_FONT [UIFont systemFontOfSize:11.0]
 #define CELL_INFO_COLOR [UIColor grayColor]
 
-@interface YKTenRowsTableViewCell ()
+@interface YKRowsTableViewCell ()
 
 @property (nonatomic, weak) UIImageView *iconView;
 @property (nonatomic, weak) UILabel *nameLabel;
@@ -31,7 +31,7 @@
 
 @end
 
-@implementation YKTenRowsTableViewCell
+@implementation YKRowsTableViewCell
 
 #pragma mark - 初始化
 
@@ -124,8 +124,8 @@
 #pragma mark - 下载点击事件
 
 - (void)btnClick:(UIButton *)button {
-    if ([self.delegate respondsToSelector:@selector(tenRowsTableViewCell:)]) {
-        [self.delegate tenRowsTableViewCell:self];
+    if ([self.delegate respondsToSelector:@selector(rowsTableViewCell:)]) {
+        [self.delegate rowsTableViewCell:self];
     }
 }
 
@@ -138,7 +138,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

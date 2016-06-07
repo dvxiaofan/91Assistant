@@ -16,9 +16,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-
 #import <UIImageView+WebCache.h>
-
+#import "YKUtility.h"
 
 
 
@@ -37,6 +36,9 @@
 #define CELL_BTN_COLOR [UIColor grayColor]
 
 #define ICONVIEW_WH 60
+
+#define navBackBtnWidth 10
+#define navBackBtnHeght 21
 
 
 

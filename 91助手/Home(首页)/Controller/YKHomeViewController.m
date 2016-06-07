@@ -9,17 +9,19 @@
 #import "YKHomeViewController.h"
 #import "YKScrollPagingView.h"
 #import "YKSingleRowTableViewCell.h"
-#import "YKTenRowsTableViewCell.h"
+#import "YKRowsTableViewCell.h"
 #import "YKOtherTableViewCell.h"
+#import "YKMoreViewController.h"
+#import "YKDetailViewController.h"
 
 
-@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKTenRowsTableViewCellDelegate,YKOtherTableViewCellDelegate>
+@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKRowsTableViewCellDelegate,YKOtherTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) YKSingleRowTableViewCell *cell;
 
-@property (nonatomic, strong) YKTenRowsTableViewCell *cellTwo;
+@property (nonatomic, strong) YKRowsTableViewCell *cellRows;
 
 @property (nonatomic, strong) YKOtherTableViewCell *cellOther;
 
@@ -41,6 +43,8 @@
     
     // 创建头部滚动视图
     [self setupScrollView];
+    
+    self.titleArray = [[NSArray alloc] init];
     
 }
 
@@ -106,6 +110,8 @@
     }
     [headerView addSubview:titleLabel];
     self.titleLabel = titleLabel;
+    //self.sectionTitle = titleLabel.text;
+    //self.titleArray = @[@"热门应用", @"精品推荐", @"限时免费", @"装机必备", @"应用专题", @"黑马闯入", @"编辑推荐"];
     
     UIButton *moreBtn = [[UIButton alloc] init];
     moreBtn.frame = CGRectMake(SCREEN.width - 60, 12, 25, 16);
@@ -139,7 +145,16 @@
 #pragma mark - 分区头视图上 更多 按钮点击事件
 
 - (void)btnClick:(UIButton *)button {
-    YKLog(@"你点击了更多按钮");
+    //YKLog(@"你点击了更多按钮");
+    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    //moreVC.navTitle = self.sectionTitle;
+    //YKLog(@"title= %@", self.sectionTitle);
+    //for (NSString *title in self.titleArray) {
+        ////moreVC.navTitle = title;
+        ////YKLog(@"title = %@", title);
+    //}
+    
+    [self.navigationController pushViewController:moreVC animated:YES];
 }
 
 #pragma mark - UITableView 代理方法
@@ -175,14 +190,14 @@
         
         return cell;
     } else if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
-        YKTenRowsTableViewCell *cellTwo = [tableView dequeueReusableCellWithIdentifier:@"cellTwo"];
-        if (!cellTwo) {
-            cellTwo = [[YKTenRowsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellTwo"];
+        YKRowsTableViewCell *cellRows = [tableView dequeueReusableCellWithIdentifier:@"cellRows"];
+        if (!cellRows) {
+            cellRows = [[YKRowsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellRows"];
         }
-        self.cellTwo = cellTwo;
-        cellTwo.selectionStyle = UITableViewCellSelectionStyleNone;
-        cellTwo.delegate = self;
-        return cellTwo;
+        self.cellRows = cellRows;
+        cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
+        cellRows.delegate = self;
+        return cellRows;
     } else {
         YKOtherTableViewCell *cellOther = [tableView dequeueReusableCellWithIdentifier:@"cellOther"];
         if (!cellOther) {
@@ -205,7 +220,7 @@
         return self.cell.rowHeight;
         
     } else if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
-        return self.cellTwo.rowHeight;
+        return self.cellRows.rowHeight;
     } else {
         return self.cellOther.rowHeight;
     }
@@ -213,7 +228,10 @@
 // 点击每一个 cell 的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
-        YKLog(@"呀,你点我了，我要有反应了");
+        //YKLog(@"呀,你点我了，我要有反应了");
+        YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+        
+        [self.navigationController pushViewController:detailVC animated:YES];
     } else {
         
     }
@@ -222,26 +240,34 @@
 #pragma mark - YKScrollPagingView 代理方法
 
 - (void)scrollPagingViewImageTapIndex:(NSInteger)index {
-    YKLog(@"点击了表格顶部滚动图片的第-%ld-张",(long)index + 1);
+    //YKLog(@"点击了表格顶部滚动图片的某一张");
+    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
     
+    [self.navigationController pushViewController:moreVC animated:YES];
 }
 
-#pragma mark - YKTenRowsTableViewCell 代理方法
+#pragma mark - YKRowsTableViewCell 代理方法
 
-- (void)tenRowsTableViewCell:(YKTenRowsTableViewCell *)cell {
+- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
     YKLog(@"你点击了下载按钮");
 }
 
 #pragma mark - YKOtherTableViewCell 代理方法
 
 - (void)imgViewTapIndex:(NSInteger)index {
-    YKLog(@"点击了四张图中的第-%ld-张", index + 1);
+    //YKLog(@"点击了四张图中的某一张");
+    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    
+    [self.navigationController pushViewController:moreVC animated:YES];
 }
 
 #pragma mark - YKSingleRowTableViewCell 代理方法
 
 - (void)showAppScrollViewImageTapIndex:(NSInteger)index {
-    YKLog(@"点击了cell中的app的第-%ld-个", (long)index + 1);
+    //YKLog(@"点击了cell中的app的某一个");
+    YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

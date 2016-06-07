@@ -25,10 +25,13 @@
 		9C40AD5C1CF82C5800AF23DE /* _1__UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C40AD5B1CF82C5800AF23DE /* _1__UITests.m */; };
 		9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BDD6A1CF9D928008CE12F /* AppDelegate.m */; };
 		9C5BDD721CF9D928008CE12F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5BDD6B1CF9D928008CE12F /* main.m */; };
-		9CC490261D054888003F7F9E /* YKTenRowsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC490251D054888003F7F9E /* YKTenRowsTableViewCell.m */; };
 		9CC490291D05519D003F7F9E /* YKStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC490281D05519D003F7F9E /* YKStarView.m */; };
 		9CC4902C1D0551AB003F7F9E /* NSString+YKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4902B1D0551AB003F7F9E /* NSString+YKExtension.m */; };
 		9CC4902F1D05681E003F7F9E /* YKOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4902E1D05681E003F7F9E /* YKOtherTableViewCell.m */; };
+		9CC864A21D0669C8007147D1 /* YKRowsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A11D0669C8007147D1 /* YKRowsTableViewCell.m */; };
+		9CC864A51D066B3A007147D1 /* YKMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A41D066B3A007147D1 /* YKMoreViewController.m */; };
+		9CC864A81D06725A007147D1 /* YKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A71D06725A007147D1 /* YKUtility.m */; };
+		9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */; };
 		9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */; };
 		E264DAD969B727EF07675E48 /* libPods-91助手.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3A9C298613768F3D499A30 /* libPods-91助手.a */; };
 /* End PBXBuildFile section */
@@ -92,14 +95,20 @@
 		9C5BDD691CF9D928008CE12F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C5BDD6A1CF9D928008CE12F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9C5BDD6B1CF9D928008CE12F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9CC490241D054888003F7F9E /* YKTenRowsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTenRowsTableViewCell.h; sourceTree = "<group>"; };
-		9CC490251D054888003F7F9E /* YKTenRowsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTenRowsTableViewCell.m; sourceTree = "<group>"; };
 		9CC490271D05519D003F7F9E /* YKStarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStarView.h; sourceTree = "<group>"; };
 		9CC490281D05519D003F7F9E /* YKStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStarView.m; sourceTree = "<group>"; };
 		9CC4902A1D0551AB003F7F9E /* NSString+YKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YKExtension.h"; sourceTree = "<group>"; };
 		9CC4902B1D0551AB003F7F9E /* NSString+YKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YKExtension.m"; sourceTree = "<group>"; };
 		9CC4902D1D05681E003F7F9E /* YKOtherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKOtherTableViewCell.h; sourceTree = "<group>"; };
 		9CC4902E1D05681E003F7F9E /* YKOtherTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKOtherTableViewCell.m; sourceTree = "<group>"; };
+		9CC864A01D0669C8007147D1 /* YKRowsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKRowsTableViewCell.h; sourceTree = "<group>"; };
+		9CC864A11D0669C8007147D1 /* YKRowsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKRowsTableViewCell.m; sourceTree = "<group>"; };
+		9CC864A31D066B3A007147D1 /* YKMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMoreViewController.h; sourceTree = "<group>"; };
+		9CC864A41D066B3A007147D1 /* YKMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMoreViewController.m; sourceTree = "<group>"; };
+		9CC864A61D06725A007147D1 /* YKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUtility.h; sourceTree = "<group>"; };
+		9CC864A71D06725A007147D1 /* YKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUtility.m; sourceTree = "<group>"; };
+		9CC864A91D0677A5007147D1 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
+		9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowTableViewCell.h; sourceTree = "<group>"; };
 		9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowTableViewCell.m; sourceTree = "<group>"; };
 		E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -378,6 +387,10 @@
 			children = (
 				9C0DD6F91CFBF1CF0028E515 /* YKHomeViewController.h */,
 				9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */,
+				9CC864A31D066B3A007147D1 /* YKMoreViewController.h */,
+				9CC864A41D066B3A007147D1 /* YKMoreViewController.m */,
+				9CC864A91D0677A5007147D1 /* YKDetailViewController.h */,
+				9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -396,8 +409,8 @@
 				9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */,
 				9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */,
 				9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */,
-				9CC490241D054888003F7F9E /* YKTenRowsTableViewCell.h */,
-				9CC490251D054888003F7F9E /* YKTenRowsTableViewCell.m */,
+				9CC864A01D0669C8007147D1 /* YKRowsTableViewCell.h */,
+				9CC864A11D0669C8007147D1 /* YKRowsTableViewCell.m */,
 				9CC4902D1D05681E003F7F9E /* YKOtherTableViewCell.h */,
 				9CC4902E1D05681E003F7F9E /* YKOtherTableViewCell.m */,
 			);
@@ -451,6 +464,8 @@
 			isa = PBXGroup;
 			children = (
 				9C0DD7151CFC4A930028E515 /* Category */,
+				9CC864A61D06725A007147D1 /* YKUtility.h */,
+				9CC864A71D06725A007147D1 /* YKUtility.m */,
 			);
 			path = "Until(工具类)";
 			sourceTree = "<group>";
@@ -728,6 +743,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC864A81D06725A007147D1 /* YKUtility.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
 				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
 				9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */,
@@ -736,13 +752,15 @@
 				9CC4902C1D0551AB003F7F9E /* NSString+YKExtension.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */,
+				9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
 				9CC490291D05519D003F7F9E /* YKStarView.m in Sources */,
-				9CC490261D054888003F7F9E /* YKTenRowsTableViewCell.m in Sources */,
 				9CC4902F1D05681E003F7F9E /* YKOtherTableViewCell.m in Sources */,
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,
 				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
+				9CC864A21D0669C8007147D1 /* YKRowsTableViewCell.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
+				9CC864A51D066B3A007147D1 /* YKMoreViewController.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
 			);
