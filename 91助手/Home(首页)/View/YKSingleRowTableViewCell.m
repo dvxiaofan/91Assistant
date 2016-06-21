@@ -81,6 +81,7 @@
         UILabel *appNameLebal = [[UILabel alloc] init];
         CGFloat appNameY = CGRectGetMaxY(iconView.frame) + 8;
         appNameLebal.frame = CGRectMake(imgViewX, appNameY, ICONVIEW_WH, 10);
+        
         appNameLebal.text = @"正确打领带";
         appNameLebal.font = APP_NAME_FONT;
         appNameLebal.textColor = APP_NAME_COLOR;

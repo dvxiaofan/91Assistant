@@ -29,9 +29,19 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *moreBtn;
 
+@property (nonatomic, strong) NSMutableArray *sectionNameArray;
+
+
 @end
 
 @implementation YKHomeViewController
+
+//- (NSMutableArray *)SectionNameArray {
+    //if (!_SectionNameArray) {
+        //_SectionNameArray = [NSMutableArray array];
+    //}
+    //return _SectionNameArray;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,8 +54,16 @@
     // 创建头部滚动视图
     [self setupScrollView];
     
-    self.titleArray = [[NSArray alloc] init];
+    NSMutableArray *sectionNameArray = [NSMutableArray array];
+    self.sectionNameArray = sectionNameArray;
     
+    // 网络获取首页数据
+    [self loadHomeData];
+    
+    NSMutableArray *singleRowAppNameArray = [NSMutableArray array];
+    self.singleRowAppNameArray = singleRowAppNameArray;
+    // 获取单行分区数据
+    [self loadSingleRowData];
 }
 
 #pragma mark - 设置顶部滚动视图
@@ -73,6 +91,62 @@
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
+
+#pragma mark - 网络获取首页数据
+
+- (void)loadHomeData {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager GET:HOME_ZONG_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //YKLog(@"success");
+        NSArray *array = responseObject[@"Result"];
+        NSDictionary *mainData = [array firstObject];
+        NSArray *dataArray = mainData[@"parts"];
+        
+        [self.sectionNameArray removeAllObjects];
+        
+        for (NSDictionary *dataDic in dataArray) {
+            NSString *name = dataDic[@"name"];
+            //NSString *uiType = dataDic[@"uiType"];
+            //YKLog(@"name = %@", name);
+            [self.sectionNameArray addObject:name];
+            [self.tableView reloadData];
+            
+        }
+        //YKLog(@"count = %ld", self.sectionNameArray.count);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+    }];
+}
+
+#pragma mark - 获取单行显示的数据
+
+- (void)loadSingleRowData {
+    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
+    [manger GET:HOME_HOT_URE parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        YKLog(@"success");
+        NSDictionary *dataDic = responseObject[@"Result"];
+        NSArray *itemArray = dataDic[@"items"];
+        
+        [self.singleRowAppNameArray removeAllObjects];
+        for (NSDictionary *itemDic in itemArray) {
+            NSString *name = itemDic[@"name"];
+            [self.singleRowAppNameArray addObject:name];
+            [self.tableView reloadData];
+            
+            YKLog(@"name = %@", name);
+            
+        }
+        //YKLog(@"namecount = %lu", (unsigned long)self.singleRowAppNameArray.count);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+    }];
+}
+
 
 #pragma mark - 分区头视图
 
@@ -108,10 +182,21 @@
             titleLabel.text = @"编辑推荐";
             break;
     }
+    
+    //for (NSUInteger i = 0; i < self.sectionNameArray.count; i++) {
+        ////UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, SCREEN.width - 30, 20)];
+        ////titleLabel.font = CELL_NAME_FONT;
+        
+        //titleLabel.text = self.sectionNameArray[i];
+        
+        
+        ////YKLog(@"namecount = %ld", self.sectionNameArray.count);
+        //YKLog(@"title = %@", titleLabel.text);
+        //YKLog(@"secont = %ld", section);
+        
+    //}
     [headerView addSubview:titleLabel];
     self.titleLabel = titleLabel;
-    //self.sectionTitle = titleLabel.text;
-    //self.titleArray = @[@"热门应用", @"精品推荐", @"限时免费", @"装机必备", @"应用专题", @"黑马闯入", @"编辑推荐"];
     
     UIButton *moreBtn = [[UIButton alloc] init];
     moreBtn.frame = CGRectMake(SCREEN.width - 60, 12, 25, 16);
@@ -160,7 +245,7 @@
 #pragma mark - UITableView 代理方法
 // 分区数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
+    return self.sectionNameArray.count;
 }
 
 // 每个分区的行数

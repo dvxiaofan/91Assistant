@@ -10,7 +10,7 @@
 
 @interface YKHomeViewController : YKBaseViewController
 
-@property (nonatomic, strong) NSString *sectionTitle;
-@property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSMutableArray *singleRowAppNameArray;
+
 
 @end

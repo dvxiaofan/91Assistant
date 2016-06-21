@@ -33,6 +33,8 @@
 		9CC864A81D06725A007147D1 /* YKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A71D06725A007147D1 /* YKUtility.m */; };
 		9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */; };
 		9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */; };
+		BD4A3D611D1943180061A2EB /* YKSingleRowApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D601D1943180061A2EB /* YKSingleRowApp.m */; };
+		BD4A3D671D1943580061A2EB /* YKSingleRowApps.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D661D1943580061A2EB /* YKSingleRowApps.m */; };
 		E264DAD969B727EF07675E48 /* libPods-91助手.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3A9C298613768F3D499A30 /* libPods-91助手.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +113,10 @@
 		9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowTableViewCell.h; sourceTree = "<group>"; };
 		9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowTableViewCell.m; sourceTree = "<group>"; };
+		BD4A3D5F1D1943180061A2EB /* YKSingleRowApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowApp.h; sourceTree = "<group>"; };
+		BD4A3D601D1943180061A2EB /* YKSingleRowApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowApp.m; sourceTree = "<group>"; };
+		BD4A3D651D1943580061A2EB /* YKSingleRowApps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowApps.h; sourceTree = "<group>"; };
+		BD4A3D661D1943580061A2EB /* YKSingleRowApps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowApps.m; sourceTree = "<group>"; };
 		E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests.release.xcconfig"; sourceTree = "<group>"; };
 		F896CE6D5BF04B715F6FD1E6 /* Pods-91助手Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -398,6 +404,10 @@
 		9C5BDD661CF9D928008CE12F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BD4A3D5F1D1943180061A2EB /* YKSingleRowApp.h */,
+				BD4A3D601D1943180061A2EB /* YKSingleRowApp.m */,
+				BD4A3D651D1943580061A2EB /* YKSingleRowApps.h */,
+				BD4A3D661D1943580061A2EB /* YKSingleRowApps.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -747,7 +757,9 @@
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
 				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
 				9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */,
+				BD4A3D671D1943580061A2EB /* YKSingleRowApps.m in Sources */,
 				9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */,
+				BD4A3D611D1943180061A2EB /* YKSingleRowApp.m in Sources */,
 				9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */,
 				9CC4902C1D0551AB003F7F9E /* NSString+YKExtension.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
