@@ -10,4 +10,6 @@
 
 @interface YKChatViewController : YKBaseViewController
 
+@property (nonatomic, copy) NSString *url;
+
 @end

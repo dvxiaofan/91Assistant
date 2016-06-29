@@ -136,7 +136,7 @@
             [self.singleRowAppNameArray addObject:name];
             [self.tableView reloadData];
             
-            YKLog(@"name = %@", name);
+            //YKLog(@"name = %@", name);
             
         }
         //YKLog(@"namecount = %lu", (unsigned long)self.singleRowAppNameArray.count);

@@ -9,6 +9,7 @@ pod 'SDWebImage'
 pod 'AFNetworking'
 pod 'MJRefresh'
 pod 'JSONKit'
+pod 'MJExtension'
 
 end
 

@@ -12,6 +12,8 @@
 #define YKLog(...)
 #endif
 
+#define YKLogFunc YKLog(@"%s", __func__);
+
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
@@ -20,6 +22,8 @@
 #import <UIImageView+WebCache.h>
 #import <AFNetworking.h>
 #import <JSONKit.h>
+#import "UIView+YKExtension.h"
+#import <MJExtension.h>
 
 
 
@@ -42,6 +46,17 @@
 #define navBackBtnHeght 21
 
 
+
+/*** 颜色 ***/
+#define YKColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
+#define YKColor(r, g, b) YKColorA((r), (g), (b), 255)
+#define YKRandomColor YKColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+#define YKGrayColor(v) YKColor((v), (v), (v))
+#define YKBaseBgColor YKGrayColor(206)
+
+
+/*** 将服务器返回的数据写入plist ***/
+#define YKWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/zhyks/Desktop/iOS开发/我赢职场/结业项目/项目操作/Plist文件/%@.plist", filename] atomically:YES];
 
 // 首页 总分布页面
 #define HOME_ZONG_URL @"http://applebbx.sj.91.com/api/?cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&act=1&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&spid=2&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
