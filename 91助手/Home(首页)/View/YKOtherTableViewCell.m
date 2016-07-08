@@ -7,6 +7,7 @@
 //
 
 #import "YKOtherTableViewCell.h"
+#import "YKSingleRowApp.h"
 
 
 #define IMG_BASE_TAG 100
@@ -17,30 +18,69 @@
 
 @property (nonatomic, assign) CGFloat far;
 
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
+
 @end
 
 
 @implementation YKOtherTableViewCell
 
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
+/**
+ *  初始化
+ */
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self layoutUI];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self loadNewData];
     }
     return self;
 }
 
-- (void)layoutUI {
+- (void)loadNewData {
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //YKLog(@"uu = %@", self.url);
+    
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_APP_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //YKWriteToPlist(responseObject, @"专题app");
+        NSArray *singleRowApps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+        
+        NSArray *newArray = [singleRowApps subarrayWithRange:NSMakeRange(0, 4)];
+        
+        [weakSelf createApp:newArray];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+    }];
+}
+
+#pragma mark - UI布局
+
+- (void)createApp:(NSArray *)newArray {
+    
+    NSInteger count = newArray.count;
+    
     CGFloat far = 15;
     self.far = far;
     CGFloat ffar = far / 3;
     
-    NSURL *url1 = [NSURL URLWithString:@"http://bcs.91.com/rbpiczy/tagpic/2015/10/c0039f00f28a48159b9c6455e3fc7313_294_640x256.jpg"];
-    NSURL *url2 = [NSURL URLWithString:@"http://bcs.91.com/rbpiczy/tagpic/2015/10/42b773e2c87b485b9a4c7e2669935b73_294_640x256.jpg"];
-    NSURL *url3 = [NSURL URLWithString:@"http://bcs.91.com/rbpiczy/tagpic/2015/10/b1e014827a004ab0b8ad9220db23bbd1_294_640x256.jpg"];
-    NSURL *url4 = [NSURL URLWithString:@"http://bcs.91.com/rbpiczy/tagpic/2015/10/f20a687d833649dead069214a48345b4_294_640x256.jpg"];
-    NSArray *urlArray = @[url1, url2, url3, url4];
-    
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < count; i++) {
+        
+        _singleRowApp = newArray[i];
+        
         UIImageView *imgView = [[UIImageView alloc] init];
         CGFloat imgViewW = (SCREEN.width - far * 2 - ffar) / 2;
         CGFloat imgViewH = 90;
@@ -49,7 +89,9 @@
         imgView.frame = CGRectMake(imgViewX, imgViewY, imgViewW, imgViewH);
         imgView.layer.cornerRadius = 3.0;
         imgView.clipsToBounds = YES;
-        [imgView sd_setImageWithURL:urlArray[i] placeholderImage:[UIImage imageNamed:@"bg_allsproutpop_dropdown"]];
+        
+        [imgView sd_setImageWithURL:[NSURL URLWithString:self.singleRowApp.icon] placeholderImage:[UIImage imageNamed:@"cent_banner_pic_n"]];
+        
         [self addSubview:imgView];
         imgView.userInteractionEnabled = YES;
         imgView.tag = IMG_BASE_TAG + i;

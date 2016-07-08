@@ -12,5 +12,10 @@
 
 @property (nonatomic, strong) NSMutableArray *singleRowAppNameArray;
 
+/** url */
+@property (nonatomic, copy) NSString *url;
+
+
+
 
 @end

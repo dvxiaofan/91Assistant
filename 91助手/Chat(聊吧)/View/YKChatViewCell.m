@@ -37,10 +37,10 @@
     YKLogFunc
     UIImageView *iconView = [[UIImageView alloc] init];
     
-    iconView.x = far;
-    iconView.y = far / 2;
-    iconView.width = 48;
-    iconView.height = 48;
+    iconView.xf_x = far;
+    iconView.xf_y = far / 2;
+    iconView.xf_width = 48;
+    iconView.xf_height = 48;
     
     //iconView.backgroundColor = YKRandomColor;
     [self addSubview:iconView];
@@ -49,10 +49,10 @@
     self.cellHeight = CGRectGetMaxY(iconView.frame) + far / 2;
     
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.x = CGRectGetMaxX(iconView.frame) + far;
-    nameLabel.centerY = far;
-    nameLabel.width = SCREEN.width - nameLabel.x;
-    nameLabel.height = iconView.height / 2;
+    nameLabel.xf_x = CGRectGetMaxX(iconView.frame) + far;
+    nameLabel.xf_centerY = far;
+    nameLabel.xf_width = SCREEN.width - nameLabel.xf_x;
+    nameLabel.xf_height = iconView.xf_height / 2;
     
     [self addSubview:nameLabel];
     self.nameLabel = nameLabel;

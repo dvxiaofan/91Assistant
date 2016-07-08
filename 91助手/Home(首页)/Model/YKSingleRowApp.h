@@ -10,12 +10,16 @@
 
 @interface YKSingleRowApp : NSObject
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *iconUrl;
-@property (nonatomic, copy) NSString *resId;
+@property (nonatomic, copy)   NSString    *name;
+@property (nonatomic, copy)   NSString    *icon;
+@property (nonatomic, copy)   NSString    *resId;
+@property (nonatomic, copy)   NSString    *downTimes;
+@property (nonatomic, copy)   NSString    *price;
+@property (nonatomic, assign) NSUInteger  size;
+@property (nonatomic, assign) NSInteger     star;
 
 
-+ (instancetype)appWithDict:(NSDictionary *)dict;
+//+ (instancetype)appWithDict:(NSDictionary *)dict;
 
 
 @end

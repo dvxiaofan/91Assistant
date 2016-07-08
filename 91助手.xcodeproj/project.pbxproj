@@ -15,7 +15,6 @@
 		9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */; };
 		9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD6FA1CFBF1CF0028E515 /* YKHomeViewController.m */; };
 		9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */; };
-		9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */; };
 		9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDAF1CFFD5AE0016C0F7 /* YKStartPageViewController.m */; };
 		9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDB31CFFD5AE0016C0F7 /* YKStartPageScrollView.m */; };
 		9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27BDB61CFFECE90016C0F7 /* YKScrollPagingView.m */; };
@@ -33,6 +32,10 @@
 		9CC864A81D06725A007147D1 /* YKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A71D06725A007147D1 /* YKUtility.m */; };
 		9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */; };
 		9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */; };
+		BD26D5FF1D2F6F3A00ED72ED /* XFRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D5FC1D2F6F3A00ED72ED /* XFRefreshFooter.m */; };
+		BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D5FE1D2F6F3A00ED72ED /* XFRefreshHeader.m */; };
+		BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6021D2F6F5A00ED72ED /* XFHTTPSessionManager.m */; };
+		BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */; };
 		BD4A3D611D1943180061A2EB /* YKSingleRowApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D601D1943180061A2EB /* YKSingleRowApp.m */; };
 		BD4A3D671D1943580061A2EB /* YKSingleRowApps.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D661D1943580061A2EB /* YKSingleRowApps.m */; };
 		BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */; };
@@ -80,8 +83,6 @@
 		9C0DD6FF1CFBF73F0028E515 /* YKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchViewController.h; sourceTree = "<group>"; };
 		9C0DD7001CFBF73F0028E515 /* YKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchViewController.m; sourceTree = "<group>"; };
 		9C0DD7141CFC4A290028E515 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		9C0DD7161CFC4A930028E515 /* UIView+YKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YKExtension.h"; sourceTree = "<group>"; };
-		9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YKExtension.m"; sourceTree = "<group>"; };
 		9C27BDAE1CFFD5AE0016C0F7 /* YKStartPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageViewController.h; sourceTree = "<group>"; };
 		9C27BDAF1CFFD5AE0016C0F7 /* YKStartPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKStartPageViewController.m; sourceTree = "<group>"; };
 		9C27BDB21CFFD5AE0016C0F7 /* YKStartPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKStartPageScrollView.h; sourceTree = "<group>"; };
@@ -117,6 +118,14 @@
 		9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowTableViewCell.h; sourceTree = "<group>"; };
 		9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowTableViewCell.m; sourceTree = "<group>"; };
+		BD26D5FB1D2F6F3A00ED72ED /* XFRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRefreshFooter.h; sourceTree = "<group>"; };
+		BD26D5FC1D2F6F3A00ED72ED /* XFRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRefreshFooter.m; sourceTree = "<group>"; };
+		BD26D5FD1D2F6F3A00ED72ED /* XFRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRefreshHeader.h; sourceTree = "<group>"; };
+		BD26D5FE1D2F6F3A00ED72ED /* XFRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRefreshHeader.m; sourceTree = "<group>"; };
+		BD26D6011D2F6F5A00ED72ED /* XFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFHTTPSessionManager.h; sourceTree = "<group>"; };
+		BD26D6021D2F6F5A00ED72ED /* XFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFHTTPSessionManager.m; sourceTree = "<group>"; };
+		BD26D6041D2F9F4100ED72ED /* UIView+XFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XFExtension.h"; sourceTree = "<group>"; };
+		BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XFExtension.m"; sourceTree = "<group>"; };
 		BD4A3D5F1D1943180061A2EB /* YKSingleRowApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowApp.h; sourceTree = "<group>"; };
 		BD4A3D601D1943180061A2EB /* YKSingleRowApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowApp.m; sourceTree = "<group>"; };
 		BD4A3D651D1943580061A2EB /* YKSingleRowApps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowApps.h; sourceTree = "<group>"; };
@@ -177,8 +186,8 @@
 		9C0DD7151CFC4A930028E515 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				9C0DD7161CFC4A930028E515 /* UIView+YKExtension.h */,
-				9C0DD7171CFC4A930028E515 /* UIView+YKExtension.m */,
+				BD26D6041D2F9F4100ED72ED /* UIView+XFExtension.h */,
+				BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */,
 				9CC4902A1D0551AB003F7F9E /* NSString+YKExtension.h */,
 				9CC4902B1D0551AB003F7F9E /* NSString+YKExtension.m */,
 			);
@@ -302,8 +311,8 @@
 			children = (
 				9C0DD6ED1CFBF19A0028E515 /* YKChatViewController.h */,
 				9C0DD6EE1CFBF19A0028E515 /* YKChatViewController.m */,
-				BDE6A3861D23D75500D477A8 /* YKChatTwoViewController.h */,
 				BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */,
+				BDE6A3861D23D75500D477A8 /* YKChatTwoViewController.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -450,6 +459,12 @@
 		9C5BDD681CF9D928008CE12F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				BD26D5FB1D2F6F3A00ED72ED /* XFRefreshFooter.h */,
+				BD26D5FC1D2F6F3A00ED72ED /* XFRefreshFooter.m */,
+				BD26D5FD1D2F6F3A00ED72ED /* XFRefreshHeader.h */,
+				BD26D5FE1D2F6F3A00ED72ED /* XFRefreshHeader.m */,
+				BD26D6011D2F6F5A00ED72ED /* XFHTTPSessionManager.h */,
+				BD26D6021D2F6F5A00ED72ED /* XFHTTPSessionManager.m */,
 				9C5BDD691CF9D928008CE12F /* AppDelegate.h */,
 				9C5BDD6A1CF9D928008CE12F /* AppDelegate.m */,
 				9C5BDD6B1CF9D928008CE12F /* main.m */,
@@ -778,15 +793,17 @@
 				9CC864A81D06725A007147D1 /* YKUtility.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
 				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
-				9C0DD7181CFC4A930028E515 /* UIView+YKExtension.m in Sources */,
 				BD4A3D671D1943580061A2EB /* YKSingleRowApps.m in Sources */,
 				9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */,
+				BD26D5FF1D2F6F3A00ED72ED /* XFRefreshFooter.m in Sources */,
+				BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */,
 				BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */,
 				BD4A3D611D1943180061A2EB /* YKSingleRowApp.m in Sources */,
 				9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */,
 				9CC4902C1D0551AB003F7F9E /* NSString+YKExtension.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */,
+				BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */,
 				9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
 				9CC490291D05519D003F7F9E /* YKStarView.m in Sources */,
@@ -797,6 +814,7 @@
 				9CC864A21D0669C8007147D1 /* YKRowsTableViewCell.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
 				9CC864A51D066B3A007147D1 /* YKMoreViewController.m in Sources */,
+				BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
 			);
@@ -935,7 +953,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/91助手/PrefixHeader.pch";
 				INFOPLIST_FILE = "91助手/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91zhushou";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -950,7 +968,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/91助手/PrefixHeader.pch";
 				INFOPLIST_FILE = "91助手/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91zhushou";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -10,14 +10,14 @@
 
 @implementation YKSingleRowApp
 
-+ (instancetype)appWithDict:(NSDictionary *)dict {
+//+ (instancetype)appWithDict:(NSDictionary *)dict {
     
-    YKSingleRowApp *app = [[self alloc] init];
-    app.name = dict[@"name"];
-    app.resId = dict[@"resId"];
-    app.iconUrl = dict[@"icon"];
+    //YKSingleRowApp *app = [[self alloc] init];
+    //app.name = dict[@"name"];
+    //app.resId = dict[@"resId"];
+    //app.iconUrl = dict[@"icon"];
     
-    return app;
-}
+    //return app;
+//}
 
 @end

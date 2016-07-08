@@ -29,11 +29,6 @@
     [self setupTableView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - 构建导航栏按钮
 - (UIBarButtonItem *)creatNavBtnWithBackImage:(UIImage *)image action:(SEL)action {
     

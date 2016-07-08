@@ -13,6 +13,7 @@
 #import "YKOtherTableViewCell.h"
 #import "YKMoreViewController.h"
 #import "YKDetailViewController.h"
+#import "YKSingleRowApp.h"
 
 
 @interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKRowsTableViewCellDelegate,YKOtherTableViewCellDelegate>
@@ -31,10 +32,29 @@
 
 @property (nonatomic, strong) NSMutableArray *sectionNameArray;
 
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
+
+@property (nonatomic, strong) NSMutableArray <YKSingleRowApp *>*apps;
+
+
 
 @end
 
+static NSString *const YKSingleCellID = @"YKSingleRowTableViewCell";
+static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
+static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
+
 @implementation YKHomeViewController
+
+#pragma mark - 懒加载
+
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
 
 //- (NSMutableArray *)SectionNameArray {
     //if (!_SectionNameArray) {
@@ -42,6 +62,7 @@
     //}
     //return _SectionNameArray;
 //}
+#pragma mark - 初始化
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,16 +78,13 @@
     NSMutableArray *sectionNameArray = [NSMutableArray array];
     self.sectionNameArray = sectionNameArray;
     
-    // 网络获取首页数据
-    [self loadHomeData];
-    
     NSMutableArray *singleRowAppNameArray = [NSMutableArray array];
     self.singleRowAppNameArray = singleRowAppNameArray;
-    // 获取单行分区数据
-    [self loadSingleRowData];
+    
+    
+    
+    [self setupRefresh];
 }
-
-#pragma mark - 设置顶部滚动视图
 
 - (void)setupScrollView {
     
@@ -76,79 +94,143 @@
     scrollPV.delegate = self;
     
     // 设置 tableView 的头视图为滚动视图
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.width * 7 / 16)];
-    [self.tableView.tableHeaderView addSubview:scrollPV];
+    self.tableView.tableHeaderView = scrollPV;
     
-    self.tableView.frame = CGRectMake(0, 0, SCREEN.width, SCREEN.height);
 }
 
-#pragma mark - 创建TableView
-
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN.width * 7 / 16, SCREEN.width, SCREEN.height - NAVBAR_HEIGHT - TABBAR_HEIGHT - SCREEN.width * 7 / 16) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    [tableView registerClass:[YKSingleRowTableViewCell class] forCellReuseIdentifier:YKSingleCellID];
+    [tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
+    [tableView registerClass:[YKOtherTableViewCell class] forCellReuseIdentifier:YKOtherCellID];
 }
 
-#pragma mark - 网络获取首页数据
+- (void)setupRefresh {
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadHomeData)];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+#pragma mark - 加载数据
 
 - (void)loadHomeData {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
-    [manager GET:HOME_ZONG_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    //YKLog(@"uu = %@", self.url);
+    
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_EDITOR_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //NSArray *singleRowApps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        weakSelf.apps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+//- (void)loadNewData {
+    //// 取消所有请求
+    //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    
+    //__weak typeof(self) weakSelf = self;
+    
+    //[self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //YKLog(@"success");
-        NSArray *array = responseObject[@"Result"];
-        NSDictionary *mainData = [array firstObject];
-        NSArray *dataArray = mainData[@"parts"];
         
-        [self.sectionNameArray removeAllObjects];
         
-        for (NSDictionary *dataDic in dataArray) {
-            NSString *name = dataDic[@"name"];
-            //NSString *uiType = dataDic[@"uiType"];
-            //YKLog(@"name = %@", name);
-            [self.sectionNameArray addObject:name];
-            [self.tableView reloadData];
-            
-        }
-        //YKLog(@"count = %ld", self.sectionNameArray.count);
+        //XFWriteToPlist(responseObject, @"hotapp2");
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"error:%@", error);
         
-    }];
+        //[weakSelf.tableView reloadData];
+        
+        //[weakSelf.tableView.mj_header endRefreshing];
+        
+    //} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //YKLog(@"error:%@", error);
+        //[weakSelf.tableView.mj_header endRefreshing];
+    //}];
+//}
+
+#pragma mark - <UITableViewDataSource>
+
+// 分区数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 7;
 }
 
-#pragma mark - 获取单行显示的数据
-
-- (void)loadSingleRowData {
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:HOME_HOT_URE parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        YKLog(@"success");
-        NSDictionary *dataDic = responseObject[@"Result"];
-        NSArray *itemArray = dataDic[@"items"];
-        
-        [self.singleRowAppNameArray removeAllObjects];
-        for (NSDictionary *itemDic in itemArray) {
-            NSString *name = itemDic[@"name"];
-            [self.singleRowAppNameArray addObject:name];
-            [self.tableView reloadData];
-            
-            //YKLog(@"name = %@", name);
-            
-        }
-        //YKLog(@"namecount = %lu", (unsigned long)self.singleRowAppNameArray.count);
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"error:%@", error);
-    }];
+// 每个分区的行数
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (section == 0 || section == 2 || section == 3) {
+        return 1;
+    } else if (section == 1 || section == 5 || section == 6) {
+        return 10;
+    } else {
+        return 1;
+    }
 }
 
+// 每行的数据
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        
+        self.url = HOME_ZONG_URL;
+        
+        YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
+        
+        cell.url = HOME_HOT_URL;
+        self.cell = cell;
+        cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+    } else if (indexPath.section == 2 || indexPath.section == 3) {
+        YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
+        
+        self.cell = cell;
+        cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+    } else if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
+        YKRowsTableViewCell *cellRows = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
+        
+        self.cellRows = cellRows;
+        cellRows.apps = self.apps[indexPath.row];
+        cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
+        cellRows.delegate = self;
+        return cellRows;
+    } else {
+        YKOtherTableViewCell *cellOther = [tableView dequeueReusableCellWithIdentifier:YKOtherCellID];
+        
+        self.cellOther = cellOther;
+        cellOther.selectionStyle = UITableViewCellSelectionStyleNone;
+        cellOther.delegate = self;
+        return cellOther;
+        
+    }
+}
 
-#pragma mark - 分区头视图
+#pragma mark - <UITableViewDelegate>
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
@@ -183,18 +265,6 @@
             break;
     }
     
-    //for (NSUInteger i = 0; i < self.sectionNameArray.count; i++) {
-        ////UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, SCREEN.width - 30, 20)];
-        ////titleLabel.font = CELL_NAME_FONT;
-        
-        //titleLabel.text = self.sectionNameArray[i];
-        
-        
-        ////YKLog(@"namecount = %ld", self.sectionNameArray.count);
-        //YKLog(@"title = %@", titleLabel.text);
-        //YKLog(@"secont = %ld", section);
-        
-    //}
     [headerView addSubview:titleLabel];
     self.titleLabel = titleLabel;
     
@@ -227,75 +297,6 @@
     return 0.0001;
 }
 
-#pragma mark - 分区头视图上 更多 按钮点击事件
-
-- (void)btnClick:(UIButton *)button {
-    //YKLog(@"你点击了更多按钮");
-    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    //moreVC.navTitle = self.sectionTitle;
-    //YKLog(@"title= %@", self.sectionTitle);
-    //for (NSString *title in self.titleArray) {
-        ////moreVC.navTitle = title;
-        ////YKLog(@"title = %@", title);
-    //}
-    
-    [self.navigationController pushViewController:moreVC animated:YES];
-}
-
-#pragma mark - UITableView 代理方法
-// 分区数
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.sectionNameArray.count;
-}
-
-// 每个分区的行数
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    if (section == 0 || section == 2 || section == 3) {
-        return 1;
-    } else if (section == 1 || section == 5 || section == 6) {
-        return 10;
-    } else {
-        return 1;
-    }
-}
-
-// 每行的数据
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
-        
-        YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
-        if (!cell) {
-            cell = [[YKSingleRowTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
-        }
-        self.cell = cell;
-        cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-    } else if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
-        YKRowsTableViewCell *cellRows = [tableView dequeueReusableCellWithIdentifier:@"cellRows"];
-        if (!cellRows) {
-            cellRows = [[YKRowsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellRows"];
-        }
-        self.cellRows = cellRows;
-        cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
-        cellRows.delegate = self;
-        return cellRows;
-    } else {
-        YKOtherTableViewCell *cellOther = [tableView dequeueReusableCellWithIdentifier:@"cellOther"];
-        if (!cellOther) {
-            cellOther = [[YKOtherTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellOther"];
-        }
-        self.cellOther = cellOther;
-        cellOther.selectionStyle = UITableViewCellSelectionStyleNone;
-        cellOther.delegate = self;
-        return cellOther;
-        
-    }
-}
-
 // 每个 cell 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //return 80;
@@ -322,22 +323,23 @@
     }
 }
 
-#pragma mark - YKScrollPagingView 代理方法
+#pragma mark - 监听
 
-- (void)scrollPagingViewImageTapIndex:(NSInteger)index {
-    //YKLog(@"点击了表格顶部滚动图片的某一张");
+- (void)btnClick:(UIButton *)button {
     YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
     
     [self.navigationController pushViewController:moreVC animated:YES];
 }
 
-#pragma mark - YKRowsTableViewCell 代理方法
+- (void)scrollPagingViewImageTapIndex:(NSInteger)index {
+    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    
+    [self.navigationController pushViewController:moreVC animated:YES];
+}
 
 - (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
     YKLog(@"你点击了下载按钮");
 }
-
-#pragma mark - YKOtherTableViewCell 代理方法
 
 - (void)imgViewTapIndex:(NSInteger)index {
     //YKLog(@"点击了四张图中的某一张");
@@ -346,8 +348,6 @@
     [self.navigationController pushViewController:moreVC animated:YES];
 }
 
-#pragma mark - YKSingleRowTableViewCell 代理方法
-
 - (void)showAppScrollViewImageTapIndex:(NSInteger)index {
     //YKLog(@"点击了cell中的app的某一个");
     YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
@@ -355,19 +355,14 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
+
+
+
+
+
+
+
+

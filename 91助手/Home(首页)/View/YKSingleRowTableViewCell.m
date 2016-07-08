@@ -7,11 +7,12 @@
 //
 
 #import "YKSingleRowTableViewCell.h"
+#import "YKSingleRowApp.h"
 
 
 
 
-#define APP_NAME_FONT [UIFont systemFontOfSize:12.0]
+#define APP_NAME_FONT [UIFont systemFontOfSize:11.0]
 #define APP_NAME_COLOR [UIColor blackColor]
 
 #define ICON_TAG 100
@@ -23,10 +24,19 @@
 @property (nonatomic, weak) UILabel *appNameLabel;    // APP 名字
 
 @property (nonatomic, assign) CGFloat far;              // 固定间隔
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
 
 @end
 
 @implementation YKSingleRowTableViewCell
+
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
 
 /**
  *  初始化
@@ -34,14 +44,38 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self layoutUI];
+        [self loadNewData];
     }
     return self;
 }
 
+- (void)loadNewData {
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //YKLog(@"uu = %@", self.url);
+    
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_HOT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSArray *singleRowApps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        [weakSelf createApp:singleRowApps];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+    }];
+}
+
 #pragma mark - UI布局
 
-- (void)layoutUI {
+- (void)createApp:(NSArray *)singleRowApps {
+    
+    NSInteger count = singleRowApps.count;
+    
     CGFloat far = 15;
     self.far = far;
     
@@ -55,15 +89,16 @@
     [self addSubview:showAppSV];
     self.showAppSV = showAppSV;
     
-    NSInteger count = 15;
+    //NSInteger count = 15;
     
     for (int i = 0; i < count; i ++) {
+        _singleRowApp = singleRowApps[i];
+        
         UIImageView *iconView = [[UIImageView alloc] init];
-        //CGFloat imgViewWH = 60;
         CGFloat imgViewX = i * ICONVIEW_WH + far * i;
         CGFloat imgViewY = far / 2;
         iconView.frame = CGRectMake(imgViewX, imgViewY, ICONVIEW_WH, ICONVIEW_WH);
-        iconView.image = [UIImage imageNamed:@"icon-29"];
+        [iconView sd_setImageWithURL:[NSURL URLWithString:self.singleRowApp.icon] placeholderImage:[UIImage imageNamed:@"icon-29"]];
         iconView.clipsToBounds = YES;
         iconView.layer.cornerRadius = 8.0;
         [showAppSV addSubview:iconView];
@@ -81,10 +116,10 @@
         UILabel *appNameLebal = [[UILabel alloc] init];
         CGFloat appNameY = CGRectGetMaxY(iconView.frame) + 8;
         appNameLebal.frame = CGRectMake(imgViewX, appNameY, ICONVIEW_WH, 10);
-        
-        appNameLebal.text = @"正确打领带";
+        appNameLebal.text = self.singleRowApp.name;
         appNameLebal.font = APP_NAME_FONT;
         appNameLebal.textColor = APP_NAME_COLOR;
+        appNameLebal.textAlignment = NSTextAlignmentCenter;
         [showAppSV addSubview:appNameLebal];
         self.appNameLabel = appNameLebal;
         
@@ -97,7 +132,7 @@
 
 #pragma mark - APP 点击事件
 - (void)tapIcon:(UITapGestureRecognizer *)sender {
-    //YKLog(@"APP 被点击了");
+    //YKLog(@"APP 被点击");
     UIImageView *iconView = (UIImageView *)sender.view;
     if ([self.delegate respondsToSelector:@selector(showAppScrollViewImageTapIndex:)]) {
         [self.delegate showAppScrollViewImageTapIndex:iconView.tag - ICON_TAG];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class YKSingleRowApp;
 
 @protocol YKSingleRowTableViewCellDelegate <NSObject>
 
@@ -20,6 +21,12 @@
 @property (nonatomic, assign) CGFloat rowHeight;
 
 @property (nonatomic, assign) id <YKSingleRowTableViewCellDelegate> delegate;
+
+/** url */
+@property (nonatomic, copy) NSString *url;
+
+/** a */
+@property (nonatomic, strong) YKSingleRowApp *singleRowApp;
 
 @end
 

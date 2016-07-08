@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class YKSingleRowApp;
 
 @protocol YKOtherTableViewCellDelegate <NSObject>
 
@@ -21,5 +22,6 @@
 @property (nonatomic, assign) CGFloat rowHeight;
 
 @property (nonatomic, assign) id <YKOtherTableViewCellDelegate> delegate;
-
+/** a */
+@property (nonatomic, strong) YKSingleRowApp *singleRowApp;
 @end

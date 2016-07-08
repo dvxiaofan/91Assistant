@@ -7,7 +7,6 @@
 //
 
 #import "YKStartPageScrollView.h"
-#import "UIView+YKExtension.h"
 
 
 @interface YKStartPageScrollView ()<UIScrollViewDelegate>
@@ -45,10 +44,10 @@
         UIImage *image = imageArray[i];
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.x = i * SCREEN.width;
-        imageView.y = 0;
-        imageView.width = SCREEN.width;
-        imageView.height = SCREEN.height;
+        imageView.xf_x = i * SCREEN.width;
+        imageView.xf_y = 0;
+        imageView.xf_width = SCREEN.width;
+        imageView.xf_height = SCREEN.height;
         self.imageView = imageView;
         [scrollView addSubview:imageView];
         imageView.userInteractionEnabled = YES; // 允许交互
@@ -66,10 +65,10 @@
         
         // 创建pageControl
         UIPageControl *pageControl = [[UIPageControl alloc] init];
-        pageControl.width = 60;
-        pageControl.height = 30;
-        pageControl.centerX = SCREEN.width * 0.5;
-        pageControl.centerY = SCREEN.height - 55;
+        pageControl.xf_width = 60;
+        pageControl.xf_height = 30;
+        pageControl.xf_centerX = SCREEN.width * 0.5;
+        pageControl.xf_centerY = SCREEN.height - 55;
         pageControl.numberOfPages = imageArray.count;
         pageControl.userInteractionEnabled = NO;
         pageControl.pageIndicatorTintColor = [UIColor grayColor];
@@ -89,10 +88,10 @@
 #pragma mark - 创建进入按钮
 - (void)addStartButton {
     UIButton *button = [[UIButton alloc] init];
-    button.width = 130;
-    button.height = 36;
-    button.centerX = SCREEN.width * 0.5;
-    button.centerY = SCREEN.height - 120;
+    button.xf_width = 130;
+    button.xf_height = 36;
+    button.xf_centerX = SCREEN.width * 0.5;
+    button.xf_centerY = SCREEN.height - 120;
     
     [button setTitle:@"立即进入" forState:UIControlStateNormal];
     [button setBackgroundColor:[UIColor orangeColor]];
