@@ -100,6 +100,7 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 
 - (void)setupTableView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStyleGrouped];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -111,24 +112,29 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 }
 
 - (void)setupRefresh {
-    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadHomeData)];
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTabelView)];
     [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - 加载数据
 
-- (void)loadHomeData {
+- (void)reloadTabelView {
+    
+    [self loadRowsCellData];
+    
+    
+    [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
+}
+
+- (void)loadRowsCellData {
     // 取消所有请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
-    //YKLog(@"uu = %@", self.url);
-    
-    
     __weak typeof(self) weakSelf = self;
     
-    [self.manager GET:HOME_EDITOR_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        //NSArray *singleRowApps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         weakSelf.apps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
         [weakSelf.tableView reloadData];
