@@ -51,7 +51,7 @@ static NSString * const cellID = @"cellID";
 }
 
 - (void)setupTableView {
-    YKLogFunc
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height - 60) style:UITableViewStyleGrouped];
     [self.view addSubview:tableView];
     //tableView.backgroundColor = YKRandomColor;

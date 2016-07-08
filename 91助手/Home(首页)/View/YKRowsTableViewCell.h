@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class YKSingleRowApp;
+@class YKApp;
 
 @protocol YKRowsTableViewCellDelegate;
 
@@ -20,7 +20,7 @@
 
 
 /** ss */
-@property (nonatomic, strong) YKSingleRowApp *apps;
+@property (nonatomic, strong) YKApp *apps;
 
 
 

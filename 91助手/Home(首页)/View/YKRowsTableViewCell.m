@@ -9,7 +9,7 @@
 #import "YKRowsTableViewCell.h"
 #import "YKStarView.h"
 #import "NSString+YKExtension.h"
-#import "YKSingleRowApp.h"
+#import "YKApp.h"
 
 #define APP_NAME_FONT [UIFont systemFontOfSize:13.0]
 #define APP_NAME_COLOR [UIColor blackColor]
@@ -82,7 +82,7 @@
     
 }
 
-- (void)setApps:(YKSingleRowApp *)apps {
+- (void)setApps:(YKApp *)apps {
     _apps = apps;
     
     // appname
@@ -93,7 +93,6 @@
     // 星级评价
     //NSInteger nnn = apps.star;
     self.starView.showStar = 4 * 20;
-    
     
     // 图标
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:apps.icon] placeholderImage:[UIImage imageNamed:@"250_250_pic"]];

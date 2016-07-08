@@ -7,7 +7,7 @@
 //
 
 #import "YKSingleRowTableViewCell.h"
-#import "YKSingleRowApp.h"
+#import "YKApp.h"
 
 
 
@@ -60,7 +60,7 @@
     
     [self.manager GET:HOME_HOT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSArray *singleRowApps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        NSArray *singleRowApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
         [weakSelf createApp:singleRowApps];
         

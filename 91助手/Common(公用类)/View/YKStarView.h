@@ -10,10 +10,10 @@
 
 @interface YKStarView : UIView
 
-@property (nonatomic, assign) NSInteger maxStar;        //
-@property (nonatomic, assign) NSInteger showStar;       //
-@property (nonatomic, strong) UIColor *emptyColor;      //
-@property (nonatomic, strong) UIColor *fullColor;       //
+@property (nonatomic, assign) NSInteger maxStar;
+@property (nonatomic, assign) NSInteger showStar;
+@property (nonatomic, strong) UIColor   *emptyColor;
+@property (nonatomic, strong) UIColor   *fullColor;
 
 
 @end

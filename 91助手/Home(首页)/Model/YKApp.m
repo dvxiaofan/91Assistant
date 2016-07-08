@@ -1,14 +1,14 @@
 //
-//  YKSingleRowApp.m
+//  YKApp.m
 //  91助手
 //
 //  Created by xiaofans on 16/6/21.
 //  Copyright © 2016年 YK. All rights reserved.
 //
 
-#import "YKSingleRowApp.h"
+#import "YKApp.h"
 
-@implementation YKSingleRowApp
+@implementation YKApp
 
 //+ (instancetype)appWithDict:(NSDictionary *)dict {
     

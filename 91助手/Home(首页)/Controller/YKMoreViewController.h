@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSString *navTitle;
 
+/** url */
+@property (nonatomic, copy) NSString *url;
+
 @end

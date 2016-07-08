@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class YKSingleRowApp;
+@class YKApp;
 
 @protocol YKSingleRowTableViewCellDelegate <NSObject>
 
@@ -26,7 +26,7 @@
 @property (nonatomic, copy) NSString *url;
 
 /** a */
-@property (nonatomic, strong) YKSingleRowApp *singleRowApp;
+@property (nonatomic, strong) YKApp *singleRowApp;
 
 @end
 

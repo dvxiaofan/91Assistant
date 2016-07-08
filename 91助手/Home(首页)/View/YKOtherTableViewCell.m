@@ -7,7 +7,7 @@
 //
 
 #import "YKOtherTableViewCell.h"
-#import "YKSingleRowApp.h"
+#import "YKApp.h"
 
 
 #define IMG_BASE_TAG 100
@@ -55,7 +55,7 @@
     
     [self.manager GET:HOME_APP_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //YKWriteToPlist(responseObject, @"专题app");
-        NSArray *singleRowApps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+        NSArray *singleRowApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
         NSArray *newArray = [singleRowApps subarrayWithRange:NSMakeRange(0, 4)];
         

@@ -13,7 +13,7 @@
 #import "YKOtherTableViewCell.h"
 #import "YKMoreViewController.h"
 #import "YKDetailViewController.h"
-#import "YKSingleRowApp.h"
+#import "YKApp.h"
 
 
 @interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKRowsTableViewCellDelegate,YKOtherTableViewCellDelegate>
@@ -35,7 +35,7 @@
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
-@property (nonatomic, strong) NSMutableArray <YKSingleRowApp *>*apps;
+@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
 
 
 
@@ -95,7 +95,6 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     
     // 设置 tableView 的头视图为滚动视图
     self.tableView.tableHeaderView = scrollPV;
-    
 }
 
 - (void)setupTableView {
@@ -123,6 +122,8 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     [self loadRowsCellData];
     
     
+    
+    
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
 }
@@ -135,12 +136,11 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     
     [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        weakSelf.apps = [YKSingleRowApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
         [weakSelf.tableView reloadData];
         
         [weakSelf.tableView.mj_header endRefreshing];
-        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YKLog(@"error:%@", error);
@@ -196,19 +196,8 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 // 每行的数据
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
         
-        self.url = HOME_ZONG_URL;
-        
-        YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
-        
-        cell.url = HOME_HOT_URL;
-        self.cell = cell;
-        cell.delegate = self;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-    } else if (indexPath.section == 2 || indexPath.section == 3) {
         YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
         
         self.cell = cell;
@@ -224,14 +213,13 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
         cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
         cellRows.delegate = self;
         return cellRows;
-    } else {
+    }  else {
         YKOtherTableViewCell *cellOther = [tableView dequeueReusableCellWithIdentifier:YKOtherCellID];
         
         self.cellOther = cellOther;
         cellOther.selectionStyle = UITableViewCellSelectionStyleNone;
         cellOther.delegate = self;
         return cellOther;
-        
     }
 }
 
@@ -280,7 +268,7 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     [moreBtn setBackgroundColor:[UIColor clearColor]];
     moreBtn.titleLabel.font = CELL_BTN_FONT;
     [moreBtn setTitleColor:CELL_BTN_COLOR forState:UIControlStateNormal];
-    [moreBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:moreBtn];
     self.moreBtn = moreBtn;
     
@@ -331,8 +319,12 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 
 #pragma mark - 监听
 
-- (void)btnClick:(UIButton *)button {
+- (void)moreBtnClick:(UIButton *)button {
+    
     YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    
+    moreVC.url = HOME_HOT_URL;
+    moreVC.navTitle = @"热门应用";
     
     [self.navigationController pushViewController:moreVC animated:YES];
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class YKSingleRowApp;
+@class YKApp;
 
 @protocol YKOtherTableViewCellDelegate <NSObject>
 
@@ -23,5 +23,5 @@
 
 @property (nonatomic, assign) id <YKOtherTableViewCellDelegate> delegate;
 /** a */
-@property (nonatomic, strong) YKSingleRowApp *singleRowApp;
+@property (nonatomic, strong) YKApp *singleRowApp;
 @end

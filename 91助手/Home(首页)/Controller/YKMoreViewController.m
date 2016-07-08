@@ -9,6 +9,7 @@
 #import "YKMoreViewController.h"
 #import "YKRowsTableViewCell.h"
 #import "YKDetailViewController.h"
+#import "YKApp.h"
 
 @interface YKMoreViewController ()<UITableViewDelegate, UITableViewDataSource, YKRowsTableViewCellDelegate>
 
@@ -16,20 +17,45 @@
 
 @property (nonatomic, strong) YKRowsTableViewCell *cell;
 
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
+
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
+
 @end
+
+
+static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 
 @implementation YKMoreViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.navigationItem.title = self.navTitle;
-    
-    self.navigationItem.leftBarButtonItem = [self creatNavBtnWithBackImage:[UIImage imageNamed:@"bar_back_normal"] action:@selector(actionBack:)];
-    
-    [self setupTableView];
+#pragma mark - 懒加载
+
+- (XFHTTPSessionManager *)manager {
+    if (_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
 }
 
-#pragma mark - 构建导航栏按钮
+#pragma mark - 初始化
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self setupNav];
+    
+    [self setupTableView];
+    
+    [self setupRefresh];
+}
+
+- (void)setupNav {
+    self.navigationItem.title = self.navTitle;
+    self.navigationItem.leftBarButtonItem = [self creatNavBtnWithBackImage:[UIImage imageNamed:@"bar_back_normal"] action:@selector(actionBack:)];
+}
+
 - (UIBarButtonItem *)creatNavBtnWithBackImage:(UIImage *)image action:(SEL)action {
     
     UIButton *button = [YKUtility createBtnWithBackgroundImag:image];
@@ -40,44 +66,90 @@
     return itme;
 }
 
-#pragma mark - 导航栏按钮点击事件
-// 返回按钮
-- (void)actionBack:(UIButton *)button {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - 创建 tableview
-
 - (void)setupTableView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    [self.tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
+}
+
+- (void)setupRefresh {
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTabelView)];
+    [self.tableView.mj_header beginRefreshing];
+}
+
+#pragma mark - 加载数据
+
+- (void)reloadTabelView {
+    
+    [self loadRowsCellData];
+    
+    
+    [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
+}
+
+- (void)loadRowsCellData {
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"tiems"]];
+        YKLog(@"cc = %zd", weakSelf.apps.count);
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+
+#pragma mark - 事件监听
+// 返回按钮
+- (void)actionBack:(UIButton *)button {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+/**
+ *  YKRowsTableViewCell 代理方法
+ */
+- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
+    YKLog(@"你点击了下载按钮");
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 15;
+    return self.apps.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"%zd--%zd", indexPath.section, indexPath.row];
+    
+    YKRowsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
+    cell.apps = self.apps[indexPath.row];
+    cell.backgroundColor = [UIColor orangeColor];
+    //cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.cell = cell;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return self.cell.rowHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -87,11 +159,7 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-#pragma mark - YKRowsTableViewCell 代理方法
 
-- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
-    YKLog(@"你点击了下载按钮");
-}
 
 /*
 // Override to support conditional editing of the table view.
