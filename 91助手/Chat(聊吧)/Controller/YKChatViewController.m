@@ -35,23 +35,30 @@ static NSString * const cellID = @"cellID";
     [self getData];
     
     [self setupTableView];
-    
-    
-    
 }
 
 - (void)getData {
+    [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
+    
     [[AFHTTPSessionManager manager] GET:CHAT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         self.chatArray = [YKChatCellModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
-        //YKLog(@"count = %zd", self.chatArray.count);
         
         [self.tableView reloadData];
         
+        [SVProgressHUD dismiss];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YKLog(@"error");
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍候再试"];
     }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [SVProgressHUD dismiss];
 }
 
 - (void)setupTableView {

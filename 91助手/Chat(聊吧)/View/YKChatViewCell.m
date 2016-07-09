@@ -36,22 +36,16 @@
     CGFloat far = 20;
     UIImageView *iconView = [[UIImageView alloc] init];
     
-    iconView.xf_x = far;
-    iconView.xf_y = far / 2;
-    iconView.xf_width = 48;
-    iconView.xf_height = 48;
+    iconView.frame = CGRectMake(far, far / 2, 48, 48);
     
-    //iconView.backgroundColor = YKRandomColor;
     [self addSubview:iconView];
     self.iconView = iconView;
     
     self.cellHeight = CGRectGetMaxY(iconView.frame) + far / 2;
     
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.xf_x = CGRectGetMaxX(iconView.frame) + far;
-    nameLabel.xf_centerY = far;
-    nameLabel.xf_width = SCREEN.width - nameLabel.xf_x;
-    nameLabel.xf_height = iconView.xf_height / 2;
+    
+    nameLabel.frame = CGRectMake((CGRectGetMaxX(iconView.frame) + far), far, SCREEN.width - nameLabel.xf_x, iconView.xf_height / 2);
     
     [self addSubview:nameLabel];
     self.nameLabel = nameLabel;

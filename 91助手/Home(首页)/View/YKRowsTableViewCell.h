@@ -20,7 +20,7 @@
 
 
 /** ss */
-@property (nonatomic, strong) YKApp *apps;
+@property (nonatomic, strong) YKApp *app;
 
 
 

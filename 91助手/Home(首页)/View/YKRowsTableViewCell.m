@@ -82,11 +82,11 @@
     
 }
 
-- (void)setApps:(YKApp *)apps {
-    _apps = apps;
+- (void)setApp:(YKApp *)app {
+    _app = app;
     
     // appname
-    self.nameLabel.text = apps.name;
+    self.nameLabel.text = app.name;
     self.nameLabel.font = APP_NAME_FONT;
     self.nameLabel.textColor = APP_NAME_COLOR;
     
@@ -95,28 +95,28 @@
     self.starView.showStar = 4 * 20;
     
     // 图标
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:apps.icon] placeholderImage:[UIImage imageNamed:@"250_250_pic"]];
+    [self.iconView xf_setHeaderWithUrl:app.icon placeholder:@"250_250_pic"];
     self.iconView.layer.cornerRadius = 8.0;
     self.iconView.clipsToBounds = YES;
     
     // 下载次数
-    self.downNumLabel.text = [NSString stringWithFormat:@"%@下载", apps.downTimes];
+    self.downNumLabel.text = [NSString stringWithFormat:@"%@下载", app.downTimes];
     self.downNumLabel.font = CELL_INFO_FONT;
     self.downNumLabel.textColor = CELL_INFO_COLOR;
     
     // 应用大小
-    CGFloat fileSize = apps.size / 1024.0 / 1024.0;
+    CGFloat fileSize = app.size / 1024.0 / 1024.0;
     self.fileSizeLabel.text = [NSString stringWithFormat:@"%.2fMB", fileSize];
     self.fileSizeLabel.textColor = CELL_INFO_COLOR;
     self.fileSizeLabel.font = CELL_INFO_FONT;
     
     // 下载按钮
-    if ([apps.price isEqualToString:@"0.00"]) {
+    if ([app.price isEqualToString:@"0.00"]) {
         [self.downBtn setTitle:@"免费" forState:UIControlStateNormal];
         [self.downBtn setBackgroundColor:[UIColor orangeColor]];
         [self.downBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     } else {
-        [self.downBtn setTitle:apps.price forState:UIControlStateNormal];
+        [self.downBtn setTitle:app.price forState:UIControlStateNormal];
         [self.downBtn setBackgroundColor:[UIColor whiteColor]];
         [self.downBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }

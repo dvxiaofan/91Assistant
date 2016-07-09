@@ -209,7 +209,7 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
         YKRowsTableViewCell *cellRows = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
         
         self.cellRows = cellRows;
-        cellRows.apps = self.apps[indexPath.row];
+        cellRows.app = self.apps[indexPath.row];
         cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
         cellRows.delegate = self;
         return cellRows;

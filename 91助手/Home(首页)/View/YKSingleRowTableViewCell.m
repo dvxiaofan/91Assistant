@@ -89,8 +89,6 @@
     [self addSubview:showAppSV];
     self.showAppSV = showAppSV;
     
-    //NSInteger count = 15;
-    
     for (int i = 0; i < count; i ++) {
         _singleRowApp = singleRowApps[i];
         
@@ -98,7 +96,7 @@
         CGFloat imgViewX = i * ICONVIEW_WH + far * i;
         CGFloat imgViewY = far / 2;
         iconView.frame = CGRectMake(imgViewX, imgViewY, ICONVIEW_WH, ICONVIEW_WH);
-        [iconView sd_setImageWithURL:[NSURL URLWithString:self.singleRowApp.icon] placeholderImage:[UIImage imageNamed:@"icon-29"]];
+        [iconView xf_setHeaderWithUrl:self.singleRowApp.icon placeholder:@"icon-29"];
         iconView.clipsToBounds = YES;
         iconView.layer.cornerRadius = 8.0;
         [showAppSV addSubview:iconView];

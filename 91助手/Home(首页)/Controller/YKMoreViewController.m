@@ -133,7 +133,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     YKRowsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
-    cell.apps = self.apps[indexPath.row];
+    cell.app = self.apps[indexPath.row];
     cell.backgroundColor = [UIColor orangeColor];
     //cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

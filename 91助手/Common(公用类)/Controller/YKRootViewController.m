@@ -29,6 +29,12 @@
 }
 
 - (void)initViewController {
+    YKClassifyViewController *classifyVC = [[YKClassifyViewController alloc] init];
+    [self addChildWithController:classifyVC
+                           title:@"分类"
+                 normalImageName:@"homepage_cate"
+               selectedImageName:@"homepage_cate_sel"];
+    
     YKHomeViewController *homeVC = [[YKHomeViewController alloc] init];
     [self addChildWithController:homeVC
                            title:@"首页"
@@ -41,11 +47,11 @@
                  normalImageName:@"homepage_talk"
                selectedImageName:@"homepage_talk_sel"];
     
-    YKClassifyViewController *classifyVC = [[YKClassifyViewController alloc] init];
-    [self addChildWithController:classifyVC
-                           title:@"分类"
-                 normalImageName:@"homepage_cate"
-               selectedImageName:@"homepage_cate_sel"];
+    //YKClassifyViewController *classifyVC = [[YKClassifyViewController alloc] init];
+    //[self addChildWithController:classifyVC
+                           //title:@"分类"
+                 //normalImageName:@"homepage_cate"
+               //selectedImageName:@"homepage_cate_sel"];
     
     YKSearchViewController *searchVC = [[YKSearchViewController alloc] init];
     [self addChildWithController:searchVC
@@ -53,7 +59,8 @@
                  normalImageName:@"homepage_seach"
                selectedImageName:@"homepage_seach_sel"];
     //[UIImage imageNamed:@"homepage_seach"];
-    NSArray *vcArray = @[homeVC, chatVC, classifyVC, searchVC];
+#warning 为了测试更改了顺序
+    NSArray *vcArray = @[classifyVC, homeVC, chatVC, searchVC];
     
     NSMutableArray *navMuArray = [[NSMutableArray alloc] initWithCapacity:vcArray.count];
     

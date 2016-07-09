@@ -36,23 +36,26 @@
     [super viewDidLoad];
     self.navigationItem.title = self.navTitle;
     
+    [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
+    
     [[AFHTTPSessionManager manager] GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        YKLog(@"success");
-        
         
         self.chatArray = [YKChatCellModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
         
         [self.tableView reloadData];
         
+        [SVProgressHUD dismiss];
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"error");
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍候再试"];
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [SVProgressHUD dismiss];
 }
 
 #pragma mark - Table view data source

@@ -32,8 +32,17 @@
 		9CC864A81D06725A007147D1 /* YKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A71D06725A007147D1 /* YKUtility.m */; };
 		9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */; };
 		9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */; };
+		BD1BE2721D30BE2000A377A9 /* YKClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE2711D30BE2000A377A9 /* YKClassifyCell.m */; };
+		BD1BE2751D30C18900A377A9 /* YKClassify.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE2741D30C18900A377A9 /* YKClassify.m */; };
+		BD1BE2781D30C23E00A377A9 /* YKListTags.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE2771D30C23E00A377A9 /* YKListTags.m */; };
+		BD1BE27B1D30C35A00A377A9 /* YKClassifyAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE27A1D30C35A00A377A9 /* YKClassifyAppViewController.m */; };
+		BD1BE27E1D30CBAE00A377A9 /* YKConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE27D1D30CBAE00A377A9 /* YKConst.m */; };
+		BD1BE2811D30D18900A377A9 /* UIImageView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE2801D30D18900A377A9 /* UIImageView+XFExtension.m */; };
+		BD1BE2841D30D4EF00A377A9 /* YKModelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE2831D30D4EF00A377A9 /* YKModelConfig.m */; };
 		BD1D44C61D308E410048190C /* YKNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1D44C51D308E410048190C /* YKNavgationController.m */; };
 		BD1D44C91D3092120048190C /* YKChatThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1D44C81D3092120048190C /* YKChatThreeViewController.m */; };
+		BD1D44CC1D309D2C0048190C /* YKAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1D44CB1D309D2C0048190C /* YKAppViewController.m */; };
+		BD1D44CF1D309D3A0048190C /* YKGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1D44CE1D309D3A0048190C /* YKGameViewController.m */; };
 		BD26D5FF1D2F6F3A00ED72ED /* XFRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D5FC1D2F6F3A00ED72ED /* XFRefreshFooter.m */; };
 		BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D5FE1D2F6F3A00ED72ED /* XFRefreshHeader.m */; };
 		BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6021D2F6F5A00ED72ED /* XFHTTPSessionManager.m */; };
@@ -119,10 +128,28 @@
 		9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowTableViewCell.h; sourceTree = "<group>"; };
 		9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowTableViewCell.m; sourceTree = "<group>"; };
+		BD1BE2701D30BE2000A377A9 /* YKClassifyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyCell.h; sourceTree = "<group>"; };
+		BD1BE2711D30BE2000A377A9 /* YKClassifyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKClassifyCell.m; sourceTree = "<group>"; };
+		BD1BE2731D30C18900A377A9 /* YKClassify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassify.h; sourceTree = "<group>"; };
+		BD1BE2741D30C18900A377A9 /* YKClassify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKClassify.m; sourceTree = "<group>"; };
+		BD1BE2761D30C23E00A377A9 /* YKListTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKListTags.h; sourceTree = "<group>"; };
+		BD1BE2771D30C23E00A377A9 /* YKListTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKListTags.m; sourceTree = "<group>"; };
+		BD1BE2791D30C35A00A377A9 /* YKClassifyAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyAppViewController.h; sourceTree = "<group>"; };
+		BD1BE27A1D30C35A00A377A9 /* YKClassifyAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKClassifyAppViewController.m; sourceTree = "<group>"; };
+		BD1BE27C1D30CBAE00A377A9 /* YKConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKConst.h; sourceTree = "<group>"; };
+		BD1BE27D1D30CBAE00A377A9 /* YKConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKConst.m; sourceTree = "<group>"; };
+		BD1BE27F1D30D18900A377A9 /* UIImageView+XFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+XFExtension.h"; sourceTree = "<group>"; };
+		BD1BE2801D30D18900A377A9 /* UIImageView+XFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+XFExtension.m"; sourceTree = "<group>"; };
+		BD1BE2821D30D4EF00A377A9 /* YKModelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKModelConfig.h; sourceTree = "<group>"; };
+		BD1BE2831D30D4EF00A377A9 /* YKModelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKModelConfig.m; sourceTree = "<group>"; };
 		BD1D44C41D308E410048190C /* YKNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNavgationController.h; sourceTree = "<group>"; };
 		BD1D44C51D308E410048190C /* YKNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNavgationController.m; sourceTree = "<group>"; };
 		BD1D44C71D3092120048190C /* YKChatThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatThreeViewController.h; sourceTree = "<group>"; };
 		BD1D44C81D3092120048190C /* YKChatThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatThreeViewController.m; sourceTree = "<group>"; };
+		BD1D44CA1D309D2C0048190C /* YKAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKAppViewController.h; sourceTree = "<group>"; };
+		BD1D44CB1D309D2C0048190C /* YKAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKAppViewController.m; sourceTree = "<group>"; };
+		BD1D44CD1D309D3A0048190C /* YKGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKGameViewController.h; sourceTree = "<group>"; };
+		BD1D44CE1D309D3A0048190C /* YKGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKGameViewController.m; sourceTree = "<group>"; };
 		BD26D5FB1D2F6F3A00ED72ED /* XFRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRefreshFooter.h; sourceTree = "<group>"; };
 		BD26D5FC1D2F6F3A00ED72ED /* XFRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRefreshFooter.m; sourceTree = "<group>"; };
 		BD26D5FD1D2F6F3A00ED72ED /* XFRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRefreshHeader.h; sourceTree = "<group>"; };
@@ -193,6 +220,8 @@
 				BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */,
 				9CC4902A1D0551AB003F7F9E /* NSString+YKExtension.h */,
 				9CC4902B1D0551AB003F7F9E /* NSString+YKExtension.m */,
+				BD1BE27F1D30D18900A377A9 /* UIImageView+XFExtension.h */,
+				BD1BE2801D30D18900A377A9 /* UIImageView+XFExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -357,6 +386,12 @@
 			children = (
 				9C0DD6F01CFBF1AF0028E515 /* YKClassifyViewController.h */,
 				9C0DD6F11CFBF1AF0028E515 /* YKClassifyViewController.m */,
+				BD1BE2791D30C35A00A377A9 /* YKClassifyAppViewController.h */,
+				BD1BE27A1D30C35A00A377A9 /* YKClassifyAppViewController.m */,
+				BD1D44CA1D309D2C0048190C /* YKAppViewController.h */,
+				BD1D44CB1D309D2C0048190C /* YKAppViewController.m */,
+				BD1D44CD1D309D3A0048190C /* YKGameViewController.h */,
+				BD1D44CE1D309D3A0048190C /* YKGameViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -364,6 +399,10 @@
 		9C5BDD5E1CF9D928008CE12F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BD1BE2731D30C18900A377A9 /* YKClassify.h */,
+				BD1BE2741D30C18900A377A9 /* YKClassify.m */,
+				BD1BE2761D30C23E00A377A9 /* YKListTags.h */,
+				BD1BE2771D30C23E00A377A9 /* YKListTags.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,6 +410,8 @@
 		9C5BDD5F1CF9D928008CE12F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BD1BE2701D30BE2000A377A9 /* YKClassifyCell.h */,
+				BD1BE2711D30BE2000A377A9 /* YKClassifyCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,6 +514,10 @@
 				9C5BDD691CF9D928008CE12F /* AppDelegate.h */,
 				9C5BDD6A1CF9D928008CE12F /* AppDelegate.m */,
 				9C5BDD6B1CF9D928008CE12F /* main.m */,
+				BD1BE27C1D30CBAE00A377A9 /* YKConst.h */,
+				BD1BE27D1D30CBAE00A377A9 /* YKConst.m */,
+				BD1BE2821D30D4EF00A377A9 /* YKModelConfig.h */,
+				BD1BE2831D30D4EF00A377A9 /* YKModelConfig.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -798,26 +843,35 @@
 				9CC864A81D06725A007147D1 /* YKUtility.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
 				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
+				BD1BE2781D30C23E00A377A9 /* YKListTags.m in Sources */,
 				9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */,
+				BD1D44CC1D309D2C0048190C /* YKAppViewController.m in Sources */,
 				BD26D5FF1D2F6F3A00ED72ED /* XFRefreshFooter.m in Sources */,
 				BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */,
 				BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */,
+				BD1BE27E1D30CBAE00A377A9 /* YKConst.m in Sources */,
+				BD1BE2841D30D4EF00A377A9 /* YKModelConfig.m in Sources */,
 				BD4A3D611D1943180061A2EB /* YKApp.m in Sources */,
 				9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */,
 				BD1D44C91D3092120048190C /* YKChatThreeViewController.m in Sources */,
+				BD1BE2721D30BE2000A377A9 /* YKClassifyCell.m in Sources */,
 				9CC4902C1D0551AB003F7F9E /* NSString+YKExtension.m in Sources */,
+				BD1D44CF1D309D3A0048190C /* YKGameViewController.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */,
 				BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */,
+				BD1BE2751D30C18900A377A9 /* YKClassify.m in Sources */,
 				9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
 				BD1D44C61D308E410048190C /* YKNavgationController.m in Sources */,
 				9CC490291D05519D003F7F9E /* YKStarView.m in Sources */,
 				9CC4902F1D05681E003F7F9E /* YKOtherTableViewCell.m in Sources */,
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,
+				BD1BE2811D30D18900A377A9 /* UIImageView+XFExtension.m in Sources */,
 				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
 				BDE6A38B1D23D7E200D477A8 /* YKChatTwoModel.m in Sources */,
 				9CC864A21D0669C8007147D1 /* YKRowsTableViewCell.m in Sources */,
+				BD1BE27B1D30C35A00A377A9 /* YKClassifyAppViewController.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
 				9CC864A51D066B3A007147D1 /* YKMoreViewController.m in Sources */,
 				BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */,

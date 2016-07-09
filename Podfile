@@ -10,6 +10,7 @@ pod 'AFNetworking'
 pod 'MJRefresh'
 pod 'JSONKit'
 pod 'MJExtension'
+pod 'SVProgressHUD'
 
 end
 
