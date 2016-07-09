@@ -323,7 +323,7 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     
     YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
     
-    moreVC.url = HOME_HOT_URL;
+    
     moreVC.navTitle = @"热门应用";
     
     [self.navigationController pushViewController:moreVC animated:YES];

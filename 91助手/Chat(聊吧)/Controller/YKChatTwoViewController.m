@@ -10,26 +10,38 @@
 #import "YKChatViewCell.h"
 #import "YKChatTwoModel.h"
 #import "YKChatCellModel.h"
+#import "YKChatThreeViewController.h"
 
 
 @interface YKChatTwoViewController ()
 
 @property (nonatomic, strong) NSArray *chatArray;
 
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
+
+/** model */
+@property (nonatomic, strong) YKChatCellModel *model;
+
+/** cell */
+@property (nonatomic, strong) YKChatViewCell *cell;
+
 @end
 
 @implementation YKChatTwoViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = self.navTitle;
     
-
-    
-    [[AFHTTPSessionManager manager] GET:CHAT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[AFHTTPSessionManager manager] GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        YKLog(@"success");
         
-        self.chatArray = [YKChatTwoModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
-        //YKLog(@"count = %zd", self.chatArray.count);
+        self.chatArray = [YKChatCellModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+        
         
         [self.tableView reloadData];
         
@@ -52,18 +64,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 50;
+    return self.chatArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *chatCellID = @"YKChatViewCell";
     
-    // Configure the cell...
+    YKChatViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chatCellID];
+    if (!cell) {
+        cell = [[YKChatViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:chatCellID];
+    }
+    self.cell = cell;
+    self.model = self.chatArray[indexPath.row];
+    cell.nameLabel.text = self.model.name;
+    [cell.iconView sd_setImageWithURL:[NSURL URLWithString:self.model.icon] placeholderImage:[UIImage imageNamed:@"avatar_ba_defaul140"]];
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.cell.cellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    YKChatThreeViewController *chatThree = [[YKChatThreeViewController alloc] init];
+    self.model = self.chatArray[indexPath.row];
+    chatThree.url = self.model.act;
+    chatThree.navTitle = self.model.name;
+    [self.navigationController pushViewController:chatThree animated:YES];
+}
+
 
 /*
 // Override to support conditional editing of the table view.

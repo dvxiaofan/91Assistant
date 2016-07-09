@@ -10,8 +10,8 @@
 
 @interface YKChatCellModel : NSObject
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *icon;
-@property (nonatomic, copy) NSString *act;
+@property (nonatomic, copy) NSString *name; // 分类名
+@property (nonatomic, copy) NSString *icon; // 图标
+@property (nonatomic, copy) NSString *act;  // url
 
 @end

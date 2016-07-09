@@ -9,6 +9,7 @@
 #import "YKChatViewController.h"
 #import "YKChatViewCell.h"
 #import "YKChatCellModel.h"
+#import "YKChatTwoViewController.h"
 
 
 static NSString * const cellID = @"cellID";
@@ -18,6 +19,9 @@ static NSString * const cellID = @"cellID";
 @property (nonatomic, strong) NSArray *chatArray;
 
 @property (nonatomic, strong) UITableView *tableView;
+
+/** model */
+@property (nonatomic, strong) YKChatCellModel *model;
 
 @end
 
@@ -52,11 +56,12 @@ static NSString * const cellID = @"cellID";
 
 - (void)setupTableView {
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height - 60) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height - 110) style:UITableViewStylePlain];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
     //tableView.backgroundColor = YKRandomColor;
     
-    //[tableView registerClass:[YKChatViewCell class] forCellReuseIdentifier:cellID];
+    [tableView registerClass:[YKChatViewCell class] forCellReuseIdentifier:cellID];
     
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -84,14 +89,13 @@ static NSString * const cellID = @"cellID";
     
     YKChatViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
-    if (!cell) {
-        cell = [[YKChatViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
+    //if (!cell) {
+        //cell = [[YKChatViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    //}
     
-    YKChatCellModel *model = self.chatArray[indexPath.row];
-    YKLog(@"model = %@", model);
-    [cell.iconView sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"avatar_ba_defaul80"]];
-    cell.nameLabel.text = model.name;
+    self.model = self.chatArray[indexPath.row];
+    [cell.iconView sd_setImageWithURL:[NSURL URLWithString:self.model.icon] placeholderImage:[UIImage imageNamed:@"avatar_ba_defaul80"]];
+    cell.nameLabel.text = self.model.name;
     return cell;
 }
 
@@ -102,7 +106,11 @@ static NSString * const cellID = @"cellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    YKLogFunc
+    YKChatTwoViewController *chatTwo = [[YKChatTwoViewController alloc] init];
+     self.model = self.chatArray[indexPath.row];
+    chatTwo.url = self.model.act;
+    chatTwo.navTitle = self.model.name;
+    [self.navigationController pushViewController:chatTwo animated:YES];
 }
 
 

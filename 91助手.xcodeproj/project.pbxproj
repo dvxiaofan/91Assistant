@@ -32,12 +32,13 @@
 		9CC864A81D06725A007147D1 /* YKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A71D06725A007147D1 /* YKUtility.m */; };
 		9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */; };
 		9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */; };
+		BD1D44C61D308E410048190C /* YKNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1D44C51D308E410048190C /* YKNavgationController.m */; };
+		BD1D44C91D3092120048190C /* YKChatThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1D44C81D3092120048190C /* YKChatThreeViewController.m */; };
 		BD26D5FF1D2F6F3A00ED72ED /* XFRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D5FC1D2F6F3A00ED72ED /* XFRefreshFooter.m */; };
 		BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D5FE1D2F6F3A00ED72ED /* XFRefreshHeader.m */; };
 		BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6021D2F6F5A00ED72ED /* XFHTTPSessionManager.m */; };
 		BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */; };
 		BD4A3D611D1943180061A2EB /* YKApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D601D1943180061A2EB /* YKApp.m */; };
-		BD4A3D671D1943580061A2EB /* YKSingleRowApps.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D661D1943580061A2EB /* YKSingleRowApps.m */; };
 		BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */; };
 		BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */; };
 		BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */; };
@@ -118,6 +119,10 @@
 		9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowTableViewCell.h; sourceTree = "<group>"; };
 		9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowTableViewCell.m; sourceTree = "<group>"; };
+		BD1D44C41D308E410048190C /* YKNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKNavgationController.h; sourceTree = "<group>"; };
+		BD1D44C51D308E410048190C /* YKNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKNavgationController.m; sourceTree = "<group>"; };
+		BD1D44C71D3092120048190C /* YKChatThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatThreeViewController.h; sourceTree = "<group>"; };
+		BD1D44C81D3092120048190C /* YKChatThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatThreeViewController.m; sourceTree = "<group>"; };
 		BD26D5FB1D2F6F3A00ED72ED /* XFRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRefreshFooter.h; sourceTree = "<group>"; };
 		BD26D5FC1D2F6F3A00ED72ED /* XFRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRefreshFooter.m; sourceTree = "<group>"; };
 		BD26D5FD1D2F6F3A00ED72ED /* XFRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRefreshHeader.h; sourceTree = "<group>"; };
@@ -128,8 +133,6 @@
 		BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XFExtension.m"; sourceTree = "<group>"; };
 		BD4A3D5F1D1943180061A2EB /* YKApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKApp.h; sourceTree = "<group>"; };
 		BD4A3D601D1943180061A2EB /* YKApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKApp.m; sourceTree = "<group>"; };
-		BD4A3D651D1943580061A2EB /* YKSingleRowApps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowApps.h; sourceTree = "<group>"; };
-		BD4A3D661D1943580061A2EB /* YKSingleRowApps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSingleRowApps.m; sourceTree = "<group>"; };
 		BDE6A3801D23C21400D477A8 /* YKChatViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatViewCell.h; sourceTree = "<group>"; };
 		BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatViewCell.m; sourceTree = "<group>"; };
 		BDE6A3831D23CBBC00D477A8 /* YKChatCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatCellModel.h; sourceTree = "<group>"; };
@@ -311,8 +314,10 @@
 			children = (
 				9C0DD6ED1CFBF19A0028E515 /* YKChatViewController.h */,
 				9C0DD6EE1CFBF19A0028E515 /* YKChatViewController.m */,
-				BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */,
 				BDE6A3861D23D75500D477A8 /* YKChatTwoViewController.h */,
+				BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */,
+				BD1D44C71D3092120048190C /* YKChatThreeViewController.h */,
+				BD1D44C81D3092120048190C /* YKChatThreeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -387,6 +392,8 @@
 				9C0DD6F41CFBF1BF0028E515 /* YKBaseViewController.m */,
 				9C0DD6F51CFBF1BF0028E515 /* YKRootViewController.h */,
 				9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */,
+				BD1D44C41D308E410048190C /* YKNavgationController.h */,
+				BD1D44C51D308E410048190C /* YKNavgationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -435,8 +442,6 @@
 			children = (
 				BD4A3D5F1D1943180061A2EB /* YKApp.h */,
 				BD4A3D601D1943180061A2EB /* YKApp.m */,
-				BD4A3D651D1943580061A2EB /* YKSingleRowApps.h */,
-				BD4A3D661D1943580061A2EB /* YKSingleRowApps.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -793,19 +798,20 @@
 				9CC864A81D06725A007147D1 /* YKUtility.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
 				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
-				BD4A3D671D1943580061A2EB /* YKSingleRowApps.m in Sources */,
 				9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */,
 				BD26D5FF1D2F6F3A00ED72ED /* XFRefreshFooter.m in Sources */,
 				BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */,
 				BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */,
 				BD4A3D611D1943180061A2EB /* YKApp.m in Sources */,
 				9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */,
+				BD1D44C91D3092120048190C /* YKChatThreeViewController.m in Sources */,
 				9CC4902C1D0551AB003F7F9E /* NSString+YKExtension.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */,
 				BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */,
 				9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
+				BD1D44C61D308E410048190C /* YKNavgationController.m in Sources */,
 				9CC490291D05519D003F7F9E /* YKStarView.m in Sources */,
 				9CC4902F1D05681E003F7F9E /* YKOtherTableViewCell.m in Sources */,
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,

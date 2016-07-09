@@ -48,12 +48,11 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     [self setupTableView];
     
-    [self setupRefresh];
+    [self loadRowsCellData];
 }
 
 - (void)setupNav {
     self.navigationItem.title = self.navTitle;
-    self.navigationItem.leftBarButtonItem = [self creatNavBtnWithBackImage:[UIImage imageNamed:@"bar_back_normal"] action:@selector(actionBack:)];
 }
 
 - (UIBarButtonItem *)creatNavBtnWithBackImage:(UIImage *)image action:(SEL)action {
@@ -98,7 +97,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     __weak typeof(self) weakSelf = self;
     
-    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager GET:HOME_BIBEI_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"tiems"]];
         YKLog(@"cc = %zd", weakSelf.apps.count);
@@ -116,11 +115,6 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 
 
 #pragma mark - 事件监听
-// 返回按钮
-- (void)actionBack:(UIButton *)button {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 /**
  *  YKRowsTableViewCell 代理方法

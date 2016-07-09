@@ -10,4 +10,5 @@
 
 @interface YKDetailViewController : UIViewController
 
+
 @end

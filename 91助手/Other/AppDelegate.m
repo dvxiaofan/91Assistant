@@ -56,9 +56,7 @@
         [versionDict writeToFile:docPath atomically:YES];
     }
     
-    // 自定义导航栏背景颜色和字体大小和颜色
-    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:19.0], NSFontAttributeName,nil]];
+    
     
     // 自定义tabbar背景颜色
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tab_background"]]];

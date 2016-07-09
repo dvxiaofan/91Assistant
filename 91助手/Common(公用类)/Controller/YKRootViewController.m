@@ -11,6 +11,7 @@
 #import "YKChatViewController.h"
 #import "YKClassifyViewController.h"
 #import "YKSearchViewController.h"
+#import "YKNavgationController.h"
 
 @interface YKRootViewController ()
 
@@ -57,7 +58,7 @@
     NSMutableArray *navMuArray = [[NSMutableArray alloc] initWithCapacity:vcArray.count];
     
     for (NSInteger i = 0; i < vcArray.count; i++) {
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vcArray[i]];
+        YKNavgationController *nav = [[YKNavgationController alloc] initWithRootViewController:vcArray[i]];
         
         [navMuArray addObject:nav];
     }
