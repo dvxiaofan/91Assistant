@@ -6,9 +6,9 @@
 //  Copyright © 2016年 YK. All rights reserved.
 //
 
-#import "YKBaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface YKChatViewController : YKBaseViewController
+@interface YKChatViewController : UITableViewController
 
 @property (nonatomic, copy) NSString *url;
 

@@ -12,79 +12,84 @@
 #import "YKChatTwoViewController.h"
 
 
-static NSString * const cellID = @"cellID";
+@interface YKChatViewController ()
 
-@interface YKChatViewController ()<UITableViewDelegate,UITableViewDataSource>
-
-@property (nonatomic, strong) NSArray *chatArray;
-
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray <YKChatCellModel *>*chatArray;
 
 /** model */
-@property (nonatomic, strong) YKChatCellModel *model;
+//@property (nonatomic, strong) YKChatCellModel *model;
+
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
 
 @end
 
+static NSString *const YKChatCellID = @"YKChatViewCell";
+
 @implementation YKChatViewController
+
+- (instancetype)init {
+    if (self = [super init]) {
+        
+        
+    }
+    return self;
+}
+
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [self getData];
-    
     [self setupTableView];
 }
 
-- (void)getData {
-    [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
+
+- (void)setupTableView {
+    self.tableView.backgroundColor = YKBaseBgColor;
     
-    [[AFHTTPSessionManager manager] GET:CHAT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    self.tableView.separatorStyle = UITableViewCellEditingStyleNone;
+    
+    [self.tableView registerClass:[YKChatViewCell class] forCellReuseIdentifier:YKChatCellID];
+    
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(getData)];
+    [self.tableView.mj_header beginRefreshing];
+    
+}
+
+- (void)getData {
+    
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:CHAT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        self.chatArray = [YKChatCellModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+        weakSelf.chatArray = [YKChatCellModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
+        [weakSelf.tableView reloadData];
         
-        [self.tableView reloadData];
-        
-        [SVProgressHUD dismiss];
+        [weakSelf.tableView.mj_header endRefreshing];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YKLog(@"error");
-        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍候再试"];
+        [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [SVProgressHUD dismiss];
-}
-
-- (void)setupTableView {
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height - 110) style:UITableViewStylePlain];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:tableView];
-    //tableView.backgroundColor = YKRandomColor;
-    
-    [tableView registerClass:[YKChatViewCell class] forCellReuseIdentifier:cellID];
-    
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    self.tableView = tableView;
-}
-
 
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 28;
+    return self.chatArray.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -94,29 +99,23 @@ static NSString * const cellID = @"cellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    YKChatViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    YKChatViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKChatCellID];
     
-    //if (!cell) {
-        //cell = [[YKChatViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    //}
+    cell.model = self.chatArray[indexPath.row];
     
-    self.model = self.chatArray[indexPath.row];
-    [cell.iconView sd_setImageWithURL:[NSURL URLWithString:self.model.icon] placeholderImage:[UIImage imageNamed:@"avatar_ba_defaul80"]];
-    cell.nameLabel.text = self.model.name;
     return cell;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    YKChatViewCell *cell = [[YKChatViewCell alloc] init];
-    return cell.cellHeight;
+    
+    return self.chatArray[indexPath.row].chatCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     YKChatTwoViewController *chatTwo = [[YKChatTwoViewController alloc] init];
-     self.model = self.chatArray[indexPath.row];
-    chatTwo.url = self.model.act;
-    chatTwo.navTitle = self.model.name;
+    
+    chatTwo.url = self.chatArray[indexPath.row].act;
+    chatTwo.navTitle = self.chatArray[indexPath.row].name;
     [self.navigationController pushViewController:chatTwo animated:YES];
 }
 

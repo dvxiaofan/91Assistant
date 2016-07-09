@@ -10,4 +10,10 @@
 
 @implementation YKChatCellModel
 
+- (CGFloat)chatCellHeight {
+    _chatCellHeight = YKMargin + YKAppWH;
+    
+    return _chatCellHeight;
+}
+
 @end

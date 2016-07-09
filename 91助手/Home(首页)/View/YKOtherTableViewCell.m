@@ -16,8 +16,6 @@
 
 @property (nonatomic, weak) UIImageView *imgView;
 
-@property (nonatomic, assign) CGFloat far;
-
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
@@ -73,19 +71,15 @@
     
     NSInteger count = newArray.count;
     
-    CGFloat far = 15;
-    self.far = far;
-    CGFloat ffar = far / 3;
-    
     for (int i = 0; i < count; i++) {
         
         _singleRowApp = newArray[i];
         
         UIImageView *imgView = [[UIImageView alloc] init];
-        CGFloat imgViewW = (SCREEN.width - far * 2 - ffar) / 2;
+        CGFloat imgViewW = (SCREEN.width - YKMargin * 2 - YKMargin / 3) / 2;
         CGFloat imgViewH = 90;
-        CGFloat imgViewX = far + ffar * (i % 2) + imgViewW * (i % 2);
-        CGFloat imgViewY = far + ((ffar * (i / 2) + imgViewH * (i / 2)));
+        CGFloat imgViewX = YKMargin + (YKMargin / 3) * (i % 2) + imgViewW * (i % 2);
+        CGFloat imgViewY = YKMargin + (((YKMargin / 3) * (i / 2) + imgViewH * (i / 2)));
         imgView.frame = CGRectMake(imgViewX, imgViewY, imgViewW, imgViewH);
         imgView.layer.cornerRadius = 3.0;
         imgView.clipsToBounds = YES;
@@ -107,7 +101,7 @@
 
     }
     
-    self.rowHeight = CGRectGetMaxY(self.imgView.frame) + far;
+    self.rowHeight = CGRectGetMaxY(self.imgView.frame) + YKMargin;
 }
 
 - (void)tap:(UITapGestureRecognizer *)sender {
@@ -119,14 +113,5 @@
 
 
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

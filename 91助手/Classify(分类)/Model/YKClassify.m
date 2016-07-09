@@ -12,7 +12,7 @@
 
 - (CGFloat)cellHeight {
     
-    _cellHeight = YKButtonWH + YKMargin;
+    _cellHeight = YKAppWH + YKMargin;
     
     return _cellHeight;
 }

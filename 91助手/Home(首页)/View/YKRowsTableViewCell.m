@@ -136,15 +136,14 @@
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    CGFloat far = 15;
     
     // 图标
-    self.iconView.frame = CGRectMake(far, far / 2, ICONVIEW_WH, ICONVIEW_WH);
+    self.iconView.frame = CGRectMake(YKMargin, YKSmallMargin, YKAppWH, YKAppWH);
     
     // 名字
-    self.nameLabel.xf_x = CGRectGetMaxX(self.iconView.frame) + far;
+    self.nameLabel.xf_x = CGRectGetMaxX(self.iconView.frame) + YKMargin;
     self.nameLabel.xf_y = self.iconView.xf_y;
-    self.nameLabel.xf_width = SCREEN.width - ICONVIEW_WH * 3;
+    self.nameLabel.xf_width = SCREEN.width - YKAppWH * 3;
     self.nameLabel.xf_height = 18;
     
     // 星级评价
@@ -159,10 +158,10 @@
     self.fileSizeLabel.frame = CGRectMake((CGRectGetMaxX(self.downNumLabel.frame) + 10), self.downNumLabel.xf_y, fileSize.width, fileSize.height);
     
     // 下载按钮
-    self.downBtn.frame = CGRectMake((CGRectGetMaxX(self.nameLabel.frame) + 5), far * 2, 55, 25);
+    self.downBtn.frame = CGRectMake((CGRectGetMaxX(self.nameLabel.frame) + 5), YKMargin * 2, 55, 25);
     
     // cell 高度
-    self.rowHeight = self.iconView.xf_height + far;
+    self.rowHeight = self.iconView.xf_height + YKMargin;
     
 }
 

@@ -22,8 +22,6 @@
 @property (nonatomic, weak) UIScrollView *showAppSV;  // 显示app的滚动视图
 @property (nonatomic, weak) UIImageView *iconView;    // APP 图标
 @property (nonatomic, weak) UILabel *appNameLabel;    // APP 名字
-
-@property (nonatomic, assign) CGFloat far;              // 固定间隔
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
@@ -76,16 +74,11 @@
     
     NSInteger count = singleRowApps.count;
     
-    CGFloat far = 15;
-    self.far = far;
-    
     // 滚动视图
     UIScrollView *showAppSV = [[UIScrollView alloc] init];
-    CGFloat svX = far;
-    CGFloat svY = 5;
+    CGFloat svX = YKMargin;
     CGFloat svW = SCREEN.width - svX * 2;
-    CGFloat svH = 90;
-    showAppSV.frame = CGRectMake(svX, svY, svW, svH);
+    showAppSV.frame = CGRectMake(svX, 5, svW, 90);
     [self addSubview:showAppSV];
     self.showAppSV = showAppSV;
     
@@ -93,9 +86,9 @@
         _singleRowApp = singleRowApps[i];
         
         UIImageView *iconView = [[UIImageView alloc] init];
-        CGFloat imgViewX = i * ICONVIEW_WH + far * i;
-        CGFloat imgViewY = far / 2;
-        iconView.frame = CGRectMake(imgViewX, imgViewY, ICONVIEW_WH, ICONVIEW_WH);
+        CGFloat imgViewX = i * YKAppWH + YKMargin * i;
+        CGFloat imgViewY = YKSmallMargin;
+        iconView.frame = CGRectMake(imgViewX, imgViewY, YKAppWH, YKAppWH);
         [iconView xf_setHeaderWithUrl:self.singleRowApp.icon placeholder:@"icon-29"];
         iconView.clipsToBounds = YES;
         iconView.layer.cornerRadius = 8.0;
@@ -113,7 +106,7 @@
         // app名字
         UILabel *appNameLebal = [[UILabel alloc] init];
         CGFloat appNameY = CGRectGetMaxY(iconView.frame) + 8;
-        appNameLebal.frame = CGRectMake(imgViewX, appNameY, ICONVIEW_WH, 10);
+        appNameLebal.frame = CGRectMake(imgViewX, appNameY, YKAppWH, 10);
         appNameLebal.text = self.singleRowApp.name;
         appNameLebal.font = APP_NAME_FONT;
         appNameLebal.textColor = APP_NAME_COLOR;
@@ -122,10 +115,10 @@
         self.appNameLabel = appNameLebal;
         
     }
-    showAppSV.contentSize = CGSizeMake(self.iconView.frame.size.width * count + far * (count - 1), 0);
+    showAppSV.contentSize = CGSizeMake(self.iconView.frame.size.width * count + YKMargin * (count - 1), 0);
     showAppSV.showsHorizontalScrollIndicator = NO;
     
-    self.rowHeight = CGRectGetMaxY(self.appNameLabel.frame) + far;
+    self.rowHeight = CGRectGetMaxY(self.appNameLabel.frame) + YKMargin;
 }
 
 #pragma mark - APP 点击事件
@@ -139,14 +132,19 @@
 
 
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

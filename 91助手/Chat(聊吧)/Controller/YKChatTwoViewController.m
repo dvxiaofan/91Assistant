@@ -8,47 +8,68 @@
 
 #import "YKChatTwoViewController.h"
 #import "YKChatViewCell.h"
-#import "YKChatTwoModel.h"
 #import "YKChatCellModel.h"
 #import "YKChatThreeViewController.h"
 
 
 @interface YKChatTwoViewController ()
 
-@property (nonatomic, strong) NSArray *chatArray;
+@property (nonatomic, strong) NSArray <YKChatCellModel *>*chatArray;
 
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
-/** model */
-@property (nonatomic, strong) YKChatCellModel *model;
-
-/** cell */
-@property (nonatomic, strong) YKChatViewCell *cell;
-
 @end
+
+static NSString *const YKChatCellID = @"YKChatViewCell";
 
 @implementation YKChatTwoViewController
 
-
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.navTitle;
     
-    [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
+    [self setupTableView];
+}
+
+
+- (void)setupTableView {
+    self.tableView.backgroundColor = YKBaseBgColor;
     
-    [[AFHTTPSessionManager manager] GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    self.tableView.separatorStyle = UITableViewCellEditingStyleNone;
+    
+    [self.tableView registerClass:[YKChatViewCell class] forCellReuseIdentifier:YKChatCellID];
+    
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    [self.tableView.mj_header beginRefreshing];
+    
+}
+
+- (void)loadData {
+    
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        self.chatArray = [YKChatCellModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+        weakSelf.chatArray = [YKChatCellModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
         
-        [self.tableView reloadData];
+        [weakSelf.tableView reloadData];
         
-        [SVProgressHUD dismiss];
+        [weakSelf.tableView.mj_header endRefreshing];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍候再试"];
+        [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -58,12 +79,7 @@
     [SVProgressHUD dismiss];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 1;
-}
+#pragma mark - Table view data source}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
@@ -72,29 +88,22 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *chatCellID = @"YKChatViewCell";
     
-    YKChatViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chatCellID];
-    if (!cell) {
-        cell = [[YKChatViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:chatCellID];
-    }
-    self.cell = cell;
-    self.model = self.chatArray[indexPath.row];
-    cell.nameLabel.text = self.model.name;
-    [cell.iconView sd_setImageWithURL:[NSURL URLWithString:self.model.icon] placeholderImage:[UIImage imageNamed:@"avatar_ba_defaul140"]];
+    YKChatViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKChatCellID];
+    
+    cell.model = self.chatArray[indexPath.row];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.cell.cellHeight;
+    return self.chatArray[indexPath.row].chatCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     YKChatThreeViewController *chatThree = [[YKChatThreeViewController alloc] init];
-    self.model = self.chatArray[indexPath.row];
-    chatThree.url = self.model.act;
-    chatThree.navTitle = self.model.name;
+    chatThree.url = self.chatArray[indexPath.row].act;
+    chatThree.navTitle = self.chatArray[indexPath.row].name;
     [self.navigationController pushViewController:chatThree animated:YES];
 }
 

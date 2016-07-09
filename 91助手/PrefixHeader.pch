@@ -45,8 +45,6 @@
 #define CELL_BTN_FONT [UIFont systemFontOfSize:12.0]
 #define CELL_BTN_COLOR [UIColor grayColor]
 
-#define ICONVIEW_WH 57
-
 #define navBackBtnWidth 10
 #define navBackBtnHeght 21
 

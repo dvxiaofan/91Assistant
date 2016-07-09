@@ -10,7 +10,7 @@
 
 
 /** 应用图标大小 */
-UIKIT_EXTERN CGFloat    const YKButtonWH;
+UIKIT_EXTERN CGFloat    const YKAppWH;
 
 /** 通用的间距值 */
 UIKIT_EXTERN CGFloat    const YKMargin;

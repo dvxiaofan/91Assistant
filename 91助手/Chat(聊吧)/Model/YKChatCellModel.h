@@ -14,4 +14,7 @@
 @property (nonatomic, copy) NSString *icon; // 图标
 @property (nonatomic, copy) NSString *act;  // url
 
+
+@property (nonatomic, assign) CGFloat chatCellHeight;       // cell 高度
+
 @end

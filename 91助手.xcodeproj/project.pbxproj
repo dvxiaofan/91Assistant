@@ -51,7 +51,6 @@
 		BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */; };
 		BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */; };
 		BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */; };
-		BDE6A38B1D23D7E200D477A8 /* YKChatTwoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A38A1D23D7E200D477A8 /* YKChatTwoModel.m */; };
 		E264DAD969B727EF07675E48 /* libPods-91助手.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3A9C298613768F3D499A30 /* libPods-91助手.a */; };
 /* End PBXBuildFile section */
 
@@ -166,8 +165,6 @@
 		BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatCellModel.m; sourceTree = "<group>"; };
 		BDE6A3861D23D75500D477A8 /* YKChatTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatTwoViewController.h; sourceTree = "<group>"; };
 		BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatTwoViewController.m; sourceTree = "<group>"; };
-		BDE6A3891D23D7E200D477A8 /* YKChatTwoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatTwoModel.h; sourceTree = "<group>"; };
-		BDE6A38A1D23D7E200D477A8 /* YKChatTwoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatTwoModel.m; sourceTree = "<group>"; };
 		E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests.release.xcconfig"; sourceTree = "<group>"; };
 		F896CE6D5BF04B715F6FD1E6 /* Pods-91助手Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -356,8 +353,6 @@
 			children = (
 				BDE6A3831D23CBBC00D477A8 /* YKChatCellModel.h */,
 				BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */,
-				BDE6A3891D23D7E200D477A8 /* YKChatTwoModel.h */,
-				BDE6A38A1D23D7E200D477A8 /* YKChatTwoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -869,7 +864,6 @@
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,
 				BD1BE2811D30D18900A377A9 /* UIImageView+XFExtension.m in Sources */,
 				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
-				BDE6A38B1D23D7E200D477A8 /* YKChatTwoModel.m in Sources */,
 				9CC864A21D0669C8007147D1 /* YKRowsTableViewCell.m in Sources */,
 				BD1BE27B1D30C35A00A377A9 /* YKClassifyAppViewController.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,

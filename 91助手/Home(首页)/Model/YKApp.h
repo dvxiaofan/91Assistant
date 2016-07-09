@@ -19,18 +19,24 @@
 @property (nonatomic, assign) NSInteger     star;
 
 
-@property (nonatomic, copy)   NSString    *detailUrl;        //
-@property (nonatomic, copy)   NSString    *downAct;          //
-@property (nonatomic, copy)   NSString    *cateName;         //
-@property (nonatomic, copy)   NSString    *summary;          //
-@property (nonatomic, copy)   NSString    *author;           //
-@property (nonatomic, assign) CGFloat     originalPrice;    //
-@property (nonatomic, assign) int         appType;              //
-@property (nonatomic, assign) int         state;                //
+@property (nonatomic, copy)   NSString    *detailUrl;
+@property (nonatomic, copy)   NSString    *downAct;
+@property (nonatomic, copy)   NSString    *cateName;
+@property (nonatomic, copy)   NSString    *summary;
+@property (nonatomic, copy)   NSString    *author;
+@property (nonatomic, assign) CGFloat     originalPrice;
+@property (nonatomic, assign) int         appType;
+@property (nonatomic, assign) int         state;
 
 
+/** 当行 cell 高度 */
+@property (nonatomic, assign) CGFloat     singleCellHeight;
+/** 多行 cell 高度 */
+@property (nonatomic, assign) CGFloat     rowsCellHeight;
+/** 专题 cell 高度 */
+@property (nonatomic, assign) CGFloat     appCellHeight;
 
-//+ (instancetype)appWithDict:(NSDictionary *)dict;
+
 
 
 @end

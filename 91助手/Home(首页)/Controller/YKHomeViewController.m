@@ -111,22 +111,17 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 }
 
 - (void)setupRefresh {
-    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTabelView)];
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRowsCellData)];
     [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - 加载数据
 
-- (void)reloadTabelView {
+//- (void)reloadTabelView {
     
-    [self loadRowsCellData];
+    //[self loadRowsCellData];
     
-    
-    
-    
-    [self.tableView reloadData];
-    [self.tableView.mj_header endRefreshing];
-}
+//}
 
 - (void)loadRowsCellData {
     // 取消所有请求
@@ -297,10 +292,10 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     
     if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
         
-        return self.cell.rowHeight;
+        return self.apps[indexPath.row].singleCellHeight;
         
     } else if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
-        return self.cellRows.rowHeight;
+        return self.apps[indexPath.row].rowsCellHeight;
     } else {
         return self.cellOther.rowHeight;
     }

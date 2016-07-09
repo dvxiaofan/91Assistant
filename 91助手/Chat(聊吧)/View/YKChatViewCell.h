@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class YKChatCellModel;
+
 @interface YKChatViewCell : UITableViewCell
 
 
-@property (nonatomic, strong) UIImageView *iconView;    // 图标
-@property (nonatomic, strong) UILabel *nameLabel;       // 名字
-@property (nonatomic, assign) CGFloat cellHeight;       // cell 高度
+/** model */
+@property (nonatomic, strong) YKChatCellModel *model;
 
 @end

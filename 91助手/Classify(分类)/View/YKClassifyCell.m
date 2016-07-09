@@ -66,14 +66,13 @@
 
 - (void)setFrame:(CGRect)frame {
     
-    
     frame.size.height -= 1;
     frame.origin.y += 1;
     
     [super setFrame:frame];
     
     // 头像
-    self.iconView.frame = CGRectMake(YKMargin, YKSmallMargin, YKButtonWH, YKButtonWH);
+    self.iconView.frame = CGRectMake(YKMargin, YKSmallMargin, YKAppWH, YKAppWH);
     
     // 名字
     self.nameLabel.frame = CGRectMake((CGRectGetMaxX(self.iconView.frame) + YKSmallMargin), YKSmallMargin + 5, 200, YKMargin);

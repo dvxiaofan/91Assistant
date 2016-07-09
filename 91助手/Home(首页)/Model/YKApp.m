@@ -10,14 +10,22 @@
 
 @implementation YKApp
 
-//+ (instancetype)appWithDict:(NSDictionary *)dict {
+- (CGFloat)singleCellHeight {
+    _singleCellHeight = YKMargin * 2 + YKAppWH + YKSmallMargin;
     
-    //YKSingleRowApp *app = [[self alloc] init];
-    //app.name = dict[@"name"];
-    //app.resId = dict[@"resId"];
-    //app.iconUrl = dict[@"icon"];
+    return _singleCellHeight;
+}
+
+- (CGFloat)rowsCellHeight {
+    _rowsCellHeight = YKMargin + YKAppWH;
     
-    //return app;
-//}
+    return _rowsCellHeight;
+}
+
+- (CGFloat)appCellHeight {
+    
+    
+    return _appCellHeight;
+}
 
 @end

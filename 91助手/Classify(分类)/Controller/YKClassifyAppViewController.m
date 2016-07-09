@@ -86,6 +86,7 @@ static NSString *const YKClassifyCellID = @"YKClassifyCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YKClassifyCell *cell = [tableView dequeueReusableCellWithIdentifier:YKClassifyCellID];
+    
     cell.app = self.appArray[indexPath.row];
     
     return cell;

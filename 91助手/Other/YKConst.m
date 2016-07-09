@@ -10,7 +10,7 @@
 
 
 /** 应用图标大小 */
-CGFloat const YKButtonWH         = 57;
+CGFloat const YKAppWH            = 57;
 
 /** 通用的间距值 */
 CGFloat const YKMargin           = 18;
