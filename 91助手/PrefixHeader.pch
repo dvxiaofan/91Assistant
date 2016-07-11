@@ -58,6 +58,8 @@
 #define YKGrayColor(v) YKColor((v), (v), (v))
 #define YKBaseBgColor YKGrayColor(246)
 
+/*** section headerview 字体 **/
+#define YKSectionHeaderTestFont [UIFont systemFontOfSize:15]
 
 /*** 将服务器返回的数据写入plist ***/
 #define YKWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/zhyks/Desktop/iOS开发/我赢职场/结业项目/项目操作/Plist文件/%@.plist", filename] atomically:YES];

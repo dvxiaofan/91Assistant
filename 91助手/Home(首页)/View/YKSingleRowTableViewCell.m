@@ -11,7 +11,6 @@
 
 
 
-
 #define APP_NAME_FONT [UIFont systemFontOfSize:11.0]
 #define APP_NAME_COLOR [UIColor blackColor]
 

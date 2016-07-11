@@ -24,7 +24,7 @@
 @property (nonatomic, weak) YKStarView *starView;
 @property (nonatomic, weak) UILabel *downNumLabel;
 @property (nonatomic, weak) UILabel *fileSizeLabel;
-@property (nonatomic, weak) UIButton *downBtn;
+//@property (nonatomic, weak) UIButton *downBtn;
 
 
 
@@ -126,15 +126,20 @@
     
 }
 
-#pragma mark - 下载点击事件
+//#pragma mark - 下载点击事件
 
-- (void)btnClick:(UIButton *)button {
-    if ([self.delegate respondsToSelector:@selector(rowsTableViewCell:)]) {
-        [self.delegate rowsTableViewCell:self];
-    }
-}
+//- (void)btnClick:(UIButton *)button {
+    
+    //if ([self.delegate respondsToSelector:@selector(rowsTableViewCell:)]) {
+        //[self.delegate rowsTableViewCell:self];
+    //}
+//}
 
 - (void)setFrame:(CGRect)frame {
+    
+    frame.size.height -= 1;
+    frame.origin.y += 1;
+    
     [super setFrame:frame];
     
     // 图标
@@ -158,7 +163,7 @@
     self.fileSizeLabel.frame = CGRectMake((CGRectGetMaxX(self.downNumLabel.frame) + 10), self.downNumLabel.xf_y, fileSize.width, fileSize.height);
     
     // 下载按钮
-    self.downBtn.frame = CGRectMake((CGRectGetMaxX(self.nameLabel.frame) + 5), YKMargin * 2, 55, 25);
+    self.downBtn.frame = CGRectMake((CGRectGetMaxX(self.nameLabel.frame) + 5), YKMargin + YKSmallMargin, 55, 25);
     
     // cell 高度
     self.rowHeight = self.iconView.xf_height + YKMargin;

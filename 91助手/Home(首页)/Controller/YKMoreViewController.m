@@ -11,11 +11,9 @@
 #import "YKDetailViewController.h"
 #import "YKApp.h"
 
-@interface YKMoreViewController ()<UITableViewDelegate, UITableViewDataSource, YKRowsTableViewCellDelegate>
+@interface YKMoreViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
-
-@property (nonatomic, strong) YKRowsTableViewCell *cell;
 
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
@@ -33,7 +31,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 #pragma mark - 懒加载
 
 - (XFHTTPSessionManager *)manager {
-    if (_manager) {
+    if (!_manager) {
         _manager = [XFHTTPSessionManager manager];
     }
     return _manager;
@@ -48,7 +46,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     [self setupTableView];
     
-    [self loadRowsCellData];
+    [self setupRefresh];
 }
 
 - (void)setupNav {
@@ -66,7 +64,11 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 }
 
 - (void)setupTableView {
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
+    // 去掉系统分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -76,40 +78,40 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 }
 
 - (void)setupRefresh {
-    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTabelView)];
-    [self.tableView.mj_header beginRefreshing];
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRowsCellData)];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
+    
+    [self loadRowsCellData];
 }
 
 #pragma mark - 加载数据
 
-- (void)reloadTabelView {
-    
-    [self loadRowsCellData];
-    
-    
-    [self.tableView reloadData];
-    [self.tableView.mj_header endRefreshing];
-}
-
 - (void)loadRowsCellData {
+    
     // 取消所有请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     __weak typeof(self) weakSelf = self;
     
-    [self.manager GET:HOME_BIBEI_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"tiems"]];
-        YKLog(@"cc = %zd", weakSelf.apps.count);
+        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
         [weakSelf.tableView reloadData];
         
+        [SVProgressHUD dismiss];
         [weakSelf.tableView.mj_header endRefreshing];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YKLog(@"error:%@", error);
         
+        [SVProgressHUD showErrorWithStatus:@"加载失败,请稍候再试!"];
         [weakSelf.tableView.mj_header endRefreshing];
-        
     }];
 }
 
@@ -134,16 +136,14 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     YKRowsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
     cell.app = self.apps[indexPath.row];
-    cell.backgroundColor = [UIColor orangeColor];
-    //cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.cell = cell;
+    [cell.downBtn addTarget:self action:@selector(downBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.cell.rowHeight;
+    return self.apps[indexPath.row].rowsCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -153,7 +153,9 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-
+- (void)downBtnClick:(UIButton *)button {
+    YKLogFunc
+}
 
 /*
 // Override to support conditional editing of the table view.

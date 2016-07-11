@@ -14,9 +14,13 @@
 #import "YKMoreViewController.h"
 #import "YKDetailViewController.h"
 #import "YKApp.h"
+#import "YKSectionHeaderView.h"
 
 
-@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKRowsTableViewCellDelegate,YKOtherTableViewCellDelegate>
+
+#define BTNBASETAG 100
+
+@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKOtherTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -26,7 +30,10 @@
 
 @property (nonatomic, strong) YKOtherTableViewCell *cellOther;
 
-@property (nonatomic, strong) UIView *headerView;
+/** scroll */
+@property (nonatomic, strong) YKScrollPagingView *scrollPV;
+
+//@property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIButton *moreBtn;
 
@@ -41,9 +48,10 @@
 
 @end
 
-static NSString *const YKSingleCellID = @"YKSingleRowTableViewCell";
-static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
-static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
+static NSString *const YKSingleCellID        = @"YKSingleRowTableViewCell";
+static NSString *const YKRowsCellID          = @"YKRowsTableViewCell";
+static NSString *const YKOtherCellID         = @"YKOtherTableViewCell";
+static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 @implementation YKHomeViewController
 
@@ -56,12 +64,6 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     return _manager;
 }
 
-//- (NSMutableArray *)SectionNameArray {
-    //if (!_SectionNameArray) {
-        //_SectionNameArray = [NSMutableArray array];
-    //}
-    //return _SectionNameArray;
-//}
 #pragma mark - 初始化
 
 - (void)viewDidLoad {
@@ -88,10 +90,12 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 
 - (void)setupScrollView {
     
-    YKScrollPagingView *scrollPV = [[YKScrollPagingView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.width * 7 / 16)];
-    [scrollPV setImageView];
+    YKScrollPagingView *scrollPV = [[YKScrollPagingView alloc] init];//WithFrame:
+    scrollPV.frame = CGRectMake(0, 0, SCREEN.width, SCREEN.width * 7 / 16);
+    //[scrollPV setImageView];
     // 设置代理
     scrollPV.delegate = self;
+    self.scrollPV = scrollPV;
     
     // 设置 tableView 的头视图为滚动视图
     self.tableView.tableHeaderView = scrollPV;
@@ -99,7 +103,9 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 
 - (void)setupTableView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStyleGrouped];
+    // 去掉系统分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -108,6 +114,7 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     [tableView registerClass:[YKSingleRowTableViewCell class] forCellReuseIdentifier:YKSingleCellID];
     [tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
     [tableView registerClass:[YKOtherTableViewCell class] forCellReuseIdentifier:YKOtherCellID];
+    [tableView registerClass:[YKSectionHeaderView class] forHeaderFooterViewReuseIdentifier:YKSectionHeaderViewID];
 }
 
 - (void)setupRefresh {
@@ -144,30 +151,6 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
         
     }];
 }
-
-//- (void)loadNewData {
-    //// 取消所有请求
-    //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    
-    //__weak typeof(self) weakSelf = self;
-    
-    //[self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //YKLog(@"success");
-        
-        
-        //XFWriteToPlist(responseObject, @"hotapp2");
-        
-        
-        //[weakSelf.tableView reloadData];
-        
-        //[weakSelf.tableView.mj_header endRefreshing];
-        
-    //} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        //YKLog(@"error:%@", error);
-        //[weakSelf.tableView.mj_header endRefreshing];
-    //}];
-//}
 
 #pragma mark - <UITableViewDataSource>
 
@@ -206,7 +189,8 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
         self.cellRows = cellRows;
         cellRows.app = self.apps[indexPath.row];
         cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
-        cellRows.delegate = self;
+        //cellRows.delegate = self;
+        [cellRows.downBtn addTarget:self action:@selector(downBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         return cellRows;
     }  else {
         YKOtherTableViewCell *cellOther = [tableView dequeueReusableCellWithIdentifier:YKOtherCellID];
@@ -220,58 +204,40 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 
 #pragma mark - <UITableViewDelegate>
 
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView *headerView = [[UIView alloc] init];
-    headerView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:headerView];
-    self.headerView = headerView;
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 8, SCREEN.width - 30, 20)];
-    titleLabel.font = CELL_NAME_FONT;
+    YKSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:YKSectionHeaderViewID];
     switch (section) {
         case 0:
-            titleLabel.text = @"热门应用";
+            headerView.textLabel.text = @"热门应用";
+            headerView.moreBtn.tag = BTNBASETAG + 0;
             break;
         case 1:
-            titleLabel.text = @"精品推荐";
+            headerView.textLabel.text = @"精品推荐";
+            headerView.moreBtn.tag = BTNBASETAG + 1;
             break;
         case 2:
-            titleLabel.text = @"限时免费";
+            headerView.textLabel.text = @"限时免费";
+            headerView.moreBtn.tag = BTNBASETAG + 2;
             break;
         case 3:
-            titleLabel.text = @"装机必备";
+            headerView.textLabel.text = @"装机必备";
+            headerView.moreBtn.tag = BTNBASETAG + 3;
             break;
         case 4:
-            titleLabel.text = @"应用专题";
+            headerView.textLabel.text = @"应用专题";
+            headerView.moreBtn.tag = BTNBASETAG + 4;
             break;
         case 5:
-            titleLabel.text = @"黑马闯入";
+            headerView.textLabel.text = @"黑马闯入";
+            headerView.moreBtn.tag = BTNBASETAG + 5;
             break;
         case 6:
-            titleLabel.text = @"编辑推荐";
+            headerView.textLabel.text = @"编辑推荐";
+            headerView.moreBtn.tag = BTNBASETAG + 6;
             break;
     }
-    
-    [headerView addSubview:titleLabel];
-    self.titleLabel = titleLabel;
-    
-    UIButton *moreBtn = [[UIButton alloc] init];
-    moreBtn.frame = CGRectMake(SCREEN.width - 60, 12, 25, 16);
-    [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
-    [moreBtn setBackgroundColor:[UIColor clearColor]];
-    moreBtn.titleLabel.font = CELL_BTN_FONT;
-    [moreBtn setTitleColor:CELL_BTN_COLOR forState:UIControlStateNormal];
-    [moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:moreBtn];
-    self.moreBtn = moreBtn;
-    
-    UIImageView *imgView = [[UIImageView alloc] init];
-    imgView.frame = CGRectMake(CGRectGetMaxX(moreBtn.frame), 15, 12, 10);
-    imgView.image = [UIImage imageNamed:@"web_next_nor"];
-    imgView.clipsToBounds = YES;
-    [headerView addSubview:imgView];
+    [headerView.moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     return headerView;
     
@@ -315,29 +281,34 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
 #pragma mark - 监听
 
 - (void)moreBtnClick:(UIButton *)button {
+    YKLogFunc
+    //YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    //moreVC.navTitle = @"热门应用";
+    //moreVC.url = HOME_HOT_URL;
     
-    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    
-    
-    moreVC.navTitle = @"热门应用";
-    
-    [self.navigationController pushViewController:moreVC animated:YES];
+    //[self.navigationController pushViewController:moreVC animated:YES];
 }
 
 - (void)scrollPagingViewImageTapIndex:(NSInteger)index {
-    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
     
+    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    moreVC.navTitle = self.scrollPV.ScrollImgArray[index].name;
+    moreVC.url = self.scrollPV.ScrollImgArray[index].url;
     [self.navigationController pushViewController:moreVC animated:YES];
 }
 
-- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
-    YKLog(@"你点击了下载按钮");
+//- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
+    //YKLog(@"你点击了下载按钮");
+//}
+
+- (void)downBtnClick:(UIButton *)button {
+    YKLogFunc
 }
 
 - (void)imgViewTapIndex:(NSInteger)index {
-    //YKLog(@"点击了四张图中的某一张");
     YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    
+    moreVC.navTitle = self.cellOther.iconArray[index].name;
+    moreVC.url = self.cellOther.iconArray[index].url;
     [self.navigationController pushViewController:moreVC animated:YES];
 }
 
@@ -347,6 +318,7 @@ static NSString *const YKOtherCellID = @"YKOtherTableViewCell";
     
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+
 
 
 

@@ -10,25 +10,25 @@
 
 @class YKApp;
 
-@protocol YKRowsTableViewCellDelegate;
+//@protocol YKRowsTableViewCellDelegate;
 
 @interface YKRowsTableViewCell : UITableViewCell
 
 @property (nonatomic, assign) CGFloat rowHeight;
 
-@property (nonatomic, assign) id <YKRowsTableViewCellDelegate> delegate;
+//@property (nonatomic, assign) id <YKRowsTableViewCellDelegate> delegate;
 
 
 /** ss */
 @property (nonatomic, strong) YKApp *app;
 
-
+@property (nonatomic, weak) UIButton *downBtn;
 
 
 @end
 
-@protocol YKRowsTableViewCellDelegate <NSObject>
+//@protocol YKRowsTableViewCellDelegate <NSObject>
 
-- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell;
+//- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell;
 
-@end
+//@end

@@ -23,5 +23,8 @@
 
 @property (nonatomic, assign) id <YKOtherTableViewCellDelegate> delegate;
 /** a */
-@property (nonatomic, strong) YKApp *singleRowApp;
+@property (nonatomic, strong) YKApp *app;
+
+/** iconArray */
+@property (nonatomic, strong) NSArray <YKApp *>*iconArray;
 @end

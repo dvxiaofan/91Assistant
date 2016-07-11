@@ -53,11 +53,11 @@
     
     [self.manager GET:HOME_APP_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //YKWriteToPlist(responseObject, @"专题app");
-        NSArray *singleRowApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+        NSArray *apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
-        NSArray *newArray = [singleRowApps subarrayWithRange:NSMakeRange(0, 4)];
+        weakSelf.iconArray = [apps subarrayWithRange:NSMakeRange(0, 4)];
         
-        [weakSelf createApp:newArray];
+        [weakSelf createApp:weakSelf.iconArray];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YKLog(@"error:%@", error);
@@ -67,13 +67,13 @@
 
 #pragma mark - UI布局
 
-- (void)createApp:(NSArray *)newArray {
+- (void)createApp:(NSArray *)iconArray {
     
-    NSInteger count = newArray.count;
+    NSInteger count = iconArray.count;
     
     for (int i = 0; i < count; i++) {
         
-        _singleRowApp = newArray[i];
+        _app = iconArray[i];
         
         UIImageView *imgView = [[UIImageView alloc] init];
         CGFloat imgViewW = (SCREEN.width - YKMargin * 2 - YKMargin / 3) / 2;
@@ -84,7 +84,7 @@
         imgView.layer.cornerRadius = 3.0;
         imgView.clipsToBounds = YES;
         
-        [imgView sd_setImageWithURL:[NSURL URLWithString:self.singleRowApp.icon] placeholderImage:[UIImage imageNamed:@"cent_banner_pic_n"]];
+        [imgView sd_setImageWithURL:[NSURL URLWithString:self.app.icon] placeholderImage:[UIImage imageNamed:@"cent_banner_pic_n"]];
         
         [self addSubview:imgView];
         imgView.userInteractionEnabled = YES;

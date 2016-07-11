@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class YKApp;
+
 // 定义一个代理方法
 @protocol YKScrollPagingViewDelegate <NSObject>
 
@@ -19,7 +21,18 @@
 // 声明代理属性
 @property (nonatomic, assign) id <YKScrollPagingViewDelegate> delegate;
 
-- (void)setImageView;
+
+/** app */
+@property (nonatomic, strong) YKApp *app;
+
+/** newArray */
+@property (nonatomic, strong) NSArray <YKApp *>*ScrollImgArray;
+
+/** newArray */
+//@property (nonatomic, strong) NSMutableArray *urlArray;
+
+
+//- (void)setImageView;
 
 
 @end

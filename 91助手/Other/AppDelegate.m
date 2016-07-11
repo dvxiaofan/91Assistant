@@ -57,7 +57,6 @@
     }
     
     
-    
     // 自定义tabbar背景颜色
     [[UITabBar appearance] setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tab_background"]]];
     

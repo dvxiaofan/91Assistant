@@ -15,8 +15,9 @@
 @property (nonatomic, copy)   NSString    *resId;
 @property (nonatomic, copy)   NSString    *downTimes;
 @property (nonatomic, copy)   NSString    *price;
+@property (nonatomic, copy)   NSString    *url;
 @property (nonatomic, assign) NSUInteger  size;
-@property (nonatomic, assign) NSInteger     star;
+@property (nonatomic, assign) NSInteger   star;
 
 
 @property (nonatomic, copy)   NSString    *detailUrl;
