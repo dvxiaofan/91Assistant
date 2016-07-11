@@ -16,6 +16,7 @@
 #import "YKApp.h"
 #import "YKSectionHeaderView.h"
 #import "YKHomeModel.h"
+#import "YKScrollModel.h"
 
 
 
@@ -158,16 +159,16 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     
     __weak typeof(self) weakSelf = self;
     
-    [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+    [self.manager GET:@"https://www.baidu.com" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        YKLog(@"success");
+        //weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
         [weakSelf.tableView reloadData];
         
         [weakSelf.tableView.mj_header endRefreshing];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"error:%@", error);
+        YKLog(@"rows error:%@", error);
         
         [weakSelf.tableView.mj_header endRefreshing];
         
@@ -293,8 +294,8 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 - (void)scrollPagingViewImageTapIndex:(NSInteger)index {
     
     YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    moreVC.navTitle = self.scrollPV.ScrollImgArray[index].name;
-    moreVC.url = self.scrollPV.ScrollImgArray[index].url;
+    moreVC.navTitle = self.scrollPV.sModel[index].Desc;
+    moreVC.url = self.scrollPV.sModel[index].TargetUrl;
     [self.navigationController pushViewController:moreVC animated:YES];
 }
 

@@ -8,6 +8,7 @@
 
 #import "YKScrollPagingView.h"
 #import "YKApp.h"
+#import "YKScrollModel.h"
 
 #define IMAGE_TAG 100
 
@@ -16,12 +17,8 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSTimer *timer;
-//@property (nonatomic, assign) int imageCount;
-//@property (nonatomic, strong) NSArray *imageUrlArray;
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
-/** newArray */
-//@property (nonatomic, strong) NSArray <YKApp *>*ScrollImgArray;
 
 @end
 
@@ -51,16 +48,10 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [self.manager GET:HOME_APP_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSArray *appArray = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+    [self.manager GET:HOME_SCROLL_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.sModel = [YKScrollModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][0][@"Value"]];
         
-        NSDictionary *dic1 = [appArray objectAtIndex:1];
-        NSDictionary *dic2 = [appArray objectAtIndex:19];
-        NSDictionary *dic3 = [appArray objectAtIndex:22];
-        
-        weakSelf.ScrollImgArray = [NSArray arrayWithObjects:dic1, dic2, dic3, nil];
-        
-        [weakSelf setImageView:weakSelf.ScrollImgArray];
+        [weakSelf setImageView:weakSelf.sModel];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         YKLog(@"error:%@", error);
@@ -80,13 +71,13 @@
     
     for (NSInteger i = 0; i < ScrollImgArray.count; i++) {
         
-        _app = ScrollImgArray[i];
+        _scrollModel = ScrollImgArray[i];
         
         CGFloat imageX = i * imageWidth;
         CGFloat imageY = 0;
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageWidth, imageHeight)];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:self.app.icon]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:self.scrollModel.LogoUrl]];
         
         imageView.tag = IMAGE_TAG + i;
         imageView.userInteractionEnabled = YES;
@@ -99,7 +90,7 @@
         [imageView addGestureRecognizer:tap];
         
     }
-    scrollView.contentSize = CGSizeMake(self.ScrollImgArray.count * imageWidth, imageHeight);
+    scrollView.contentSize = CGSizeMake(self.sModel.count * imageWidth, imageHeight);
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.bounces = NO;
@@ -109,7 +100,7 @@
     CGFloat pageControlH = 30;
     UIPageControl *pageControl = [[UIPageControl alloc] init];
     pageControl.frame = CGRectMake((self.bounds.size.width - pageControlW) / 2, self.bounds.size.height - pageControlH, pageControlW, pageControlH);
-    pageControl.numberOfPages = self.ScrollImgArray.count;
+    pageControl.numberOfPages = self.sModel.count;
     pageControl.userInteractionEnabled = NO;
     pageControl.pageIndicatorTintColor = [UIColor grayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
@@ -138,7 +129,7 @@
 - (void)nextPage {
     NSInteger index = self.scrollView.contentOffset.x / self.bounds.size.width;
     index ++;
-    if (index == self.ScrollImgArray.count) {
+    if (index == self.sModel.count) {
         index = 0;
     }
     [self.scrollView setContentOffset:CGPointMake(index * self.bounds.size.width, 0) animated:YES];

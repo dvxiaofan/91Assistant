@@ -66,6 +66,8 @@
 
 // 首页 总分布页面
 #define HOME_ZONG_URL @"http://applebbx.sj.91.com/api/?cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&act=1&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&spid=2&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
+// 滚动
+#define HOME_SCROLL_URL @"http://applebbx.sj.91.com/softs.ashx?adlt=1&spid=2&osv=9.2.1&places=1&imei=BE82F662-BFDA-49AE-BD28-D5F86E076ADA&dm=iPhone4,1&sv=3.1.3&act=222&pid=2&cuid=47caf81d966e310027b6b5ef6d54d7c860ca22bc&nt=10&mt=1"
 
 // 首页 热门应用
 #define HOME_HOT_URL @"http://applebbx.sj.91.com/api/?act=708&spid=2&pid=2&mt=1"
