@@ -49,6 +49,7 @@
 		BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */; };
 		BD4A3D611D1943180061A2EB /* YKApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D601D1943180061A2EB /* YKApp.m */; };
 		BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99402C1D33327500C061EE /* YKSectionHeaderView.m */; };
+		BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940341D33615A00C061EE /* YKHomeModel.m */; };
 		BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */; };
 		BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */; };
 		BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */; };
@@ -162,6 +163,8 @@
 		BD4A3D601D1943180061A2EB /* YKApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKApp.m; sourceTree = "<group>"; };
 		BD99402B1D33327500C061EE /* YKSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSectionHeaderView.h; sourceTree = "<group>"; };
 		BD99402C1D33327500C061EE /* YKSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSectionHeaderView.m; sourceTree = "<group>"; };
+		BD9940331D33615A00C061EE /* YKHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKHomeModel.h; sourceTree = "<group>"; };
+		BD9940341D33615A00C061EE /* YKHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKHomeModel.m; sourceTree = "<group>"; };
 		BDE6A3801D23C21400D477A8 /* YKChatViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatViewCell.h; sourceTree = "<group>"; };
 		BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatViewCell.m; sourceTree = "<group>"; };
 		BDE6A3831D23CBBC00D477A8 /* YKChatCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatCellModel.h; sourceTree = "<group>"; };
@@ -481,6 +484,8 @@
 			children = (
 				BD4A3D5F1D1943180061A2EB /* YKApp.h */,
 				BD4A3D601D1943180061A2EB /* YKApp.m */,
+				BD9940331D33615A00C061EE /* YKHomeModel.h */,
+				BD9940341D33615A00C061EE /* YKHomeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -860,6 +865,7 @@
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */,
 				BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */,
+				BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */,
 				BD1BE2751D30C18900A377A9 /* YKClassify.m in Sources */,
 				9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,

@@ -15,6 +15,7 @@
 #import "YKDetailViewController.h"
 #import "YKApp.h"
 #import "YKSectionHeaderView.h"
+#import "YKHomeModel.h"
 
 
 
@@ -43,6 +44,9 @@
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
+
+/** homeData */
+@property (nonatomic, strong) NSArray <YKHomeModel *>*homeData;
 
 
 
@@ -77,15 +81,9 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     // 创建头部滚动视图
     [self setupScrollView];
     
-    NSMutableArray *sectionNameArray = [NSMutableArray array];
-    self.sectionNameArray = sectionNameArray;
-    
-    NSMutableArray *singleRowAppNameArray = [NSMutableArray array];
-    self.singleRowAppNameArray = singleRowAppNameArray;
-    
-    
-    
     [self setupRefresh];
+    
+    [self loadRowsCellData];
 }
 
 - (void)setupScrollView {
@@ -118,17 +116,41 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 }
 
 - (void)setupRefresh {
-    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRowsCellData)];
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadHomeData)];
     [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark - 加载数据
 
-//- (void)reloadTabelView {
+//- (void)reloadHomeData {
+    
+    //[self loadHomeData];
     
     //[self loadRowsCellData];
     
 //}
+
+- (void)loadHomeData {
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_ZONG_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        weakSelf.homeData = [YKHomeModel mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][0][@"parts"]];
+        
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
 
 - (void)loadRowsCellData {
     // 取消所有请求
@@ -156,7 +178,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 // 分区数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
+    return self.homeData.count;
 }
 
 // 每个分区的行数
@@ -207,36 +229,9 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     YKSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:YKSectionHeaderViewID];
-    switch (section) {
-        case 0:
-            headerView.textLabel.text = @"热门应用";
-            headerView.moreBtn.tag = BTNBASETAG + 0;
-            break;
-        case 1:
-            headerView.textLabel.text = @"精品推荐";
-            headerView.moreBtn.tag = BTNBASETAG + 1;
-            break;
-        case 2:
-            headerView.textLabel.text = @"限时免费";
-            headerView.moreBtn.tag = BTNBASETAG + 2;
-            break;
-        case 3:
-            headerView.textLabel.text = @"装机必备";
-            headerView.moreBtn.tag = BTNBASETAG + 3;
-            break;
-        case 4:
-            headerView.textLabel.text = @"应用专题";
-            headerView.moreBtn.tag = BTNBASETAG + 4;
-            break;
-        case 5:
-            headerView.textLabel.text = @"黑马闯入";
-            headerView.moreBtn.tag = BTNBASETAG + 5;
-            break;
-        case 6:
-            headerView.textLabel.text = @"编辑推荐";
-            headerView.moreBtn.tag = BTNBASETAG + 6;
-            break;
-    }
+    headerView.homeData = self.homeData[section];
+    headerView.moreBtn.tag = section;
+    headerView.textLabel.text = self.homeData[section].name;
     [headerView.moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     return headerView;
@@ -281,12 +276,18 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 #pragma mark - 监听
 
 - (void)moreBtnClick:(UIButton *)button {
-    YKLogFunc
-    //YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    //moreVC.navTitle = @"热门应用";
-    //moreVC.url = HOME_HOT_URL;
     
-    //[self.navigationController pushViewController:moreVC animated:YES];
+    NSInteger tag = button.tag;
+    //YKLog(@"ttt = %zd", tag);
+    
+    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    moreVC.navTitle = self.homeData[tag].name;
+    //moreVC.url = self.homeData[tag].act;
+    moreVC.url = HOME_JINGPIN_URL;
+    
+    YKLog(@"url = %@", self.homeData[tag].act);
+    
+    [self.navigationController pushViewController:moreVC animated:YES];
 }
 
 - (void)scrollPagingViewImageTapIndex:(NSInteger)index {

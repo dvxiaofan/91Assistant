@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class YKHomeModel;
+
 @interface YKSectionHeaderView : UITableViewHeaderFooterView
 
 /** moreBtn */
 @property (nonatomic, weak) UIButton *moreBtn;
+
+/** homeData */
+@property (nonatomic, strong) YKHomeModel *homeData;
 
 @end
