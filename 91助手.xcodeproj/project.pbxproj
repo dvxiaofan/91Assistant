@@ -48,6 +48,7 @@
 		BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6021D2F6F5A00ED72ED /* XFHTTPSessionManager.m */; };
 		BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */; };
 		BD4A3D611D1943180061A2EB /* YKApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D601D1943180061A2EB /* YKApp.m */; };
+		BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */; };
 		BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99402C1D33327500C061EE /* YKSectionHeaderView.m */; };
 		BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940341D33615A00C061EE /* YKHomeModel.m */; };
 		BD9940381D33724500C061EE /* YKScrollModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940371D33724500C061EE /* YKScrollModel.m */; };
@@ -164,6 +165,8 @@
 		BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XFExtension.m"; sourceTree = "<group>"; };
 		BD4A3D5F1D1943180061A2EB /* YKApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKApp.h; sourceTree = "<group>"; };
 		BD4A3D601D1943180061A2EB /* YKApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKApp.m; sourceTree = "<group>"; };
+		BD8D94FE1D33A51C00177580 /* YKSearchButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchButtons.h; sourceTree = "<group>"; };
+		BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchButtons.m; sourceTree = "<group>"; };
 		BD99402B1D33327500C061EE /* YKSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSectionHeaderView.h; sourceTree = "<group>"; };
 		BD99402C1D33327500C061EE /* YKSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSectionHeaderView.m; sourceTree = "<group>"; };
 		BD9940331D33615A00C061EE /* YKHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKHomeModel.h; sourceTree = "<group>"; };
@@ -571,6 +574,8 @@
 		9C5BDD6F1CF9D928008CE12F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BD8D94FE1D33A51C00177580 /* YKSearchButtons.h */,
+				BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -859,6 +864,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD99403E1D33895A00C061EE /* YKAppsViewController.m in Sources */,
+				BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */,
 				BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */,
 				BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */,
 				9CC864A81D06725A007147D1 /* YKUtility.m in Sources */,

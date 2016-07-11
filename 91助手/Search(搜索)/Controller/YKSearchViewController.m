@@ -7,32 +7,115 @@
 //
 
 #import "YKSearchViewController.h"
+#import "YKSearchButtons.h"
 
-@interface YKSearchViewController ()
+@interface YKSearchViewController ()<UISearchBarDelegate>
+
+/** search */
+@property (nonatomic, strong) UISearchBar *searchBar;
+
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
 
 @end
 
 @implementation YKSearchViewController
 
+#pragma mark - 懒加载
+
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
+#pragma mark - 初始化
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    // Do any additional setup after loading the view.
+    
+    [self setupSearchBar];
+    
+    [self setupView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupSearchBar {
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.placeholder = @"搜索";
+    searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    searchBar.showsCancelButton = NO;
+    searchBar.delegate = self;
+    self.searchBar = searchBar;
+    
+    self.navigationItem.titleView = searchBar;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setupView {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.userInteractionEnabled = YES;
+    
+    YKSearchButtons *btnView = [[YKSearchButtons alloc] init];
+    btnView.frame = self.view.bounds;
+    //[btnView.sButton addTarget:self action:@selector(sButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:btnView];
 }
-*/
+
+#pragma mark - 搜索框代理事件
+// 开始编辑搜索框
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+    searchBar.showsCancelButton = YES;
+    
+    NSArray *subViews = [(searchBar.subviews[0]) subviews];
+    for (id view in subViews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            UIButton* cancelbutton = (UIButton* )view;
+            [cancelbutton setTitle:@"取消" forState:UIControlStateNormal];
+            break;
+        }
+    }
+}
+
+#pragma mark - 事件监听
+
+// 点击搜索
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    YKLog(@"点击搜索");
+}
+// 点击取消按钮
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    
+    searchBar.showsCancelButton = NO;
+    [searchBar resignFirstResponder];
+}
+
+//- (void)sButtonClick:(UIButton *)button {
+//YKLogFunc
+//NSInteger tag = button.tag;
+//YKLog(@"tag = %zd", tag);
+//}
+
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
