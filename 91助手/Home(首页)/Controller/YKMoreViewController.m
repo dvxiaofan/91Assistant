@@ -46,6 +46,8 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     [self setupTableView];
     
+    [self firstLoadData];
+    
     [self setupRefresh];
 }
 
@@ -77,17 +79,25 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     [self.tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
 }
 
-- (void)setupRefresh {
-    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRowsCellData)];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+// 第一次加载数据
+- (void)firstLoadData {
     
     [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
     
     [self loadRowsCellData];
 }
+
+- (void)setupRefresh {
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRowsCellData)];
+}
+
+//- (void)viewWillAppear:(BOOL)animated {
+    //[super viewWillAppear:animated];
+    
+    //[SVProgressHUD showWithStatus:@"加载中,请稍候..."];
+    
+    //[self loadRowsCellData];
+//}
 
 #pragma mark - 加载数据
 

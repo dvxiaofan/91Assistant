@@ -100,7 +100,8 @@
 
 - (void)btnClick:(UIButton *)button {
     NSInteger tag = button.tag - BTN_BASE_TAG;
-    YKLog(@"tag = %zd", tag);
+    YKLog(@"快速搜索 - %@", self.titleArray[tag]);
+    
 }
 
 

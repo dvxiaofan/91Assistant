@@ -13,17 +13,17 @@
 @interface YKClassify : NSObject
 
 /** icon */
-@property (nonatomic, copy) NSString *icon;
+@property (nonatomic, copy)     NSString    *icon;
 /** name */
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy)     NSString    *name;
 /** info */
-@property (nonatomic, copy) NSString *summary;
+@property (nonatomic, copy)     NSString    *summary;
 
 /** listTags */
-@property (nonatomic, strong) NSArray *listTags;
+@property (nonatomic, strong)   NSArray     *listTags;
 
 
 /** cell 高度 */
-@property (nonatomic, assign) CGFloat   cellHeight;
+@property (nonatomic, assign)   CGFloat     cellHeight;
 
 @end

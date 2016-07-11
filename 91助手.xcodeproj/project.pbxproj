@@ -57,6 +57,13 @@
 		BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */; };
 		BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */; };
 		BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */; };
+		BDF252951D33DD21007911CC /* YKClassifyBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF252941D33DD21007911CC /* YKClassifyBaseViewController.m */; };
+		BDF2529B1D33DDD5007911CC /* YKClassifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF2529A1D33DDD5007911CC /* YKClassifyDataViewController.m */; };
+		BDF2529E1D33DDF2007911CC /* YKFreeAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF2529D1D33DDF2007911CC /* YKFreeAppsViewController.m */; };
+		BDF252A11D33DDFE007911CC /* YKLimitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF252A01D33DDFE007911CC /* YKLimitViewController.m */; };
+		BDF252A41D33DE33007911CC /* YKFallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF252A31D33DE33007911CC /* YKFallViewController.m */; };
+		BDF252A71D33DE75007911CC /* YKMoneyAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF252A61D33DE75007911CC /* YKMoneyAppsViewController.m */; };
+		BDF252AA1D33DF1D007911CC /* YKTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF252A91D33DF1D007911CC /* YKTitleButton.m */; };
 		E264DAD969B727EF07675E48 /* libPods-91助手.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3A9C298613768F3D499A30 /* libPods-91助手.a */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +190,20 @@
 		BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatCellModel.m; sourceTree = "<group>"; };
 		BDE6A3861D23D75500D477A8 /* YKChatTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatTwoViewController.h; sourceTree = "<group>"; };
 		BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatTwoViewController.m; sourceTree = "<group>"; };
+		BDF252931D33DD21007911CC /* YKClassifyBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyBaseViewController.h; sourceTree = "<group>"; };
+		BDF252941D33DD21007911CC /* YKClassifyBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKClassifyBaseViewController.m; sourceTree = "<group>"; };
+		BDF252991D33DDD5007911CC /* YKClassifyDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyDataViewController.h; sourceTree = "<group>"; };
+		BDF2529A1D33DDD5007911CC /* YKClassifyDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKClassifyDataViewController.m; sourceTree = "<group>"; };
+		BDF2529C1D33DDF2007911CC /* YKFreeAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKFreeAppsViewController.h; sourceTree = "<group>"; };
+		BDF2529D1D33DDF2007911CC /* YKFreeAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKFreeAppsViewController.m; sourceTree = "<group>"; };
+		BDF2529F1D33DDFE007911CC /* YKLimitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLimitViewController.h; sourceTree = "<group>"; };
+		BDF252A01D33DDFE007911CC /* YKLimitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLimitViewController.m; sourceTree = "<group>"; };
+		BDF252A21D33DE33007911CC /* YKFallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKFallViewController.h; sourceTree = "<group>"; };
+		BDF252A31D33DE33007911CC /* YKFallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKFallViewController.m; sourceTree = "<group>"; };
+		BDF252A51D33DE75007911CC /* YKMoneyAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMoneyAppsViewController.h; sourceTree = "<group>"; };
+		BDF252A61D33DE75007911CC /* YKMoneyAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMoneyAppsViewController.m; sourceTree = "<group>"; };
+		BDF252A81D33DF1D007911CC /* YKTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTitleButton.h; sourceTree = "<group>"; };
+		BDF252A91D33DF1D007911CC /* YKTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTitleButton.m; sourceTree = "<group>"; };
 		E7350C03B08542AA4F4B9AF8 /* Pods-91助手UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-91助手UITests/Pods-91助手UITests.release.xcconfig"; sourceTree = "<group>"; };
 		F896CE6D5BF04B715F6FD1E6 /* Pods-91助手Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-91助手Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-91助手Tests/Pods-91助手Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -405,6 +426,18 @@
 				BD1D44CB1D309D2C0048190C /* YKAppViewController.m */,
 				BD1D44CD1D309D3A0048190C /* YKGameViewController.h */,
 				BD1D44CE1D309D3A0048190C /* YKGameViewController.m */,
+				BDF252931D33DD21007911CC /* YKClassifyBaseViewController.h */,
+				BDF252941D33DD21007911CC /* YKClassifyBaseViewController.m */,
+				BDF252991D33DDD5007911CC /* YKClassifyDataViewController.h */,
+				BDF2529A1D33DDD5007911CC /* YKClassifyDataViewController.m */,
+				BDF2529C1D33DDF2007911CC /* YKFreeAppsViewController.h */,
+				BDF2529D1D33DDF2007911CC /* YKFreeAppsViewController.m */,
+				BDF2529F1D33DDFE007911CC /* YKLimitViewController.h */,
+				BDF252A01D33DDFE007911CC /* YKLimitViewController.m */,
+				BDF252A21D33DE33007911CC /* YKFallViewController.h */,
+				BDF252A31D33DE33007911CC /* YKFallViewController.m */,
+				BDF252A51D33DE75007911CC /* YKMoneyAppsViewController.h */,
+				BDF252A61D33DE75007911CC /* YKMoneyAppsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -425,6 +458,8 @@
 			children = (
 				BD1BE2701D30BE2000A377A9 /* YKClassifyCell.h */,
 				BD1BE2711D30BE2000A377A9 /* YKClassifyCell.m */,
+				BDF252A81D33DF1D007911CC /* YKTitleButton.h */,
+				BDF252A91D33DF1D007911CC /* YKTitleButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -867,12 +902,14 @@
 				BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */,
 				BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */,
 				BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */,
+				BDF252A11D33DDFE007911CC /* YKLimitViewController.m in Sources */,
 				9CC864A81D06725A007147D1 /* YKUtility.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
 				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
 				BD1BE2781D30C23E00A377A9 /* YKListTags.m in Sources */,
 				9C0DD6F81CFBF1BF0028E515 /* YKRootViewController.m in Sources */,
 				BD1D44CC1D309D2C0048190C /* YKAppViewController.m in Sources */,
+				BDF2529B1D33DDD5007911CC /* YKClassifyDataViewController.m in Sources */,
 				BD26D5FF1D2F6F3A00ED72ED /* XFRefreshFooter.m in Sources */,
 				BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */,
 				BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */,
@@ -884,6 +921,7 @@
 				BD1BE2721D30BE2000A377A9 /* YKClassifyCell.m in Sources */,
 				9CC4902C1D0551AB003F7F9E /* NSString+YKExtension.m in Sources */,
 				BD99403B1D33885E00C061EE /* YKAppsViewCell.m in Sources */,
+				BDF252A71D33DE75007911CC /* YKMoneyAppsViewController.m in Sources */,
 				BD1D44CF1D309D3A0048190C /* YKGameViewController.m in Sources */,
 				9C5BDD721CF9D928008CE12F /* main.m in Sources */,
 				9C27BDB51CFFD5AE0016C0F7 /* YKStartPageScrollView.m in Sources */,
@@ -899,14 +937,18 @@
 				9C0DD6FB1CFBF1CF0028E515 /* YKHomeViewController.m in Sources */,
 				BD1BE2811D30D18900A377A9 /* UIImageView+XFExtension.m in Sources */,
 				9C0DD7011CFBF73F0028E515 /* YKSearchViewController.m in Sources */,
+				BDF252A41D33DE33007911CC /* YKFallViewController.m in Sources */,
+				BDF2529E1D33DDF2007911CC /* YKFreeAppsViewController.m in Sources */,
 				9CC864A21D0669C8007147D1 /* YKRowsTableViewCell.m in Sources */,
 				BD1BE27B1D30C35A00A377A9 /* YKClassifyAppViewController.m in Sources */,
 				9C0DD6F21CFBF1AF0028E515 /* YKClassifyViewController.m in Sources */,
 				9CC864A51D066B3A007147D1 /* YKMoreViewController.m in Sources */,
 				BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */,
+				BDF252AA1D33DF1D007911CC /* YKTitleButton.m in Sources */,
 				BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
+				BDF252951D33DD21007911CC /* YKClassifyBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

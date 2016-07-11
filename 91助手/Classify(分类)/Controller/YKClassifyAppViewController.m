@@ -10,6 +10,7 @@
 #import "YKClassifyCell.h"
 #import "YKClassify.h"
 #import "YKListTags.h"
+#import "YKClassifyBaseViewController.h"
 
 @interface YKClassifyAppViewController ()
 
@@ -97,7 +98,10 @@ static NSString *const YKClassifyCellID = @"YKClassifyCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    YKLogFunc
+    
+    YKClassifyBaseViewController *baseVC = [[YKClassifyBaseViewController alloc] init];
+    baseVC.navTitle = self.appArray[indexPath.row].name;
+    [self.navigationController pushViewController:baseVC animated:YES];
     
 }
 

@@ -40,7 +40,8 @@
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [backButton setImage:[UIImage imageNamed:@"bar_back_normal"] forState:UIControlStateNormal];
         [backButton sizeToFit];
-        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+        backButton.frame = CGRectMake(0, 0, 50, 30);
+        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 20);
         [backButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     }
