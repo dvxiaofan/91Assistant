@@ -23,7 +23,7 @@
 @property (nonatomic, copy)   NSString    *detailUrl;
 @property (nonatomic, copy)   NSString    *downAct;
 @property (nonatomic, copy)   NSString    *cateName;
-@property (nonatomic, copy)   NSString    *summary;
+@property (nonatomic, copy)   NSString    *summary;         // 介绍
 @property (nonatomic, copy)   NSString    *author;
 @property (nonatomic, assign) CGFloat     originalPrice;
 @property (nonatomic, assign) int         appType;

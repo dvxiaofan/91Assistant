@@ -19,6 +19,7 @@ UIKIT_EXTERN CGFloat    const YKMargin;
 UIKIT_EXTERN CGFloat    const YKSmallMargin;
 
 
-
+/** 应用专题页面小间隔 */
+UIKIT_EXTERN CGFloat    const YKSmallSpace;
 
 

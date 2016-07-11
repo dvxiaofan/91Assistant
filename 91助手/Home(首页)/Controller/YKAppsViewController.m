@@ -1,34 +1,28 @@
 //
-//  YKMoreViewController.m
+//  YKAppsViewController.m
 //  91助手
 //
-//  Created by xiaofan on 16/6/7.
+//  Created by xiaofans on 16/7/11.
 //  Copyright © 2016年 YK. All rights reserved.
 //
 
-#import "YKMoreViewController.h"
-#import "YKRowsTableViewCell.h"
-#import "YKDetailViewController.h"
+#import "YKAppsViewController.h"
+#import "YKAppsViewCell.h"
 #import "YKApp.h"
+#import "YKMoreViewController.h"
 
-@interface YKMoreViewController ()<UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, strong) UITableView *tableView;
+@interface YKAppsViewController ()
 
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
-
-
-@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
+/** apps */
+@property (nonatomic, strong) NSArray <YKApp *>*appsArray;
 
 @end
 
+static NSString *const YKAppsViewCellID = @"YKAppsViewCell";
 
-static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
-
-@implementation YKMoreViewController
-
-#pragma mark - 懒加载
+@implementation YKAppsViewController
 
 - (XFHTTPSessionManager *)manager {
     if (!_manager) {
@@ -37,125 +31,71 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     return _manager;
 }
 
-#pragma mark - 初始化
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupNav];
-    
     [self setupTableView];
     
-    [self setupRefresh];
-}
-
-- (void)setupNav {
-    self.navigationItem.title = self.navTitle;
-}
-
-- (UIBarButtonItem *)creatNavBtnWithBackImage:(UIImage *)image action:(SEL)action {
-    
-    UIButton *button = [YKUtility createBtnWithBackgroundImag:image];
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *itme = [[UIBarButtonItem alloc] init];
-    itme.customView = button;
-    
-    return itme;
 }
 
 - (void)setupTableView {
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = self.navTitle;
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
-    // 去掉系统分割线
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.rowHeight = 280;
     
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
+    [self.tableView registerClass:[YKAppsViewCell class] forCellReuseIdentifier:YKAppsViewCellID];
     
-    [self.tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    [self.tableView.mj_header beginRefreshing];
+    
 }
 
-- (void)setupRefresh {
-    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRowsCellData)];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
-    
-    [self loadRowsCellData];
-}
-
-#pragma mark - 加载数据
-
-- (void)loadRowsCellData {
-    
-    // 取消所有请求
+- (void)loadData {
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
+   
     __weak typeof(self) weakSelf = self;
     
     [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        weakSelf.appsArray = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         
         [weakSelf.tableView reloadData];
         
-        [SVProgressHUD dismiss];
         [weakSelf.tableView.mj_header endRefreshing];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"error:%@", error);
-        
-        [SVProgressHUD showErrorWithStatus:@"加载失败,请稍候再试!"];
+        YKLog(@"error = %@", error);
         [weakSelf.tableView.mj_header endRefreshing];
     }];
 }
 
 
-#pragma mark - 事件监听
-
-/**
- *  YKRowsTableViewCell 代理方法
- */
-- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
-    YKLog(@"你点击了下载按钮");
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
- 
-    return self.apps.count;
+
+    return self.appsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    YKRowsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
-    cell.app = self.apps[indexPath.row];
+    YKAppsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKAppsViewCellID];
+    cell.app = self.appsArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell.downBtn addTarget:self action:@selector(downBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.apps[indexPath.row].rowsCellHeight;
+    return self.appsArray[indexPath.row].appCellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //YKLog(@"你点击了莫一行");
-    YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
-    
-    [self.navigationController pushViewController:detailVC animated:YES];
+    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+    moreVC.navTitle = self.appsArray[indexPath.row].name;
+    moreVC.url = self.appsArray[indexPath.row].url;
+    [self.navigationController pushViewController:moreVC animated:YES];
 }
 
-- (void)downBtnClick:(UIButton *)button {
-    YKLogFunc
-}
 
 /*
 // Override to support conditional editing of the table view.

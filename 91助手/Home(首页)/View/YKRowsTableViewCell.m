@@ -165,9 +165,6 @@
     // 下载按钮
     self.downBtn.frame = CGRectMake((CGRectGetMaxX(self.nameLabel.frame) + 5), YKMargin + YKSmallMargin, 55, 25);
     
-    // cell 高度
-    self.rowHeight = self.iconView.xf_height + YKMargin;
-    
 }
 
 

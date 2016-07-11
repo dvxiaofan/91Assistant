@@ -23,7 +23,7 @@
 }
 
 - (CGFloat)appCellHeight {
-    
+    _appCellHeight = YKSmallSpace * 2 + SCREEN.width * 7 / 16 + YKMargin + YKMargin;
     
     return _appCellHeight;
 }

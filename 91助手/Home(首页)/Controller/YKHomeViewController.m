@@ -17,6 +17,7 @@
 #import "YKSectionHeaderView.h"
 #import "YKHomeModel.h"
 #import "YKScrollModel.h"
+#import "YKAppsViewController.h"
 
 
 
@@ -35,12 +36,6 @@
 /** scroll */
 @property (nonatomic, strong) YKScrollPagingView *scrollPV;
 
-//@property (nonatomic, strong) UIView *headerView;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UIButton *moreBtn;
-
-@property (nonatomic, strong) NSMutableArray *sectionNameArray;
-
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
@@ -48,6 +43,9 @@
 
 /** homeData */
 @property (nonatomic, strong) NSArray <YKHomeModel *>*homeData;
+
+/** moreUrl */
+@property (nonatomic, strong) NSArray *moreUrlArray;
 
 
 
@@ -84,7 +82,12 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     
     [self setupRefresh];
     
-    [self loadRowsCellData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self loadRowsCellData];
+        
+        [self setupMoreUrl];
+        
+    });
 }
 
 - (void)setupScrollView {
@@ -121,19 +124,15 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     [self.tableView.mj_header beginRefreshing];
 }
 
-#pragma mark - 加载数据
+- (void)setupMoreUrl {
+    self.moreUrlArray = @[HOME_HOT_URL, HOME_JINGPIN_URL, HOME_LIMIT_URL, HOME_BIBEI_URL, HOME_APP_URL, HOME_DARKHORSE_URL, HOME_EDITOR_URL];
+}
 
-//- (void)reloadHomeData {
-    
-    //[self loadHomeData];
-    
-    //[self loadRowsCellData];
-    
-//}
+#pragma mark - 加载数据
 
 - (void)loadHomeData {
     // 取消所有请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     __weak typeof(self) weakSelf = self;
     
@@ -159,9 +158,8 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     
     __weak typeof(self) weakSelf = self;
     
-    [self.manager GET:@"https://www.baidu.com" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        YKLog(@"success");
-        //weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+    [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
         [weakSelf.tableView reloadData];
         
@@ -279,16 +277,22 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 - (void)moreBtnClick:(UIButton *)button {
     
     NSInteger tag = button.tag;
-    //YKLog(@"ttt = %zd", tag);
     
-    YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    moreVC.navTitle = self.homeData[tag].name;
-    //moreVC.url = self.homeData[tag].act;
-    moreVC.url = HOME_JINGPIN_URL;
+    if (tag == 4) {
+        YKAppsViewController *appsVC = [[YKAppsViewController alloc] init];
+        appsVC.navTitle = self.homeData[tag].name;
+        appsVC.url = self.moreUrlArray[tag];
+        
+        [self.navigationController pushViewController:appsVC animated:YES];
+        
+    } else {
+        YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
+        moreVC.navTitle = self.homeData[tag].name;
+        moreVC.url = self.moreUrlArray[tag];
+        
+        [self.navigationController pushViewController:moreVC animated:YES];
+    }
     
-    YKLog(@"url = %@", self.homeData[tag].act);
-    
-    [self.navigationController pushViewController:moreVC animated:YES];
 }
 
 - (void)scrollPagingViewImageTapIndex:(NSInteger)index {
