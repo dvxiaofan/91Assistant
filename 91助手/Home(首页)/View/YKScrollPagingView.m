@@ -102,8 +102,8 @@
     pageControl.frame = CGRectMake((self.bounds.size.width - pageControlW) / 2, self.bounds.size.height - pageControlH, pageControlW, pageControlH);
     pageControl.numberOfPages = self.sModel.count;
     pageControl.userInteractionEnabled = NO;
-    pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+    pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
     [self addSubview:pageControl];
     self.pageControl = pageControl;
     

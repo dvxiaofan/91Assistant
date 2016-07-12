@@ -41,13 +41,15 @@
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
 
+@property (nonatomic, strong) NSMutableArray <YKApp *>*fiveSectionApps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*sixSectionApps;
+
 /** homeData */
 @property (nonatomic, strong) NSArray <YKHomeModel *>*homeData;
 
 /** moreUrl */
 @property (nonatomic, strong) NSArray *moreUrlArray;
-
-
 
 @end
 
@@ -71,7 +73,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.navigationItem.title = @"9 1助手";
     
     // 创建TableView
@@ -84,24 +86,25 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     
     [self setupRefresh];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self loadRowsCellData];
+    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [self loadRowsCellData];
+    
+    [self setupMoreUrl];
+    
+    [self loadFiveSectionCellsData];
+    
+    [self loadSixSectionCellsData];
         
-        [self setupMoreUrl];
-        
-    });
+    //});
 }
 
 - (void)setupScrollView {
     
-    YKScrollPagingView *scrollPV = [[YKScrollPagingView alloc] init];//WithFrame:
+    YKScrollPagingView *scrollPV = [[YKScrollPagingView alloc] init];
     scrollPV.frame = CGRectMake(0, 0, SCREEN.width, SCREEN.width * 7 / 16);
-    //[scrollPV setImageView];
-    // 设置代理
     scrollPV.delegate = self;
     self.scrollPV = scrollPV;
     
-    // 设置 tableView 的头视图为滚动视图
     self.tableView.tableHeaderView = scrollPV;
 }
 
@@ -132,8 +135,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 #pragma mark - 加载数据
 
 - (void)loadHomeData {
-    // 取消所有请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     __weak typeof(self) weakSelf = self;
     
@@ -155,14 +156,49 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 - (void)loadRowsCellData {
     
-    // 取消所有请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
     __weak typeof(self) weakSelf = self;
     
     [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"rows error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+- (void)loadFiveSectionCellsData {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_DARKHORSE_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.fiveSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        YKLog(@"two successcont = %zd", weakSelf.fiveSectionApps.count);
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"rows error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+- (void)loadSixSectionCellsData {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_EDITOR_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.sixSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        //YKLog(@"two successcont = %zd", weakSelf.sixSectionApps.count);
         [weakSelf.tableView reloadData];
         
         [weakSelf.tableView.mj_header endRefreshing];
@@ -198,8 +234,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     if (self.homeData[indexPath.section].uiType == 1) {
         
         YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
-        //cell.url = @"xiaofan";
-        self.cell = cell;
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -207,16 +241,24 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     } else if (self.homeData[indexPath.section].uiType == 4) {
         YKRowsTableViewCell *cellRows = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
         
-        self.cellRows = cellRows;
-        cellRows.app = self.apps[indexPath.row];
+        if (indexPath.section == 1) {
+            cellRows.app = self.apps[indexPath.row];
+            
+        } else if (indexPath.section == 5) {
+            cellRows.app = self.fiveSectionApps[indexPath.row];
+            //YKLog(@"22name = %@", self.twoApps[indexPath.row].name);
+        } else if (indexPath.section == 6) {
+            cellRows.app = self.sixSectionApps[indexPath.row];
+            //YKLog(@"3");
+        }
+        
+        
         cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
         //cellRows.delegate = self;
         [cellRows.downBtn addTarget:self action:@selector(downBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         return cellRows;
     }  else {
         YKOtherTableViewCell *cellOther = [tableView dequeueReusableCellWithIdentifier:YKOtherCellID];
-        
-        self.cellOther = cellOther;
         cellOther.selectionStyle = UITableViewCellSelectionStyleNone;
         cellOther.delegate = self;
         return cellOther;
@@ -248,14 +290,13 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 // 每个 cell 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //return 80;
     if (self.homeData[indexPath.section].uiType == 1) {
         return self.apps[indexPath.row].singleCellHeight;
         
     } else if (self.homeData[indexPath.section].uiType == 4) {
         return self.apps[indexPath.row].rowsCellHeight;
     } else {
-        return self.cellOther.rowHeight;
+        return self.apps[indexPath.row].appCellHeight;
     }
 }
 // 点击每一个 cell 的事件

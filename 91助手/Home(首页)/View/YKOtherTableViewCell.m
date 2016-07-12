@@ -44,7 +44,7 @@
 
 - (void)loadNewData {
     // 取消所有请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     //YKLog(@"uu = %@", self.url);
     

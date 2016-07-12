@@ -24,6 +24,9 @@
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
+/** jjjj */
+@property (nonatomic, assign) NSInteger hhhh;
+
 @end
 
 @implementation YKSingleRowTableViewCell
@@ -48,10 +51,12 @@
 
 - (void)loadNewData {
     // 取消所有请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     __weak typeof(self) weakSelf = self;
     
     [self.manager GET:HOME_HOT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //YKLogFunc
         
         NSArray *singleRowApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
