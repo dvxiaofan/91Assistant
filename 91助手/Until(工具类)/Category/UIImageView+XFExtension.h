@@ -9,8 +9,8 @@
 
 @interface UIImageView (XFExtension)
 
-- (void)xf_setHeaderWithUrl:(NSString *)url placeholder:(NSString *)placeholderName;
+- (void)xf_setRectHeaderWithUrl:(NSString *)url placeholder:(NSString *)placeholderName;
 
-- (void)xf_setHeaderSixWithUrl:(NSString *)url placeholder:(NSString *)placeholderName;
+- (void)xf_setSixSideHeaderWithUrl:(NSString *)url placeholder:(NSString *)placeholderName;
 
 @end

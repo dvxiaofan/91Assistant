@@ -43,7 +43,7 @@
 - (void)setModel:(YKChatCellModel *)model {
     _model = model;
     
-    [self.iconView xf_setHeaderSixWithUrl:model.icon placeholder:@"avatar_ba_defaul140"];
+    [self.iconView xf_setSixSideHeaderWithUrl:model.icon placeholder:@"avatar_ba_defaul140"];
     
     self.nameLabel.text = model.name;
 }

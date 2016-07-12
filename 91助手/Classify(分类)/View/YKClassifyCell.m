@@ -55,7 +55,7 @@
     _app = app;
     
     // 头像
-    [self.iconView xf_setHeaderWithUrl:app.icon placeholder:@"avatar_poto_defaul140"];
+    [self.iconView xf_setRectHeaderWithUrl:app.icon placeholder:@"avatar_poto_defaul140"];
     
     // 名字
     self.nameLabel.text = app.name;

@@ -9,7 +9,7 @@
 
 @implementation UIImageView (XFExtension)
 
-- (void)xf_setHeaderWithUrl:(NSString *)url placeholder:(NSString *)placeholderName {
+- (void)xf_setRectHeaderWithUrl:(NSString *)url placeholder:(NSString *)placeholderName {
     [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:placeholderName] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
         if (image == nil) return;
@@ -19,9 +19,11 @@
     }];
 }
 
-- (void)xf_setHeaderSixWithUrl:(NSString *)url placeholder:(NSString *)placeholderName {
+- (void)xf_setSixSideHeaderWithUrl:(NSString *)url placeholder:(NSString *)placeholderName {
     
     [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:placeholderName] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        if (image == nil) return;
         
         UIBezierPath * path = [UIBezierPath bezierPath];
         path.lineWidth = 2;

@@ -85,7 +85,7 @@
         CGFloat imgViewX = i * YKAppWH + YKMargin * i;
         CGFloat imgViewY = YKSmallMargin;
         iconView.frame = CGRectMake(imgViewX, imgViewY, YKAppWH, YKAppWH);
-        [iconView xf_setHeaderWithUrl:self.singleRowApp.icon placeholder:@"icon-29"];
+        [iconView xf_setRectHeaderWithUrl:self.singleRowApp.icon placeholder:@"icon-29"];
         iconView.clipsToBounds = YES;
         iconView.layer.cornerRadius = 8.0;
         [showAppSV addSubview:iconView];

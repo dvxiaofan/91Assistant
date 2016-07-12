@@ -93,7 +93,7 @@
     self.starView.showStar = 4 * 20;
     
     // 图标
-    [self.iconView xf_setHeaderWithUrl:app.icon placeholder:@"250_250_pic"];
+    [self.iconView xf_setRectHeaderWithUrl:app.icon placeholder:@"250_250_pic"];
     self.iconView.layer.cornerRadius = 8.0;
     self.iconView.clipsToBounds = YES;
     
