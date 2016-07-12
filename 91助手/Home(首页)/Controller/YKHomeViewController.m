@@ -27,10 +27,6 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) YKSingleRowTableViewCell *cell;
-
-@property (nonatomic, strong) YKRowsTableViewCell *cellRows;
-
 @property (nonatomic, strong) YKOtherTableViewCell *cellOther;
 
 /** scroll */
@@ -39,7 +35,17 @@
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
-@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
+//@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*zeroSectionApps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*oneSectionApps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*twoSectionApps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*threeSectionApps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*fourSectionApps;
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*fiveSectionApps;
 
@@ -86,16 +92,20 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     
     [self setupRefresh];
     
-    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    [self loadRowsCellData];
+    [self loadZeroSectionData];
+    
+    [self loadOneSectionData];
+    
+    [self loadTwoSectionData];
+    
+    [self loadThreeSectionData];
+    
+    [self loadFiveSectionData];
+    
+    [self loadSixSectionData];
     
     [self setupMoreUrl];
     
-    [self loadFiveSectionCellsData];
-    
-    [self loadSixSectionCellsData];
-        
-    //});
 }
 
 - (void)setupScrollView {
@@ -154,12 +164,11 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     }];
 }
 
-- (void)loadRowsCellData {
-    
+- (void)loadZeroSectionData {
     __weak typeof(self) weakSelf = self;
     
-    [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+    [self.manager GET:HOME_HOT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.zeroSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
         [weakSelf.tableView reloadData];
         
@@ -173,13 +182,67 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     }];
 }
 
-- (void)loadFiveSectionCellsData {
+- (void)loadOneSectionData {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.oneSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"rows error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+- (void)loadTwoSectionData {
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_LIMIT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.twoSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"rows error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+- (void)loadThreeSectionData {
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_BIBEI_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.threeSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"rows error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+- (void)loadFiveSectionData {
     
     __weak typeof(self) weakSelf = self;
     
     [self.manager GET:HOME_DARKHORSE_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         weakSelf.fiveSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
-        YKLog(@"two successcont = %zd", weakSelf.fiveSectionApps.count);
         [weakSelf.tableView reloadData];
         
         [weakSelf.tableView.mj_header endRefreshing];
@@ -192,13 +255,12 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     }];
 }
 
-- (void)loadSixSectionCellsData {
+- (void)loadSixSectionData {
     
     __weak typeof(self) weakSelf = self;
     
     [self.manager GET:HOME_EDITOR_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         weakSelf.sixSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
-        //YKLog(@"two successcont = %zd", weakSelf.sixSectionApps.count);
         [weakSelf.tableView reloadData];
         
         [weakSelf.tableView.mj_header endRefreshing];
@@ -237,24 +299,27 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        if (indexPath.section == 0) {
+            cell.app = self.zeroSectionApps[indexPath.row];
+        } else if (indexPath.section == 2) {
+            cell.app = self.twoSectionApps[indexPath.row];
+        } else if (indexPath.section == 3) {
+            cell.app = self.threeSectionApps[indexPath.row];
+        }
+        
         return cell;
     } else if (self.homeData[indexPath.section].uiType == 4) {
         YKRowsTableViewCell *cellRows = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
         
         if (indexPath.section == 1) {
-            cellRows.app = self.apps[indexPath.row];
-            
+            cellRows.app = self.oneSectionApps[indexPath.row];
         } else if (indexPath.section == 5) {
             cellRows.app = self.fiveSectionApps[indexPath.row];
-            //YKLog(@"22name = %@", self.twoApps[indexPath.row].name);
         } else if (indexPath.section == 6) {
             cellRows.app = self.sixSectionApps[indexPath.row];
-            //YKLog(@"3");
         }
         
-        
         cellRows.selectionStyle = UITableViewCellSelectionStyleNone;
-        //cellRows.delegate = self;
         [cellRows.downBtn addTarget:self action:@selector(downBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         return cellRows;
     }  else {
@@ -291,12 +356,12 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 // 每个 cell 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.homeData[indexPath.section].uiType == 1) {
-        return self.apps[indexPath.row].singleCellHeight;
+        return self.oneSectionApps[indexPath.row].singleCellHeight;
         
     } else if (self.homeData[indexPath.section].uiType == 4) {
-        return self.apps[indexPath.row].rowsCellHeight;
+        return self.oneSectionApps[indexPath.row].rowsCellHeight;
     } else {
-        return self.apps[indexPath.row].appCellHeight;
+        return self.oneSectionApps[indexPath.row].appCellHeight;
     }
 }
 // 点击每一个 cell 的事件

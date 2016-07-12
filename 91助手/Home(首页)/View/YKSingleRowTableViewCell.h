@@ -18,15 +18,13 @@
 
 @interface YKSingleRowTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) CGFloat rowHeight;
-
 @property (nonatomic, assign) id <YKSingleRowTableViewCellDelegate> delegate;
 
 /** url */
 @property (nonatomic, copy) NSString *url;
 
 /** a */
-@property (nonatomic, strong) YKApp *singleRowApp;
+@property (nonatomic, strong) YKApp *app;
 
 @end
 
