@@ -14,9 +14,13 @@
 
 + (void)load {
     
-    [YKClassify mj_setupObjectClassInArray:^NSDictionary *{
-        return @{@"listTags" : [YKListTags class]};
-    }];
+    //[YKClassify mj_setupObjectClassInArray:^NSDictionary *{
+        //return @{@"listTags" : [YKListTags class]};
+    //}];
+    
+    //[NSObject mj_setupObjectClassInArray:^NSDictionary *{
+        //return @{@"listTags" : [YKListTags class]};
+    //}];
 }
 
 @end

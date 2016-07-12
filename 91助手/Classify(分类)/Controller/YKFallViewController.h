@@ -9,5 +9,6 @@
 #import "YKClassifyDataViewController.h"
 
 @interface YKFallViewController : YKClassifyDataViewController
-
+/** url */
+@property (nonatomic, strong) NSArray *urlArray;
 @end

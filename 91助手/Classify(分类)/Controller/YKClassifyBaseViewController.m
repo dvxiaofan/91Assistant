@@ -12,6 +12,7 @@
 #import "YKFallViewController.h"
 #import "YKMoneyAppsViewController.h"
 #import "YKTitleButton.h"
+#import "YKListTags.h"
 
 @interface YKClassifyBaseViewController ()<UIScrollViewDelegate>
 
@@ -25,15 +26,41 @@
 /** 滚动titleSView */
 @property (nonatomic, weak) UIScrollView  *titleSView;
 
+/** n */
+@property (nonatomic, strong) NSArray <YKListTags *>*list;
+
+/** tageName */
+@property (nonatomic, strong) NSMutableArray *tagNameArray;
+
+/** url */
+@property (nonatomic, strong) NSMutableArray *urlArray;
+
 @end
 
 @implementation YKClassifyBaseViewController
+
+#pragma mark - 懒加载
+
+- (NSMutableArray *)tagNameArray {
+    if (!_tagNameArray) {
+        _tagNameArray = [NSMutableArray array];
+    }
+    return _tagNameArray;
+}
+
+- (NSMutableArray *)urlArray {
+    if (!_urlArray) {
+        _urlArray = [NSMutableArray array];
+    }
+    return _urlArray;
+}
 
 #pragma mark - 初始化
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.navTitle;
+    
+    [self setupMainData];
     
     [self setupChildViewControllers];
     
@@ -44,18 +71,35 @@
     [self addChildVcView];
 }
 
+- (void)setupMainData {
+    self.navigationItem.title = self.navTitle;
+    
+    // 标题栏数据
+    for (NSDictionary *dic in self.listTags) {
+        
+        NSString *name = dic[@"tagName"];
+        NSString *url = dic[@"url"];
+        
+        [self.tagNameArray addObject:name];
+        [self.urlArray addObject:url];
+    }
+}
 
 - (void)setupChildViewControllers {
     YKFreeAppsViewController   *freeView        = [[YKFreeAppsViewController alloc] init];
+    freeView.urlArray = self.urlArray;
     [self addChildViewController:freeView];
     
     YKLimitViewController      *limitView       = [[YKLimitViewController alloc] init];
+    limitView.urlArray = self.urlArray;
     [self addChildViewController:limitView];
     
     YKFallViewController       *fallView        = [[YKFallViewController alloc] init];
+    fallView.urlArray = self.urlArray;
     [self addChildViewController:fallView];
     
     YKMoneyAppsViewController  *moneyView       = [[YKMoneyAppsViewController alloc] init];
+    moneyView.urlArray = self.urlArray;
     [self addChildViewController:moneyView];
 }
 
@@ -93,8 +137,7 @@
     self.titleSView = titleSView;
     
     // 添加按钮
-    NSArray *titlesArray = @[@"免费应用", @"限时免费", @"降价应用", @"收费应用"];
-    NSInteger count = titlesArray.count;
+    NSInteger count = self.tagNameArray.count;
     CGFloat titleBtnW = SCREEN.width / 4;
     CGFloat titleBtnH = titleSView.xf_height;
     
@@ -105,7 +148,7 @@
         titleBtn.tag = i;
         
         // 设置数据
-        [titleBtn setTitle:titlesArray[i] forState:UIControlStateNormal];
+        [titleBtn setTitle:self.tagNameArray[i] forState:UIControlStateNormal];
         
         // 设置 frame
         titleBtn.frame = CGRectMake(i * titleBtnW, 0, titleBtnW, titleBtnH);

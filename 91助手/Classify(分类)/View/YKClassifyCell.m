@@ -19,6 +19,9 @@
 /** infoLabel */
 @property (nonatomic, weak) UILabel *summaryLabel;
 
+/** mm */
+@property (nonatomic, strong) NSMutableArray *arrays;
+
 @end
 
 @implementation YKClassifyCell

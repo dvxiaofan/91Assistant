@@ -10,4 +10,7 @@
 
 @interface YKFreeAppsViewController : YKClassifyDataViewController
 
+/** url */
+@property (nonatomic, strong) NSArray *urlArray;
+
 @end

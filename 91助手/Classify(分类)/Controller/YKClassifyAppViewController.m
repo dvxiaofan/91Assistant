@@ -101,6 +101,7 @@ static NSString *const YKClassifyCellID = @"YKClassifyCell";
     
     YKClassifyBaseViewController *baseVC = [[YKClassifyBaseViewController alloc] init];
     baseVC.navTitle = self.appArray[indexPath.row].name;
+    baseVC.listTags = self.appArray[indexPath.row].listTags;
     [self.navigationController pushViewController:baseVC animated:YES];
     
 }

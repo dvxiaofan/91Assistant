@@ -13,4 +13,7 @@
 /** navTitle */
 @property (nonatomic, copy) NSString *navTitle;
 
+/** li */
+@property (nonatomic, strong) NSArray *listTags;
+
 @end

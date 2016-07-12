@@ -20,8 +20,8 @@
 @property (nonatomic, copy)     NSString    *summary;
 
 /** listTags */
+//@property (nonatomic, strong)   YKListTags     *listTags;
 @property (nonatomic, strong)   NSArray     *listTags;
-
 
 /** cell 高度 */
 @property (nonatomic, assign)   CGFloat     cellHeight;

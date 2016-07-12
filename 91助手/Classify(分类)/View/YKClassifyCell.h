@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class YKClassify;
+@class YKClassify, YKListTags;
 
 @interface YKClassifyCell : UITableViewCell
 
 /** app */
 @property (nonatomic, strong) YKClassify *app;
+
+/** li */
+@property (nonatomic, strong) YKListTags *listTags;
 
 
 
