@@ -21,7 +21,7 @@
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        
+        self.contentView.backgroundColor = [UIColor whiteColor];
         self.textLabel.font = YKSectionHeaderTestFont;
         
         [self createMoreBtn];

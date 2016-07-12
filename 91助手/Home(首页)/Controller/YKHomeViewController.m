@@ -154,6 +154,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 }
 
 - (void)loadRowsCellData {
+    
     // 取消所有请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
@@ -184,9 +185,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 // 每个分区的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0 || section == 2 || section == 3) {
-        return 1;
-    } else if (section == 1 || section == 5 || section == 6) {
+    if (self.homeData[section].uiType == 4) {
         return 10;
     } else {
         return 1;
@@ -196,16 +195,16 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 // 每行的数据
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
+    if (self.homeData[indexPath.section].uiType == 1) {
         
         YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
-        
+        //cell.url = @"xiaofan";
         self.cell = cell;
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
-    } else if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
+    } else if (self.homeData[indexPath.section].uiType == 4) {
         YKRowsTableViewCell *cellRows = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
         
         self.cellRows = cellRows;
@@ -240,7 +239,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 // header 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 38;
+    return 35;
 }
 // footer 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -250,12 +249,10 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 // 每个 cell 的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //return 80;
-    
-    if (indexPath.section == 0 || indexPath.section == 2 || indexPath.section == 3) {
-        
+    if (self.homeData[indexPath.section].uiType == 1) {
         return self.apps[indexPath.row].singleCellHeight;
         
-    } else if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
+    } else if (self.homeData[indexPath.section].uiType == 4) {
         return self.apps[indexPath.row].rowsCellHeight;
     } else {
         return self.cellOther.rowHeight;
@@ -263,8 +260,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 }
 // 点击每一个 cell 的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1 || indexPath.section == 5 || indexPath.section == 6) {
-        //YKLog(@"呀,你点我了，我要有反应了");
+    if (self.homeData[indexPath.section].uiType == 4) {
         YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
         
         [self.navigationController pushViewController:detailVC animated:YES];
@@ -320,7 +316,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 }
 
 - (void)showAppScrollViewImageTapIndex:(NSInteger)index {
-    //YKLog(@"点击了cell中的app的某一个");
     YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
     
     [self.navigationController pushViewController:detailVC animated:YES];

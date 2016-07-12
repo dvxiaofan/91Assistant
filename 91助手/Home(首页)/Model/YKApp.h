@@ -10,27 +10,26 @@
 
 @interface YKApp : NSObject
 
-@property (nonatomic, copy)   NSString    *name;
-@property (nonatomic, copy)   NSString    *icon;
-@property (nonatomic, copy)   NSString    *resId;
-@property (nonatomic, copy)   NSString    *downTimes;
-@property (nonatomic, copy)   NSString    *price;
-@property (nonatomic, copy)   NSString    *url;
-@property (nonatomic, assign) NSUInteger  size;
-@property (nonatomic, assign) NSInteger   star;
+@property (nonatomic, copy)   NSString    *name;            // 名字
+@property (nonatomic, copy)   NSString    *icon;            // 图标
+@property (nonatomic, copy)   NSString    *resId;           //
+@property (nonatomic, copy)   NSString    *downTimes;       // 下载次数
+@property (nonatomic, copy)   NSString    *price;           // 价格
+@property (nonatomic, copy)   NSString    *url;             // 链接
+@property (nonatomic, assign) NSUInteger  size;             // 大小
+@property (nonatomic, assign) NSInteger   star;             // 星级评价
 
-
-@property (nonatomic, copy)   NSString    *detailUrl;
-@property (nonatomic, copy)   NSString    *downAct;
-@property (nonatomic, copy)   NSString    *cateName;
+@property (nonatomic, copy)   NSString    *detailUrl;       // 详情链接
+@property (nonatomic, copy)   NSString    *downAct;         // 下载链接
+@property (nonatomic, copy)   NSString    *cateName;        // 分类名
 @property (nonatomic, copy)   NSString    *summary;         // 介绍
-@property (nonatomic, copy)   NSString    *author;
-@property (nonatomic, assign) CGFloat     originalPrice;
-@property (nonatomic, assign) int         appType;
-@property (nonatomic, assign) int         state;
+@property (nonatomic, copy)   NSString    *author;          // 作者
+@property (nonatomic, assign) CGFloat     originalPrice;    // 价格
+@property (nonatomic, assign) int         appType;          // 
+@property (nonatomic, assign) int         state;            // 状态
 
 
-/** 当行 cell 高度 */
+/** 单行 cell 高度 */
 @property (nonatomic, assign) CGFloat     singleCellHeight;
 /** 多行 cell 高度 */
 @property (nonatomic, assign) CGFloat     rowsCellHeight;

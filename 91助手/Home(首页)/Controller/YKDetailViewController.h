@@ -10,5 +10,7 @@
 
 @interface YKDetailViewController : UIViewController
 
+/** url */
+@property (nonatomic, copy) NSString *url;
 
 @end

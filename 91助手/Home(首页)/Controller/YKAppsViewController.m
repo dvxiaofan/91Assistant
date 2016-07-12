@@ -42,9 +42,8 @@ static NSString *const YKAppsViewCellID = @"YKAppsViewCell";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = self.navTitle;
     
-    //self.tableView.rowHeight = 280;
-    
     [self.tableView registerClass:[YKAppsViewCell class] forCellReuseIdentifier:YKAppsViewCellID];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     [self.tableView.mj_header beginRefreshing];
