@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = YKGrayColor(236);
     self.navigationItem.title = self.navTitle;
 }
 

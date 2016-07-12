@@ -11,4 +11,6 @@
 
 - (void)xf_setHeaderWithUrl:(NSString *)url placeholder:(NSString *)placeholderName;
 
+- (void)xf_setHeaderSixWithUrl:(NSString *)url placeholder:(NSString *)placeholderName;
+
 @end

@@ -24,7 +24,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
+        self.backgroundColor = YKBaseBgColor;
         [self setupCell];
     }
     return self;
@@ -43,7 +43,7 @@
 - (void)setModel:(YKChatCellModel *)model {
     _model = model;
     
-    [self.iconView xf_setHeaderWithUrl:model.icon placeholder:@"avatar_ba_defaul140"];
+    [self.iconView xf_setHeaderSixWithUrl:model.icon placeholder:@"avatar_ba_defaul140"];
     
     self.nameLabel.text = model.name;
 }

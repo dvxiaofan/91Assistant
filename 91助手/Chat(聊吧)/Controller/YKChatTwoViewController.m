@@ -41,7 +41,7 @@ static NSString *const YKChatCellID = @"YKChatViewCell";
 
 
 - (void)setupTableView {
-    self.tableView.backgroundColor = YKBaseBgColor;
+    self.tableView.backgroundColor = YKGrayColor(236);
     
     self.tableView.separatorStyle = UITableViewCellEditingStyleNone;
     
