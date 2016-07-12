@@ -24,7 +24,6 @@
 @property (nonatomic, weak) YKStarView *starView;
 @property (nonatomic, weak) UILabel *downNumLabel;
 @property (nonatomic, weak) UILabel *fileSizeLabel;
-//@property (nonatomic, weak) UIButton *downBtn;
 
 
 
@@ -79,7 +78,6 @@
     UIButton *downBtn = [[UIButton alloc] init];
     [self addSubview:downBtn];
     self.downBtn = downBtn;
-    
 }
 
 - (void)setApp:(YKApp *)app {

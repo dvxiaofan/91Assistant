@@ -13,13 +13,19 @@
 
 @interface YKMoreViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView           *tableView;
 
 /** manager */
-@property (nonatomic, strong) XFHTTPSessionManager *manager;
+@property (nonatomic, strong) XFHTTPSessionManager  *manager;
 
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
+
+/** lastpage */
+@property (nonatomic, strong) NSMutableArray        *boolArray;
+/** boo */
+@property (nonatomic, strong) NSNumber              *lastPage;
+
 
 @end
 
@@ -48,7 +54,9 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     [self firstLoadData];
     
-    [self setupRefresh];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setupRefresh];
+    });
 }
 
 - (void)setupNav {
@@ -69,7 +77,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
     // 去掉系统分割线
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -84,24 +92,20 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
     
-    [self loadRowsCellData];
+    [self loadNewData];
 }
 
 - (void)setupRefresh {
-    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadRowsCellData)];
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    if (![self.lastPage isEqualToNumber:@1]) {
+        self.tableView.mj_footer = [XFRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    }
 }
-
-//- (void)viewWillAppear:(BOOL)animated {
-    //[super viewWillAppear:animated];
-    
-    //[SVProgressHUD showWithStatus:@"加载中,请稍候..."];
-    
-    //[self loadRowsCellData];
-//}
 
 #pragma mark - 加载数据
 
-- (void)loadRowsCellData {
+- (void)loadNewData {
     
     // 取消所有请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
@@ -111,6 +115,8 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        weakSelf.lastPage = responseObject[@"Result"][@"atLastPage"];
         
         [weakSelf.tableView reloadData];
         
@@ -125,15 +131,38 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     }];
 }
 
+- (void)loadMoreData {
+    
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        YKLog(@"load more success");
+        
+        [weakSelf.tableView reloadData];
+        
+        [SVProgressHUD dismiss];
+        [weakSelf.tableView.mj_footer endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+        [SVProgressHUD showErrorWithStatus:@"加载失败,请稍候再试!"];
+        [weakSelf.tableView.mj_footer endRefreshing];
+    }];
+}
+
 
 #pragma mark - 事件监听
 
-/**
- *  YKRowsTableViewCell 代理方法
- */
-- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
-    YKLog(@"你点击了下载按钮");
-}
+///**
+ //*  YKRowsTableViewCell 代理方法
+ //*/
+//- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
+    //YKLog(@"你点击了下载按钮");
+//}
 
 #pragma mark - Table view data source
 

@@ -19,3 +19,8 @@ CGFloat const YKSmallMargin      = YKMargin * 0.5;
 
 /** 应用专题页面小间隔 */
 CGFloat const YKSmallSpace       = 5;
+/** 是最后一页 */
+
+NSString *const isLastPage       = @"1";
+/** 不是最后一页 */
+NSString *const notLastPage      = @"0";

@@ -7,17 +7,40 @@
 //
 
 #import "YKClassifyDataViewController.h"
+#import "YKRowsTableViewCell.h"
+#import "YKDetailViewController.h"
+#import "YKApp.h"
 
 @interface YKClassifyDataViewController ()
+/** 任务管理者 */
+@property (nonatomic, strong) XFHTTPSessionManager      *manager;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
 
 @end
 
+static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
+
 @implementation YKClassifyDataViewController
+
+#pragma mark - 懒加载
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
+#pragma mark - 初始化
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setupTabelView];
+    
+    [self firstLoadData];
+    
+    [self setupRefresh];
 }
 
 - (void)setupTabelView {
@@ -26,78 +49,131 @@
     self.tableView.contentInset = UIEdgeInsetsMake(64 + 30, 0, 49, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
+    [self.tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupRefresh {
+    self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
+    self.tableView.mj_footer = [XFRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+}
+
+#pragma mark - 加载数据
+
+// 第一次加载数据
+- (void)firstLoadData {
+    
+    [SVProgressHUD showWithStatus:@"加载中,请稍候..."];
+    
+    // 经测试,需要延迟一点加载,否则 URL 可能为空
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self loadNewData];
+    });
+}
+
+
+/**
+ *  刷新数据
+ */
+- (void)loadNewData {
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    // 请求
+    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable responseObject) {
+        
+        weakSelf.apps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        // 刷新表格
+        [weakSelf.tableView reloadData];
+        
+        [SVProgressHUD dismiss];
+        // 控件结束刷新
+        [weakSelf.tableView.mj_header endRefreshing];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"请求失败 - %@", error);
+        
+        [SVProgressHUD showErrorWithStatus:@"加载失败,请稍候再试!"];
+        // 控件结束刷新
+        [weakSelf.tableView.mj_header endRefreshing];
+    }];
+}
+
+/**
+ *  加载更多数据
+ */
+-(void)loadMoreData {
+    // 取消所有请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    // 请求
+    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary * _Nullable responseObject) {
+        
+        YKLog(@"more success");
+        
+        
+        // 刷新表格
+        [self.tableView reloadData];
+        
+        //控件结束刷新
+        [self.tableView.mj_footer endRefreshing];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"请求失败 - %@", error);
+        [SVProgressHUD showErrorWithStatus:@"加载失败,请稍候再试!"];
+        // 控件结束刷新
+        [self.tableView.mj_footer endRefreshing];
+    }];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.apps.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %zd", [self class], indexPath.row];
+    YKRowsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
+    cell.app = self.apps[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell.downBtn addTarget:self action:@selector(downBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return self.apps[indexPath.row].rowsCellHeight;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    YKDetailViewController *datilView = [[YKDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:datilView animated:YES];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+#pragma mark  - 事件监听
+
+- (void)downBtnClick:(UIButton *)button {
+    YKLogFunc
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

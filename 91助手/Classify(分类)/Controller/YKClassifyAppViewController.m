@@ -9,8 +9,8 @@
 #import "YKClassifyAppViewController.h"
 #import "YKClassifyCell.h"
 #import "YKClassify.h"
-#import "YKListTags.h"
 #import "YKClassifyBaseViewController.h"
+#import "YKMoreViewController.h"
 
 @interface YKClassifyAppViewController ()
 

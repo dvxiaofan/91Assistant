@@ -80,6 +80,8 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     // 创建头部滚动视图
     [self setupScrollView];
     
+    [self loadHomeData];
+    
     [self setupRefresh];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -106,7 +108,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 - (void)setupTableView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStyleGrouped];
     // 去掉系统分割线
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -121,7 +123,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 - (void)setupRefresh {
     self.tableView.mj_header = [XFRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadHomeData)];
-    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)setupMoreUrl {
@@ -132,7 +133,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 - (void)loadHomeData {
     // 取消所有请求
-    //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     __weak typeof(self) weakSelf = self;
     
