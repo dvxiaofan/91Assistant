@@ -8,20 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-//@class YKApp;
-
-@protocol YKSingleRowTableViewCellDelegate <NSObject>
-
-- (void)showAppScrollViewImageTapIndex:(NSInteger)index;
-
-@end
-
 @interface YKSingleRowTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) id <YKSingleRowTableViewCellDelegate> delegate;
-
 /** url */
-@property (nonatomic, copy) NSString *url;
+//@property (nonatomic, copy) NSString *url;
 
 
 @end

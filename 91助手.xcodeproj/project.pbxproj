@@ -48,6 +48,7 @@
 		BD5D81A51D35EDEC00A47F31 /* YKConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81971D35EDEC00A47F31 /* YKConst.m */; };
 		BD5D81A61D35EDEC00A47F31 /* YKModelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81991D35EDEC00A47F31 /* YKModelConfig.m */; };
 		BD5D81A71D35EDEC00A47F31 /* YKTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D819B1D35EDEC00A47F31 /* YKTools.m */; };
+		BD5D81AD1D35FC4900A47F31 /* YKDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */; };
 		BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */; };
 		BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99402C1D33327500C061EE /* YKSectionHeaderView.m */; };
 		BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940341D33615A00C061EE /* YKHomeModel.m */; };
@@ -172,6 +173,8 @@
 		BD5D81991D35EDEC00A47F31 /* YKModelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKModelConfig.m; sourceTree = "<group>"; };
 		BD5D819A1D35EDEC00A47F31 /* YKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTools.h; sourceTree = "<group>"; };
 		BD5D819B1D35EDEC00A47F31 /* YKTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTools.m; sourceTree = "<group>"; };
+		BD5D81AB1D35FC4900A47F31 /* YKDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailHeaderView.h; sourceTree = "<group>"; };
+		BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailHeaderView.m; sourceTree = "<group>"; };
 		BD8D94FE1D33A51C00177580 /* YKSearchButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchButtons.h; sourceTree = "<group>"; };
 		BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchButtons.m; sourceTree = "<group>"; };
 		BD99402B1D33327500C061EE /* YKSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSectionHeaderView.h; sourceTree = "<group>"; };
@@ -493,6 +496,8 @@
 				9CC490281D05519D003F7F9E /* YKStarView.m */,
 				BD5D817F1D35ECB500A47F31 /* YKRowsTableViewCell.h */,
 				BD5D81801D35ECB500A47F31 /* YKRowsTableViewCell.m */,
+				BD5D81AB1D35FC4900A47F31 /* YKDetailHeaderView.h */,
+				BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -928,6 +933,7 @@
 				BD1D44C91D3092120048190C /* YKChatThreeViewController.m in Sources */,
 				BD1BE2721D30BE2000A377A9 /* YKClassifyCell.m in Sources */,
 				BD5D81A51D35EDEC00A47F31 /* YKConst.m in Sources */,
+				BD5D81AD1D35FC4900A47F31 /* YKDetailHeaderView.m in Sources */,
 				BD5D81A31D35EDEC00A47F31 /* XFRefreshHeader.m in Sources */,
 				BD5D819F1D35EDEC00A47F31 /* AppDelegate.m in Sources */,
 				BD99403B1D33885E00C061EE /* YKAppsViewCell.m in Sources */,

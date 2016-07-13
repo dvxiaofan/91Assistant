@@ -37,7 +37,7 @@
     
     [self setupTableView];
     
-    
+    [self loadDetailData];
 }
 
 - (void)setupTableView {
@@ -73,6 +73,17 @@
 
 #pragma mark - 加载数据
 
+- (void)loadDetailData {
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        YKLog(@"success");
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"加载失败,请稍候再试"];
+    }];
+}
 
 #pragma mark - Table view data source
 

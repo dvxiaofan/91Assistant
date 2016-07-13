@@ -89,8 +89,11 @@
     self.nameLabel.textColor = APP_NAME_COLOR;
     
     // 星级评价
-    //NSInteger nnn = apps.star;
-    self.starView.showStar = 4 * 20;
+    //if (app.star == nil) return;
+    self.starView.showStar = [app.star intValue] * 20;
+    
+    //YKLog(@"nn = %@", app.star);
+    
     
     // 图标
     [self.iconView xf_setRectHeaderWithUrl:app.icon placeholder:@"250_250_pic"];

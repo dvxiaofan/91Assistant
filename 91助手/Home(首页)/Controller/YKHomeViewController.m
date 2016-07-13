@@ -23,7 +23,7 @@
 
 #define BTNBASETAG 100
 
-@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKOtherTableViewCellDelegate>
+@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKOtherTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -237,7 +237,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     if (self.homeData[indexPath.section].uiType == 1) {
         
         YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
-        cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -301,6 +300,14 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.homeData[indexPath.section].uiType == 4) {
         YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+        if (indexPath.section == 1) {
+            detailVC.url = self.oneSectionApps[indexPath.row].detailUrl;
+        } else if (indexPath.section == 5) {
+            detailVC.url = self.fiveSectionApps[indexPath.row].detailUrl;
+        } else if (indexPath.section == 6) {
+            detailVC.url = self.sixSectionApps[indexPath.row].detailUrl;
+        }
+        
         detailVC.hidesBottomBarWhenPushed = YES;
         
         [self.navigationController pushViewController:detailVC animated:YES];
@@ -353,12 +360,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     moreVC.navTitle = self.cellOther.iconArray[index].name;
     moreVC.url = self.cellOther.iconArray[index].url;
     [self.navigationController pushViewController:moreVC animated:YES];
-}
-
-- (void)showAppScrollViewImageTapIndex:(NSInteger)index {
-    YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
-    detailVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "YKSingleRowTableViewCell.h"
 #import "YKApp.h"
+#import "YKDetailViewController.h"
 
 
 
@@ -53,8 +54,6 @@
     // 取消所有请求
     //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     __weak typeof(self) weakSelf = self;
-    
-    
     
     
     [self.manager GET:HOME_HOT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -124,11 +123,13 @@
 
 #pragma mark - APP 点击事件
 - (void)tapIcon:(UITapGestureRecognizer *)sender {
-    //YKLog(@"APP 被点击");
-    UIImageView *iconView = (UIImageView *)sender.view;
-    if ([self.delegate respondsToSelector:@selector(showAppScrollViewImageTapIndex:)]) {
-        [self.delegate showAppScrollViewImageTapIndex:iconView.tag - ICON_TAG];
-    }
+    // 获得当前页面的导航控制器
+    UITabBarController *tabBarVC = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nav = tabBarVC.selectedViewController;
+    
+    YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+    detailVC.url = self.singleRowApp.detailUrl;
+    [nav pushViewController:detailVC animated:YES];
 }
 
 

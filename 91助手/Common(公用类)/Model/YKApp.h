@@ -17,7 +17,7 @@
 @property (nonatomic, copy)   NSString    *price;           // 价格
 @property (nonatomic, copy)   NSString    *url;             // 链接
 @property (nonatomic, assign) NSUInteger  size;             // 大小
-@property (nonatomic, assign) NSInteger   star;             // 星级评价
+@property (nonatomic, copy)   NSNumber    *star;            // 星级评价
 
 @property (nonatomic, copy)   NSString    *detailUrl;       // 详情链接
 @property (nonatomic, copy)   NSString    *downAct;         // 下载链接
