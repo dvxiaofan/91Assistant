@@ -37,15 +37,7 @@
 
 //@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
 
-@property (nonatomic, strong) NSMutableArray <YKApp *>*zeroSectionApps;
-
 @property (nonatomic, strong) NSMutableArray <YKApp *>*oneSectionApps;
-
-@property (nonatomic, strong) NSMutableArray <YKApp *>*twoSectionApps;
-
-@property (nonatomic, strong) NSMutableArray <YKApp *>*threeSectionApps;
-
-@property (nonatomic, strong) NSMutableArray <YKApp *>*fourSectionApps;
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*fiveSectionApps;
 
@@ -56,6 +48,11 @@
 
 /** moreUrl */
 @property (nonatomic, strong) NSArray *moreUrlArray;
+
+/** namearray */
+@property (nonatomic, strong) NSMutableArray *nameArray;
+/** icon */
+@property (nonatomic, strong) NSMutableArray *iconArray;
 
 @end
 
@@ -92,13 +89,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     
     [self setupRefresh];
     
-    [self loadZeroSectionData];
-    
     [self loadOneSectionData];
-    
-    [self loadTwoSectionData];
-    
-    [self loadThreeSectionData];
     
     [self loadFiveSectionData];
     
@@ -164,66 +155,12 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     }];
 }
 
-- (void)loadZeroSectionData {
-    __weak typeof(self) weakSelf = self;
-    
-    [self.manager GET:HOME_HOT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        weakSelf.zeroSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
-        
-        [weakSelf.tableView reloadData];
-        
-        [weakSelf.tableView.mj_header endRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"rows error:%@", error);
-        
-        [weakSelf.tableView.mj_header endRefreshing];
-        
-    }];
-}
-
 - (void)loadOneSectionData {
     
     __weak typeof(self) weakSelf = self;
     
     [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         weakSelf.oneSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
-        
-        [weakSelf.tableView reloadData];
-        
-        [weakSelf.tableView.mj_header endRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"rows error:%@", error);
-        
-        [weakSelf.tableView.mj_header endRefreshing];
-        
-    }];
-}
-
-- (void)loadTwoSectionData {
-    __weak typeof(self) weakSelf = self;
-    
-    [self.manager GET:HOME_LIMIT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        weakSelf.twoSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
-        
-        [weakSelf.tableView reloadData];
-        
-        [weakSelf.tableView.mj_header endRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YKLog(@"rows error:%@", error);
-        
-        [weakSelf.tableView.mj_header endRefreshing];
-        
-    }];
-}
-
-- (void)loadThreeSectionData {
-    __weak typeof(self) weakSelf = self;
-    
-    [self.manager GET:HOME_BIBEI_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        weakSelf.threeSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
         [weakSelf.tableView reloadData];
         
@@ -283,8 +220,12 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 // 每个分区的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (self.homeData[section].uiType == 4) {
-        return 10;
+    if (self.homeData[section].uiType == 4 ) {
+        if (section == 6) {
+            return self.sixSectionApps.count;
+        } else {
+            return 10;
+        }
     } else {
         return 1;
     }
@@ -298,14 +239,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
         YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        if (indexPath.section == 0) {
-            cell.app = self.zeroSectionApps[indexPath.row];
-        } else if (indexPath.section == 2) {
-            cell.app = self.twoSectionApps[indexPath.row];
-        } else if (indexPath.section == 3) {
-            cell.app = self.threeSectionApps[indexPath.row];
-        }
         
         return cell;
     } else if (self.homeData[indexPath.section].uiType == 4) {

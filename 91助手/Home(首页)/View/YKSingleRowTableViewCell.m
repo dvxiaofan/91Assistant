@@ -21,12 +21,22 @@
 @property (nonatomic, weak) UIScrollView *showAppSV;  // 显示app的滚动视图
 @property (nonatomic, weak) UIImageView *iconView;    // APP 图标
 @property (nonatomic, weak) UILabel *appNameLabel;    // APP 名字
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
 
+/**  */
+@property (nonatomic, strong) YKApp *singleRowApp;
 
 @end
 
 @implementation YKSingleRowTableViewCell
 
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
 
 /**
  *  初始化
@@ -34,33 +44,55 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+        [self loadNewData];
     }
     return self;
 }
 
+- (void)loadNewData {
+    // 取消所有请求
+    //[self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    __weak typeof(self) weakSelf = self;
+    
+    
+    
+    
+    [self.manager GET:HOME_HOT_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //YKLogFunc
+        
+        NSArray *singleRowApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        
+        [weakSelf createApp:singleRowApps];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"error:%@", error);
+        
+    }];
+}
 
+#pragma mark - UI布局
 
-- (void)setApp:(YKApp *)app {
-    _app = app;
+- (void)createApp:(NSArray *)singleRowApps {
+    
+    NSInteger count = singleRowApps.count;
     
     // 滚动视图
     UIScrollView *showAppSV = [[UIScrollView alloc] init];
-    showAppSV.frame = CGRectMake(YKMargin, 5, SCREEN.width - YKMargin * 2, 90);
+    CGFloat svX = YKMargin;
+    CGFloat svW = SCREEN.width - svX * 2;
+    showAppSV.frame = CGRectMake(svX, 5, svW, 90);
     [self addSubview:showAppSV];
     self.showAppSV = showAppSV;
     
-    
-    
-    NSInteger count = 15;
     for (int i = 0; i < count; i ++) {
-        //_singleRowApp = singleRowApps[i];
+        _singleRowApp = singleRowApps[i];
         
         UIImageView *iconView = [[UIImageView alloc] init];
-        [self.iconView xf_setRectHeaderWithUrl:app.icon placeholder:@"icon-29"];
         CGFloat imgViewX = i * YKAppWH + YKMargin * i;
         CGFloat imgViewY = YKSmallMargin;
         iconView.frame = CGRectMake(imgViewX, imgViewY, YKAppWH, YKAppWH);
+        [iconView xf_setRectHeaderWithUrl:self.singleRowApp.icon placeholder:@"icon-29"];
         iconView.clipsToBounds = YES;
         iconView.layer.cornerRadius = 8.0;
         [showAppSV addSubview:iconView];
@@ -78,7 +110,7 @@
         UILabel *appNameLebal = [[UILabel alloc] init];
         CGFloat appNameY = CGRectGetMaxY(iconView.frame) + 8;
         appNameLebal.frame = CGRectMake(imgViewX, appNameY, YKAppWH, 10);
-        appNameLebal.text = app.name;
+        appNameLebal.text = self.singleRowApp.name;
         appNameLebal.font = APP_NAME_FONT;
         appNameLebal.textColor = APP_NAME_COLOR;
         appNameLebal.textAlignment = NSTextAlignmentCenter;
@@ -88,9 +120,7 @@
     }
     showAppSV.contentSize = CGSizeMake(self.iconView.frame.size.width * count + YKMargin * (count - 1), 0);
     showAppSV.showsHorizontalScrollIndicator = NO;
-    
 }
-
 
 #pragma mark - APP 点击事件
 - (void)tapIcon:(UITapGestureRecognizer *)sender {

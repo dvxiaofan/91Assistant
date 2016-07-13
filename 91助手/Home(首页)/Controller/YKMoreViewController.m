@@ -138,8 +138,11 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     
     __weak typeof(self) weakSelf = self;
     
+#warning 抓的 URL 需要参数才能加载下页,但不知道具体的传参要求,故加载的还是原有数据
     [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        YKLog(@"load more success");
+        
+        NSArray *moreArray = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
+        [weakSelf.apps addObjectsFromArray:moreArray];
         
         [weakSelf.tableView reloadData];
         
