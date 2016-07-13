@@ -52,9 +52,6 @@
     
     
     
-    //NSArray *array = [self]
-    
-    
     NSInteger count = 15;
     for (int i = 0; i < count; i ++) {
         //_singleRowApp = singleRowApps[i];

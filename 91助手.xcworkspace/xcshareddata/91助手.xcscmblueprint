@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7CB596F1CB402F27FB172C2F31375B561CCEF18D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "610D391A042DDCF8F3ACE9192D88122C858434E0" : 0,
+    "7CB596F1CB402F27FB172C2F31375B561CCEF18D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DD74FF74-1CF8-4F24-8E29-1D32D1E513D4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "610D391A042DDCF8F3ACE9192D88122C858434E0" : "91Assistant\/91%E5%8A%A9%E6%89%8B\/Until(%E5%B7%A5%E5%85%B7%E7%B1%BB)\/Category\/YKTools\/",
+    "7CB596F1CB402F27FB172C2F31375B561CCEF18D" : "91Assistant\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "91助手",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "91助手.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git.coding.net:xiaofans\/YKTools.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "610D391A042DDCF8F3ACE9192D88122C858434E0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git.coding.net:xiaofans\/91Assistant.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7CB596F1CB402F27FB172C2F31375B561CCEF18D"
+    }
+  ]
+}

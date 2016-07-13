@@ -65,7 +65,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 
 - (UIBarButtonItem *)creatNavBtnWithBackImage:(UIImage *)image action:(SEL)action {
     
-    UIButton *button = [YKUtility createBtnWithBackgroundImag:image];
+    UIButton *button = [XFUtility xf_createBtnWithBackgroundImag:image];
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *itme = [[UIBarButtonItem alloc] init];
     itme.customView = button;

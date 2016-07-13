@@ -17,6 +17,9 @@
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
 
+/** lll */
+@property (nonatomic, strong) UILabel *alertLabel;
+
 @end
 
 static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
@@ -91,6 +94,13 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
         [weakSelf.tableView reloadData];
         
         [SVProgressHUD dismiss];
+        
+        
+        if (weakSelf.apps.count == 0) {
+            [YKTools showAlertView:self title:@"友情提示:" message:@"暂时没有数据" cancelButtonTitle:@"确定" otherButtonTitle:@"取消"];
+        }
+        
+        
         // 控件结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

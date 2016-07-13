@@ -29,7 +29,7 @@
 		9CC4902F1D05681E003F7F9E /* YKOtherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC4902E1D05681E003F7F9E /* YKOtherTableViewCell.m */; };
 		9CC864A21D0669C8007147D1 /* YKRowsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A11D0669C8007147D1 /* YKRowsTableViewCell.m */; };
 		9CC864A51D066B3A007147D1 /* YKMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A41D066B3A007147D1 /* YKMoreViewController.m */; };
-		9CC864A81D06725A007147D1 /* YKUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A71D06725A007147D1 /* YKUtility.m */; };
+		9CC864A81D06725A007147D1 /* XFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864A71D06725A007147D1 /* XFUtility.m */; };
 		9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */; };
 		9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFECD11D01291800D1BFA1 /* YKSingleRowTableViewCell.m */; };
 		BD1BE2721D30BE2000A377A9 /* YKClassifyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1BE2711D30BE2000A377A9 /* YKClassifyCell.m */; };
@@ -48,6 +48,7 @@
 		BD26D6031D2F6F5A00ED72ED /* XFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6021D2F6F5A00ED72ED /* XFHTTPSessionManager.m */; };
 		BD26D6061D2F9F4100ED72ED /* UIView+XFExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */; };
 		BD4A3D611D1943180061A2EB /* YKApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4A3D601D1943180061A2EB /* YKApp.m */; };
+		BD5D81221D35D2B600A47F31 /* YKTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D80931D35D2B600A47F31 /* YKTools.m */; };
 		BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */; };
 		BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99402C1D33327500C061EE /* YKSectionHeaderView.m */; };
 		BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940341D33615A00C061EE /* YKHomeModel.m */; };
@@ -134,8 +135,8 @@
 		9CC864A11D0669C8007147D1 /* YKRowsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKRowsTableViewCell.m; sourceTree = "<group>"; };
 		9CC864A31D066B3A007147D1 /* YKMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMoreViewController.h; sourceTree = "<group>"; };
 		9CC864A41D066B3A007147D1 /* YKMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMoreViewController.m; sourceTree = "<group>"; };
-		9CC864A61D06725A007147D1 /* YKUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKUtility.h; sourceTree = "<group>"; };
-		9CC864A71D06725A007147D1 /* YKUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKUtility.m; sourceTree = "<group>"; };
+		9CC864A61D06725A007147D1 /* XFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XFUtility.h; path = ../../../XFUtility.h; sourceTree = "<group>"; };
+		9CC864A71D06725A007147D1 /* XFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XFUtility.m; path = ../../../XFUtility.m; sourceTree = "<group>"; };
 		9CC864A91D0677A5007147D1 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
 		9CC864AA1D0677A5007147D1 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		9CCFECD01D01291800D1BFA1 /* YKSingleRowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSingleRowTableViewCell.h; sourceTree = "<group>"; };
@@ -172,6 +173,8 @@
 		BD26D6051D2F9F4100ED72ED /* UIView+XFExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XFExtension.m"; sourceTree = "<group>"; };
 		BD4A3D5F1D1943180061A2EB /* YKApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKApp.h; sourceTree = "<group>"; };
 		BD4A3D601D1943180061A2EB /* YKApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKApp.m; sourceTree = "<group>"; };
+		BD5D80921D35D2B600A47F31 /* YKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTools.h; sourceTree = "<group>"; };
+		BD5D80931D35D2B600A47F31 /* YKTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTools.m; sourceTree = "<group>"; };
 		BD8D94FE1D33A51C00177580 /* YKSearchButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchButtons.h; sourceTree = "<group>"; };
 		BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchButtons.m; sourceTree = "<group>"; };
 		BD99402B1D33327500C061EE /* YKSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSectionHeaderView.h; sourceTree = "<group>"; };
@@ -618,9 +621,8 @@
 		9C5BDD701CF9D928008CE12F /* Until(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				BD5D80911D35D2B600A47F31 /* YKTools */,
 				9C0DD7151CFC4A930028E515 /* Category */,
-				9CC864A61D06725A007147D1 /* YKUtility.h */,
-				9CC864A71D06725A007147D1 /* YKUtility.m */,
 			);
 			path = "Until(工具类)";
 			sourceTree = "<group>";
@@ -633,6 +635,18 @@
 				7516E2DFAB4115C84C5CDB2D /* libPods-91助手UITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD5D80911D35D2B600A47F31 /* YKTools */ = {
+			isa = PBXGroup;
+			children = (
+				BD5D80921D35D2B600A47F31 /* YKTools.h */,
+				BD5D80931D35D2B600A47F31 /* YKTools.m */,
+				9CC864A61D06725A007147D1 /* XFUtility.h */,
+				9CC864A71D06725A007147D1 /* XFUtility.m */,
+			);
+			name = YKTools;
+			path = Category/YKTools/YKTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -903,7 +917,7 @@
 				BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */,
 				BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */,
 				BDF252A11D33DDFE007911CC /* YKLimitViewController.m in Sources */,
-				9CC864A81D06725A007147D1 /* YKUtility.m in Sources */,
+				9CC864A81D06725A007147D1 /* XFUtility.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
 				9C27BDB41CFFD5AE0016C0F7 /* YKStartPageViewController.m in Sources */,
 				BD1BE2781D30C23E00A377A9 /* YKListTags.m in Sources */,
@@ -928,6 +942,7 @@
 				BD26D6001D2F6F3A00ED72ED /* XFRefreshHeader.m in Sources */,
 				BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */,
 				BD1BE2751D30C18900A377A9 /* YKClassify.m in Sources */,
+				BD5D81221D35D2B600A47F31 /* YKTools.m in Sources */,
 				9CC864AB1D0677A5007147D1 /* YKDetailViewController.m in Sources */,
 				9C5BDD711CF9D928008CE12F /* AppDelegate.m in Sources */,
 				BD1D44C61D308E410048190C /* YKNavgationController.m in Sources */,
@@ -1084,6 +1099,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/91助手/PrefixHeader.pch";
 				INFOPLIST_FILE = "91助手/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1099,6 +1115,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/91助手/PrefixHeader.pch";
 				INFOPLIST_FILE = "91助手/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhyk.-91Assistant";
 				PRODUCT_NAME = "$(TARGET_NAME)";

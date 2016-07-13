@@ -1,17 +1,17 @@
 //
-//  YKUtility.m
+//  XFUtility.m
 //
 //
 //  Created by xiaofan on 16/5/9.
 //  Copyright © 2016年 YK. All rights reserved.
 //
 
-#import "YKUtility.h"
+#import "XFUtility.h"
 
 
-@implementation YKUtility
+@implementation XFUtility
 
-+ (UIButton *)createBtnWithBackgroundImag:(UIImage *)image  {
++ (UIButton *)xf_createBtnWithBackgroundImag:(UIImage *)image  {
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btn.frame = CGRectMake(0, 0, navBackBtnWidth, navBackBtnHeght);
@@ -21,7 +21,7 @@
     return btn;
 }
 
-+ (UILabel *)createLabelWithTitle:(NSString *)title {
++ (UILabel *)xf_createLabelWithTitle:(NSString *)title {
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.frame = CGRectMake(0, 0, SCREEN.width , 40);

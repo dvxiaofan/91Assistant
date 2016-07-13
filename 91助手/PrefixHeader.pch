@@ -18,7 +18,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-#import "YKUtility.h"
+#import "XFUtility.h"
 #import <UIImageView+WebCache.h>
 #import <JSONKit.h>
 #import "UIView+XFExtension.h"
@@ -29,6 +29,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "YKConst.h"
 #import "UIImageView+XFExtension.h"
+#import "YKTools.h"
 
 
 

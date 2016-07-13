@@ -146,11 +146,11 @@
     // 名字
     self.nameLabel.xf_x = CGRectGetMaxX(self.iconView.frame) + YKMargin;
     self.nameLabel.xf_y = self.iconView.xf_y;
-    self.nameLabel.xf_width = SCREEN.width - YKAppWH * 3;
-    self.nameLabel.xf_height = 18;
+    self.nameLabel.xf_width = SCREEN.width / 2;
+    self.nameLabel.xf_height = YKMargin;
     
     // 星级评价
-    self.starView.frame = CGRectMake(self.nameLabel.xf_x, (CGRectGetMaxY(self.nameLabel.frame) + 3), 100, 20);
+    self.starView.frame = CGRectMake(self.nameLabel.xf_x, (CGRectGetMaxY(self.nameLabel.frame) + 3), 100, YKMargin);
     
     // 下载次数
     CGSize labelSize = [self.downNumLabel.text sizeWithFont:self.downNumLabel.font];
@@ -158,10 +158,10 @@
     
     // 应用大小
     CGSize fileSize = [self.fileSizeLabel.text sizeWithFont:self.fileSizeLabel.font];
-    self.fileSizeLabel.frame = CGRectMake((CGRectGetMaxX(self.downNumLabel.frame) + 10), self.downNumLabel.xf_y, fileSize.width, fileSize.height);
+    self.fileSizeLabel.frame = CGRectMake((CGRectGetMaxX(self.downNumLabel.frame) + YKSmallMargin), self.downNumLabel.xf_y, fileSize.width, fileSize.height);
     
     // 下载按钮
-    self.downBtn.frame = CGRectMake((CGRectGetMaxX(self.nameLabel.frame) + 5), YKMargin + YKSmallMargin, 55, 25);
+    self.downBtn.frame = CGRectMake((CGRectGetMaxX(self.nameLabel.frame) + YKSmallMargin), YKMargin + YKSmallMargin, SCREEN.width / 5, 25);
     
 }
 
