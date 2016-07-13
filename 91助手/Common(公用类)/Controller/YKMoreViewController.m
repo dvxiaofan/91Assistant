@@ -63,16 +63,6 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     self.navigationItem.title = self.navTitle;
 }
 
-- (UIBarButtonItem *)creatNavBtnWithBackImage:(UIImage *)image action:(SEL)action {
-    
-    UIButton *button = [XFUtility xf_createBtnWithBackgroundImag:image];
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *itme = [[UIBarButtonItem alloc] init];
-    itme.customView = button;
-    
-    return itme;
-}
-
 - (void)setupTableView {
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
@@ -191,6 +181,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //YKLog(@"你点击了莫一行");
     YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+    detailVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:detailVC animated:YES];
 }
@@ -199,48 +190,16 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     YKLogFunc
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
+
+
+
+
+
+
+
+
+
+
+

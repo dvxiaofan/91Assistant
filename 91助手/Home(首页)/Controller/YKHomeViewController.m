@@ -301,6 +301,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.homeData[indexPath.section].uiType == 4) {
         YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+        detailVC.hidesBottomBarWhenPushed = YES;
         
         [self.navigationController pushViewController:detailVC animated:YES];
     } else {
@@ -356,7 +357,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 - (void)showAppScrollViewImageTapIndex:(NSInteger)index {
     YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
-    
+    detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

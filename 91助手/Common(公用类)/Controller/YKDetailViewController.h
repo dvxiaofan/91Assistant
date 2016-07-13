@@ -6,11 +6,13 @@
 //  Copyright © 2016年 YK. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "YKBaseViewController.h"
 
-@interface YKDetailViewController : UIViewController
+@interface YKDetailViewController : YKBaseViewController
 
 /** url */
 @property (nonatomic, copy) NSString *url;
 
 @end
+
+

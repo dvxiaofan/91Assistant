@@ -8,33 +8,113 @@
 
 #import "YKDetailViewController.h"
 
-@interface YKDetailViewController ()
+@interface YKDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView           *tableView;
+
+/** manager */
+@property (nonatomic, strong) XFHTTPSessionManager *manager;
 
 @end
 
 @implementation YKDetailViewController
 
+#pragma mark - 懒加载
+
+- (XFHTTPSessionManager *)manager {
+    if (!_manager) {
+        _manager = [XFHTTPSessionManager manager];
+    }
+    return _manager;
+}
+
+#pragma mark - 初始化
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"详情页";
+    
+    
+    [self setupTableView];
+    
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupTableView {
+    
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
+    // 去掉系统分割线
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [self.view addSubview:tableView];
+    self.tableView = tableView;
+    
+    
+    // header 视图
+    UIView *headerView = [[UIView alloc] init];
+    headerView.frame = CGRectMake(0, 0, SCREEN.width, 300);
+    headerView.backgroundColor = [UIColor orangeColor];
+    tableView.tableHeaderView = headerView;
+    
+    
+    // footer 视图
+    UITextView *textView = [[UITextView alloc] init];
+    textView.frame = CGRectMake(0, 0, SCREEN.width, 200);
+    textView.backgroundColor = YKBaseBgColor;
+    //textView.
+    textView.text = @"信息/n,下载:667万次/n 分类拉进来快接啊;附近啊;卡减肥; 安家费;按键;附近啊;打飞机; 啊交电费;啊缴费单;按键;林凤娇啊; 大姐夫;啊解放军啊";
+    
+    tableView.tableFooterView = textView;
+    
+    //[self.tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - 加载数据
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
 }
-*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellID = @"cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %zd", [self class], indexPath.row];
+    
+    return cell;
+}
+
+
+#pragma mark - Table view delegate
+
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

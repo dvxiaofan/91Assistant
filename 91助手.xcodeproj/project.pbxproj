@@ -45,7 +45,6 @@
 		BD5D81A11D35EDEC00A47F31 /* XFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D818F1D35EDEC00A47F31 /* XFHTTPSessionManager.m */; };
 		BD5D81A21D35EDEC00A47F31 /* XFRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81911D35EDEC00A47F31 /* XFRefreshFooter.m */; };
 		BD5D81A31D35EDEC00A47F31 /* XFRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81931D35EDEC00A47F31 /* XFRefreshHeader.m */; };
-		BD5D81A41D35EDEC00A47F31 /* XFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81951D35EDEC00A47F31 /* XFUtility.m */; };
 		BD5D81A51D35EDEC00A47F31 /* YKConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81971D35EDEC00A47F31 /* YKConst.m */; };
 		BD5D81A61D35EDEC00A47F31 /* YKModelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81991D35EDEC00A47F31 /* YKModelConfig.m */; };
 		BD5D81A71D35EDEC00A47F31 /* YKTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D819B1D35EDEC00A47F31 /* YKTools.m */; };
@@ -167,8 +166,6 @@
 		BD5D81911D35EDEC00A47F31 /* XFRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRefreshFooter.m; sourceTree = "<group>"; };
 		BD5D81921D35EDEC00A47F31 /* XFRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFRefreshHeader.h; sourceTree = "<group>"; };
 		BD5D81931D35EDEC00A47F31 /* XFRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFRefreshHeader.m; sourceTree = "<group>"; };
-		BD5D81941D35EDEC00A47F31 /* XFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFUtility.h; sourceTree = "<group>"; };
-		BD5D81951D35EDEC00A47F31 /* XFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFUtility.m; sourceTree = "<group>"; };
 		BD5D81961D35EDEC00A47F31 /* YKConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKConst.h; sourceTree = "<group>"; };
 		BD5D81971D35EDEC00A47F31 /* YKConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKConst.m; sourceTree = "<group>"; };
 		BD5D81981D35EDEC00A47F31 /* YKModelConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKModelConfig.h; sourceTree = "<group>"; };
@@ -472,10 +469,10 @@
 				9C0DD6F61CFBF1BF0028E515 /* YKRootViewController.m */,
 				BD1D44C41D308E410048190C /* YKNavgationController.h */,
 				BD1D44C51D308E410048190C /* YKNavgationController.m */,
-				BD5D81701D35EBE400A47F31 /* YKDetailViewController.h */,
-				BD5D81711D35EBE400A47F31 /* YKDetailViewController.m */,
 				BD5D81721D35EBE400A47F31 /* YKMoreViewController.h */,
 				BD5D81731D35EBE400A47F31 /* YKMoreViewController.m */,
+				BD5D81701D35EBE400A47F31 /* YKDetailViewController.h */,
+				BD5D81711D35EBE400A47F31 /* YKDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -638,8 +635,6 @@
 				BD5D81931D35EDEC00A47F31 /* XFRefreshHeader.m */,
 				BD5D819A1D35EDEC00A47F31 /* YKTools.h */,
 				BD5D819B1D35EDEC00A47F31 /* YKTools.m */,
-				BD5D81941D35EDEC00A47F31 /* XFUtility.h */,
-				BD5D81951D35EDEC00A47F31 /* XFUtility.m */,
 				BD5D81961D35EDEC00A47F31 /* YKConst.h */,
 				BD5D81971D35EDEC00A47F31 /* YKConst.m */,
 				BD5D81981D35EDEC00A47F31 /* YKModelConfig.h */,
@@ -930,7 +925,6 @@
 				BDF2529B1D33DDD5007911CC /* YKClassifyDataViewController.m in Sources */,
 				BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */,
 				9C27BDB71CFFECE90016C0F7 /* YKScrollPagingView.m in Sources */,
-				BD5D81A41D35EDEC00A47F31 /* XFUtility.m in Sources */,
 				BD1D44C91D3092120048190C /* YKChatThreeViewController.m in Sources */,
 				BD1BE2721D30BE2000A377A9 /* YKClassifyCell.m in Sources */,
 				BD5D81A51D35EDEC00A47F31 /* YKConst.m in Sources */,
