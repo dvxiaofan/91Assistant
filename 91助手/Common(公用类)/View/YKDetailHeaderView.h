@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class YKDetailModel;
+
 @interface YKDetailHeaderView : UIView
+
+/** detail */
+@property (nonatomic, strong) YKDetailModel *detailModel;
 
 @end

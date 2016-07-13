@@ -7,6 +7,7 @@
 //
 
 #import "YKDetailViewController.h"
+#import "YKDetailHeaderView.h"
 
 @interface YKDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -34,6 +35,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"详情页";
     
+    self.view.userInteractionEnabled = YES;
     
     [self setupTableView];
     
@@ -45,7 +47,6 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
     // 去掉系统分割线
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -53,20 +54,17 @@
     
     
     // header 视图
-    UIView *headerView = [[UIView alloc] init];
-    headerView.frame = CGRectMake(0, 0, SCREEN.width, 300);
-    headerView.backgroundColor = [UIColor orangeColor];
+    YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] init];
+    
     tableView.tableHeaderView = headerView;
+    //// footer 视图
+    //UITextView *textView = [[UITextView alloc] init];
+    //textView.frame = CGRectMake(0, 0, SCREEN.width, 200);
+    //textView.backgroundColor = YKBaseBgColor;
+    ////textView.
+    //textView.text = @"信息/n,下载:667万次/n 分类拉进来快接啊;附近啊;卡减肥; 安家费;按键;附近啊;打飞机; 啊交电费;啊缴费单;按键;林凤娇啊; 大姐夫;啊解放军啊";
     
-    
-    // footer 视图
-    UITextView *textView = [[UITextView alloc] init];
-    textView.frame = CGRectMake(0, 0, SCREEN.width, 200);
-    textView.backgroundColor = YKBaseBgColor;
-    //textView.
-    textView.text = @"信息/n,下载:667万次/n 分类拉进来快接啊;附近啊;卡减肥; 安家费;按键;附近啊;打飞机; 啊交电费;啊缴费单;按键;林凤娇啊; 大姐夫;啊解放军啊";
-    
-    tableView.tableFooterView = textView;
+    //tableView.tableFooterView = textView;
     
     //[self.tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
 }
@@ -77,7 +75,7 @@
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        YKLog(@"success");
+        //YKLog(@"success");
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -108,6 +106,10 @@
 
 #pragma mark - Table view delegate
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    YKLogFunc
+}
 
 @end
 

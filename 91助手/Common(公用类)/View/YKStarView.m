@@ -38,7 +38,7 @@
     NSString* stars = @"★★★★★";
 
     rect = self.bounds;
-    CGSize starSize = [stars sizeWithFont:[UIFont systemFontOfSize:15]];
+    CGSize starSize = [stars xf_sizeWithFont:[UIFont systemFontOfSize:15]];
     rect.size = starSize;
     [_emptyColor set];
     [stars drawInRect:rect withFont:[UIFont systemFontOfSize:15]];

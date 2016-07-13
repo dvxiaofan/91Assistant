@@ -128,6 +128,7 @@
     UINavigationController *nav = tabBarVC.selectedViewController;
     
     YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+    detailVC.hidesBottomBarWhenPushed = YES;
     detailVC.url = self.singleRowApp.detailUrl;
     [nav pushViewController:detailVC animated:YES];
 }

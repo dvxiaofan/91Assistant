@@ -156,11 +156,11 @@
     self.starView.frame = CGRectMake(self.nameLabel.xf_x, (CGRectGetMaxY(self.nameLabel.frame) + 3), 100, YKMargin);
     
     // 下载次数
-    CGSize labelSize = [self.downNumLabel.text sizeWithFont:self.downNumLabel.font];
+    CGSize labelSize = [self.downNumLabel.text xf_sizeWithFont:self.downNumLabel.font];
     self.downNumLabel.frame = CGRectMake(self.nameLabel.xf_x, (CGRectGetMaxY(self.starView.frame) + 3), labelSize.width, labelSize.height);
     
     // 应用大小
-    CGSize fileSize = [self.fileSizeLabel.text sizeWithFont:self.fileSizeLabel.font];
+    CGSize fileSize = [self.fileSizeLabel.text xf_sizeWithFont:self.fileSizeLabel.font];
     self.fileSizeLabel.frame = CGRectMake((CGRectGetMaxX(self.downNumLabel.frame) + YKSmallMargin), self.downNumLabel.xf_y, fileSize.width, fileSize.height);
     
     // 下载按钮
