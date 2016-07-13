@@ -16,4 +16,6 @@
 /** detail */
 @property (nonatomic, strong) YKDetailModel *detailModel;
 
+- (void)createView;
+
 @end

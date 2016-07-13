@@ -33,18 +33,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"详情页";
     
-    self.view.userInteractionEnabled = YES;
+    [self setupNav];
     
     [self setupTableView];
     
     [self loadDetailData];
 }
 
+- (void)setupNav {
+    
+    self.view.userInteractionEnabled = YES;
+    
+    
+    
+    
+    
+   
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:1];
+}
+
 - (void)setupTableView {
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
     // 去掉系统分割线
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
@@ -54,9 +77,11 @@
     
     
     // header 视图
-    YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] init];
+    YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height - 150)];
+    [headerView createView];
     
-    tableView.tableHeaderView = headerView;
+    tableView.tableHeaderView = [[UIView alloc] initWithFrame:headerView.frame];
+    [tableView.tableHeaderView addSubview:headerView];
     //// footer 视图
     //UITextView *textView = [[UITextView alloc] init];
     //textView.frame = CGRectMake(0, 0, SCREEN.width, 200);

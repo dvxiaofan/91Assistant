@@ -181,8 +181,8 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //YKLog(@"你点击了莫一行");
     YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+    detailVC.url = self.apps[indexPath.row].detailUrl;
     detailVC.hidesBottomBarWhenPushed = YES;
-    
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

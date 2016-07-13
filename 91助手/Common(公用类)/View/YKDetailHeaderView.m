@@ -12,7 +12,7 @@
 #import "YKDetailModel.h"
 
 
-@interface YKDetailHeaderView ()
+@interface YKDetailHeaderView ()<UIScrollViewDelegate>
 
 /** scrollView */
 @property (nonatomic, weak) UIScrollView *scrollView;
@@ -44,21 +44,25 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.userInteractionEnabled = YES;
-        [self createView];
+        self.backgroundColor = [UIColor brownColor];
+        //[self createView];
     }
     return self;
 }
 
 - (void)createView {
+    
     // 滚动快照视图
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     [self addSubview:scrollView];
     self.scrollView = scrollView;
     
-    // 滚动快找 imageview
-    UIImageView *scrImageView = [[UIImageView alloc] init];
-    [self.scrollView addSubview:scrImageView];
-    self.scrImageView = scrImageView;
+    scrollView.backgroundColor = YKRandomColor;
+    
+    //// 滚动快找 imageview
+    //UIImageView *scrImageView = [[UIImageView alloc] init];
+    //[self.scrollView addSubview:scrImageView];
+    //self.scrImageView = scrImageView;
     
     // icon
     UIImageView *iconView = [[UIImageView alloc] init];
@@ -136,11 +140,13 @@
     self.scrollView.xf_x = 0;
     self.scrollView.xf_y = 0;
     self.scrollView.xf_width = SCREEN.width;
-    self.scrollView.xf_height = SCREEN.height / 2;
-    self.scrollView.contentSize = CGSizeMake(SCREEN.width * 3, 280);
+    self.scrollView.xf_height = self.xf_height / 3 * 2;
+    self.scrollView.contentSize = CGSizeMake(SCREEN.width * 3, self.scrollView.xf_height);
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.pagingEnabled = YES;
+    
+    self.scrollView.delegate = self;
     
     
     self.scrollView.backgroundColor = YKRandomColor;
