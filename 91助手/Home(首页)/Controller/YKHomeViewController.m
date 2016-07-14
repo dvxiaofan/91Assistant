@@ -27,17 +27,15 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) YKOtherTableViewCell *cellOther;
-
 /** scroll */
 @property (nonatomic, strong) YKScrollPagingView *scrollPV;
 
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
-//@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
-
 @property (nonatomic, strong) NSMutableArray <YKApp *>*oneSectionApps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*fourSectionApps;
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*fiveSectionApps;
 
@@ -90,6 +88,8 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     [self setupRefresh];
     
     [self loadOneSectionData];
+    
+    [self loadFourSectionData];
     
     [self loadFiveSectionData];
     
@@ -162,6 +162,23 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     [self.manager GET:HOME_JINGPIN_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         weakSelf.oneSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"][@"items"]];
         
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"rows error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
+- (void)loadFourSectionData {
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_APP_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.fourSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
         [weakSelf.tableView reloadData];
         
         [weakSelf.tableView.mj_header endRefreshing];
@@ -312,7 +329,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
         
         [self.navigationController pushViewController:detailVC animated:YES];
     } else {
-        
+        return;
     }
 }
 
@@ -345,6 +362,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     moreVC.navTitle = self.scrollPV.sModel[index].Desc;
     moreVC.url = self.scrollPV.sModel[index].TargetUrl;
     [self.navigationController pushViewController:moreVC animated:YES];
+    
 }
 
 //- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
@@ -357,8 +375,8 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 - (void)imgViewTapIndex:(NSInteger)index {
     YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    moreVC.navTitle = self.cellOther.iconArray[index].name;
-    moreVC.url = self.cellOther.iconArray[index].url;
+    moreVC.navTitle = self.fourSectionApps[index].name;
+    moreVC.url = self.fourSectionApps[index].url;
     [self.navigationController pushViewController:moreVC animated:YES];
 }
 

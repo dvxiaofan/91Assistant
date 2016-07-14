@@ -6,6 +6,7 @@
 //
 
 #import "UIImageView+XFExtension.h"
+#import <UIImageView+WebCache.h>
 
 @implementation UIImageView (XFExtension)
 

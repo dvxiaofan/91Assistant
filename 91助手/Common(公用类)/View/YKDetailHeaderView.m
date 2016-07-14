@@ -55,12 +55,8 @@
 
 - (void)createViewWithModel:(YKDetailModel *)model {
     
-    
-    //NSArray *image = model.snapshots;
-    //YKLog(@"name = %@", image);
-    
     UIView *mView = [[UIView alloc] init];
-    mView.frame = self.bounds;
+    mView.frame = CGRectMake(0, 0, SCREEN.width, 320);
     mView.backgroundColor = YKBaseBgColor;
     [self addSubview:mView];
     self.mView = mView;
@@ -103,8 +99,6 @@
     
     [mView addSubview:iconView];
     self.iconView = iconView;
-    
-    iconView.backgroundColor = YKRandomColor;
     
     // 名字
     UILabel *nameLabel = [[UILabel alloc] init];
@@ -167,7 +161,7 @@
     UIButton *downButton = [[UIButton alloc] init];
     downButton.xf_x = SCREEN.width - YKMargin * 4;
     downButton.xf_y = CGRectGetMaxY(nameLabel.frame) + YKSmallMargin;
-    downButton.xf_width = YKMargin * 3 + YKSmallMargin;
+    downButton.xf_width = YKMargin * 3 + YKSmallSpace;
     downButton.xf_height = 25;
     downButton.backgroundColor = [UIColor orangeColor];
     downButton.layer.cornerRadius = 3.0;
@@ -181,7 +175,7 @@
     }
     [downButton setBackgroundColor:[UIColor orangeColor]];
     [downButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    downButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    downButton.titleLabel.font = YKTextNormalFont;
     [downButton addTarget:self action:@selector(downClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [mView addSubview:downButton];
@@ -190,8 +184,8 @@
     // 打开聊吧按钮
     UIButton *openChatBtn = [[UIButton alloc] init];
     openChatBtn.xf_y = CGRectGetMaxY(iconView.frame) + YKMargin;
-    openChatBtn.xf_width = SCREEN.width / 2;
-    openChatBtn.xf_x = SCREEN.width / 4;
+    openChatBtn.xf_width = (SCREEN.width / 3) * 2;
+    openChatBtn.xf_x = SCREEN.width / 6;
     [openChatBtn setTitle:[NSString stringWithFormat:@"打开%@吧", model.name] forState:UIControlStateNormal];
     [openChatBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     openChatBtn.titleLabel.textAlignment = NSTextAlignmentCenter;

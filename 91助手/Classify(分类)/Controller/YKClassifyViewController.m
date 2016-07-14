@@ -68,7 +68,7 @@
     segment.frame = CGRectMake(0, 0, 200, 30);
     segment.backgroundColor = [UIColor clearColor];
     [segment setTintColor:[UIColor whiteColor]];
-    [segment setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
+    [segment setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:YKTextBlackColor, NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
     [segment setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     
     [segment addTarget:self action:@selector(segmentClick:) forControlEvents:UIControlEventValueChanged];

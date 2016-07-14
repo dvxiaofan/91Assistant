@@ -59,6 +59,7 @@
 		BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */; };
 		BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */; };
 		BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */; };
+		BDE7790A1D3768FB0066C635 /* YKDetailSingelScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE779091D3768FB0066C635 /* YKDetailSingelScrollCell.m */; };
 		BDF252951D33DD21007911CC /* YKClassifyBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF252941D33DD21007911CC /* YKClassifyBaseViewController.m */; };
 		BDF2529B1D33DDD5007911CC /* YKClassifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF2529A1D33DDD5007911CC /* YKClassifyDataViewController.m */; };
 		BDF2529E1D33DDF2007911CC /* YKFreeAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF2529D1D33DDF2007911CC /* YKFreeAppsViewController.m */; };
@@ -196,6 +197,8 @@
 		BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatCellModel.m; sourceTree = "<group>"; };
 		BDE6A3861D23D75500D477A8 /* YKChatTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatTwoViewController.h; sourceTree = "<group>"; };
 		BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatTwoViewController.m; sourceTree = "<group>"; };
+		BDE779081D3768FB0066C635 /* YKDetailSingelScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailSingelScrollCell.h; sourceTree = "<group>"; };
+		BDE779091D3768FB0066C635 /* YKDetailSingelScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailSingelScrollCell.m; sourceTree = "<group>"; };
 		BDF252931D33DD21007911CC /* YKClassifyBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyBaseViewController.h; sourceTree = "<group>"; };
 		BDF252941D33DD21007911CC /* YKClassifyBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKClassifyBaseViewController.m; sourceTree = "<group>"; };
 		BDF252991D33DDD5007911CC /* YKClassifyDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyDataViewController.h; sourceTree = "<group>"; };
@@ -503,6 +506,8 @@
 				BD5D81801D35ECB500A47F31 /* YKRowsTableViewCell.m */,
 				BD5D81AB1D35FC4900A47F31 /* YKDetailHeaderView.h */,
 				BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */,
+				BDE779081D3768FB0066C635 /* YKDetailSingelScrollCell.h */,
+				BDE779091D3768FB0066C635 /* YKDetailSingelScrollCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -923,6 +928,7 @@
 				BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */,
 				BD5D81A21D35EDEC00A47F31 /* XFRefreshFooter.m in Sources */,
 				BD5D81A01D35EDEC00A47F31 /* main.m in Sources */,
+				BDE7790A1D3768FB0066C635 /* YKDetailSingelScrollCell.m in Sources */,
 				BDF252A11D33DDFE007911CC /* YKLimitViewController.m in Sources */,
 				BD5D819D1D35EDEC00A47F31 /* UIImageView+XFExtension.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,

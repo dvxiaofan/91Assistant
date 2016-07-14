@@ -11,12 +11,6 @@
 #import "NSString+YKExtension.h"
 #import "YKApp.h"
 
-#define APP_NAME_FONT [UIFont systemFontOfSize:13.0]
-#define APP_NAME_COLOR [UIColor blackColor]
-
-#define CELL_INFO_FONT [UIFont systemFontOfSize:11.0]
-#define CELL_INFO_COLOR [UIColor grayColor]
-
 @interface YKRowsTableViewCell ()
 
 @property (nonatomic, weak) UIImageView *iconView;
@@ -85,8 +79,8 @@
     
     // appname
     self.nameLabel.text = app.name;
-    self.nameLabel.font = APP_NAME_FONT;
-    self.nameLabel.textColor = APP_NAME_COLOR;
+    self.nameLabel.font = YKMidleTextFont;
+    self.nameLabel.textColor = YKTextBlackColor;
     
     // 星级评价
     //if (app.star == nil) return;
@@ -102,14 +96,14 @@
     
     // 下载次数
     self.downNumLabel.text = [NSString stringWithFormat:@"%@下载", app.downTimes];
-    self.downNumLabel.font = CELL_INFO_FONT;
-    self.downNumLabel.textColor = CELL_INFO_COLOR;
+    self.downNumLabel.font = YKTextSmallFont;
+    self.downNumLabel.textColor = YKTextGrayColor;
     
     // 应用大小
     CGFloat fileSize = app.size / 1024.0 / 1024.0;
     self.fileSizeLabel.text = [NSString stringWithFormat:@"%.2fMB", fileSize];
-    self.fileSizeLabel.textColor = CELL_INFO_COLOR;
-    self.fileSizeLabel.font = CELL_INFO_FONT;
+    self.fileSizeLabel.textColor = YKTextGrayColor;
+    self.fileSizeLabel.font = YKTextSmallFont;
     
     // 下载按钮
     if ([app.price isEqualToString:@"0.00"]) {
@@ -119,9 +113,9 @@
     } else {
         [self.downBtn setTitle:app.price forState:UIControlStateNormal];
         [self.downBtn setBackgroundColor:[UIColor whiteColor]];
-        [self.downBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.downBtn setTitleColor:YKTextBlackColor forState:UIControlStateNormal];
     }
-    self.downBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    self.downBtn.titleLabel.font = YKTextNormalFont;
     self.downBtn.layer.cornerRadius = 3.0;
     self.downBtn.clipsToBounds = YES;
     

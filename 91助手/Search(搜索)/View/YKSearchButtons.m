@@ -89,7 +89,7 @@
         sButton.tag = BTN_BASE_TAG + i;
         [sButton setTitle:titleArray[i] forState:UIControlStateNormal];
         sButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
-        [sButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [sButton setTitleColor:YKTextBlackColor forState:UIControlStateNormal];
         
         [sButton addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         

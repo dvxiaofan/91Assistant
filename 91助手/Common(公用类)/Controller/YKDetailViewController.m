@@ -9,6 +9,7 @@
 #import "YKDetailViewController.h"
 #import "YKDetailHeaderView.h"
 #import "YKDetailModel.h"
+#import "YKDetailSingelScrollCell.h"
 
 @interface YKDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) YKDetailModel *detailModel;
 
 @end
+
+static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
 
 @implementation YKDetailViewController
 
@@ -38,7 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupNav];
+    
+    [self setupView];
     
     [self loadDetailData];
     
@@ -47,21 +51,26 @@
     });
 }
 
-- (void)setupNav {
+- (void)setupView {
     
     self.view.userInteractionEnabled = YES;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor whiteColor];
     
 }
 
 - (void)setupTableView {
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     // 去掉系统分割线
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.backgroundColor = YKBaseBgColor;
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    [tableView registerClass:[YKDetailSingelScrollCell class] forCellReuseIdentifier:YKSingleScrollCellID];
     
     
     // header 视图
@@ -100,22 +109,37 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    if (indexPath.row == 0) {
+        static NSString *cellID = @"cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+        cell.backgroundColor = YKBaseBgColor;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %zd", [self class], indexPath.row];
+        
+        return cell;
+    } else {
+        YKDetailSingelScrollCell * cell = [tableView dequeueReusableCellWithIdentifier:YKSingleScrollCellID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell createViewWithModel:self.detailModel];
+        
+        return cell;
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %zd", [self class], indexPath.row];
-    
-    return cell;
 }
+
 
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 88;
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     YKLogFunc

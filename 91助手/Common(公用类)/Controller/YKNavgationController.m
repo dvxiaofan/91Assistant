@@ -23,7 +23,6 @@
     self.interactivePopGestureRecognizer.delegate = self;
     
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_background_2"] forBarMetrics:UIBarMetricsDefault];
-    //[self.navigationBar setBackgroundColor:[UIColor blackColor]];
     [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:19.0], NSFontAttributeName,nil]];
     [self.navigationBar setBarTintColor:[UIColor blackColor]];
 }

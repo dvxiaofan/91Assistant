@@ -38,17 +38,17 @@
     NSString* stars = @"★★★★★";
 
     rect = self.bounds;
-    CGSize starSize = [stars xf_sizeWithFont:[UIFont systemFontOfSize:15]];
+    CGSize starSize = [stars xf_sizeWithFont:YKTextNormalFont];
     rect.size = starSize;
     [_emptyColor set];
-    [stars drawInRect:rect withFont:[UIFont systemFontOfSize:15]];
+    [stars drawInRect:rect withFont:YKTextNormalFont];
     //[stars drawInRect:rect withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:15.0], NSFontAttributeName, nil]];
     
     CGRect clip = rect;
     clip.size.width = clip.size.width * _showStar / _maxStar;
     CGContextClipToRect(context,clip);
     [_fullColor set];
-    [stars drawInRect:rect withFont:[UIFont systemFontOfSize:15]];
+    [stars drawInRect:rect withFont:YKTextNormalFont];
     //[stars drawInRect:rect withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:15.0], NSFontAttributeName, nil]];
 
 }

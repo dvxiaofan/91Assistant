@@ -12,9 +12,6 @@
 
 
 
-#define APP_NAME_FONT [UIFont systemFontOfSize:11.0]
-#define APP_NAME_COLOR [UIColor blackColor]
-
 #define ICON_TAG 100
 
 @interface YKSingleRowTableViewCell ()
@@ -110,8 +107,8 @@
         CGFloat appNameY = CGRectGetMaxY(iconView.frame) + 8;
         appNameLebal.frame = CGRectMake(imgViewX, appNameY, YKAppWH, 10);
         appNameLebal.text = self.singleRowApp.name;
-        appNameLebal.font = APP_NAME_FONT;
-        appNameLebal.textColor = APP_NAME_COLOR;
+        appNameLebal.font = YKTextSmallFont;
+        appNameLebal.textColor = YKTextBlackColor;
         appNameLebal.textAlignment = NSTextAlignmentCenter;
         [showAppSV addSubview:appNameLebal];
         self.appNameLabel = appNameLebal;

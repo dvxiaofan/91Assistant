@@ -39,11 +39,16 @@
 #define NAVBAR_HEIGHT self.navigationController.navigationBar.frame.size.height
 #define TABBAR_HEIGHT self.tabBarController.tabBar.frame.size.height
 
-// 自定义cell的标题和按钮属性
-#define CELL_NAME_FONT [UIFont boldSystemFontOfSize:14.0]
-#define CELL_NAME_COLOR [UIColor blackColor]
-#define CELL_BTN_FONT [UIFont systemFontOfSize:12.0]
-#define CELL_BTN_COLOR [UIColor grayColor]
+
+/***  字体 **/
+#define YKTextNormalFont [UIFont systemFontOfSize:15]
+
+#define YKTextBoldFont [UIFont boldSystemFontOfSize:15.0]
+#define YKMidleTextFont [UIFont systemFontOfSize:13.0]
+
+#define YKTextBlackColor [UIColor blackColor]
+#define YKTextSmallFont [UIFont systemFontOfSize:11.0]
+#define YKTextGrayColor [UIColor grayColor]
 
 #define navBackBtnWidth 10
 #define navBackBtnHeght 21
@@ -61,8 +66,12 @@
 /*** 当前系统版本判断 ***/
 #define iOS(version) ([UIDevice currentDevice].systemVersion.doubleValue >= (version))
 
-/*** section headerview 字体 **/
-#define YKSectionHeaderTestFont [UIFont systemFontOfSize:15]
+
+
+//#define YKBaseTextColor [UIColor blackColor]
+
+
+
 
 /*** 将服务器返回的数据写入plist ***/
 #define YKWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/zhyks/Desktop/iOS开发/我赢职场/结业项目/项目操作/Plist文件/%@.plist", filename] atomically:YES];
