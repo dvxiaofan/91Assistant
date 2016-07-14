@@ -11,9 +11,9 @@
 
 @interface NSString (YKExtension)
 
-- (CGSize)sizeWithFont:(UIFont *)font;
+- (CGSize)xf_sizeWithFont:(UIFont *)font;
 
-- (CGSize)sizeWithFont:(UIFont *)font maxW:(CGFloat)maxW;
+- (CGSize)xf_sizeWithFont:(UIFont *)font maxW:(CGFloat)maxW;
 
 
 

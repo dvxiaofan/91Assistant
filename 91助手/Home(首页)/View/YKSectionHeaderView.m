@@ -22,7 +22,7 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         self.contentView.backgroundColor = [UIColor whiteColor];
-        self.textLabel.font = YKSectionHeaderTestFont;
+        self.textLabel.font = YKTextNormalFont;
         
         [self createMoreBtn];
     }
@@ -34,8 +34,8 @@
     moreBtn.backgroundColor = [UIColor orangeColor];
     [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
     [moreBtn setBackgroundColor:[UIColor clearColor]];
-    moreBtn.titleLabel.font = CELL_BTN_FONT;
-    [moreBtn setTitleColor:CELL_BTN_COLOR forState:UIControlStateNormal];
+    moreBtn.titleLabel.font = YKTextSmallFont;
+    [moreBtn setTitleColor:YKTextGrayColor forState:UIControlStateNormal];
     
     [self addSubview:moreBtn];
     self.moreBtn = moreBtn;

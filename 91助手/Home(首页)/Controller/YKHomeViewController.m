@@ -23,11 +23,9 @@
 
 #define BTNBASETAG 100
 
-@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKSingleRowTableViewCellDelegate,YKOtherTableViewCellDelegate>
+@interface YKHomeViewController ()<YKScrollPagingViewDelegate,UITableViewDelegate,UITableViewDataSource,YKOtherTableViewCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-
-@property (nonatomic, strong) YKOtherTableViewCell *cellOther;
 
 /** scroll */
 @property (nonatomic, strong) YKScrollPagingView *scrollPV;
@@ -35,9 +33,9 @@
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
 
-//@property (nonatomic, strong) NSMutableArray <YKApp *>*apps;
-
 @property (nonatomic, strong) NSMutableArray <YKApp *>*oneSectionApps;
+
+@property (nonatomic, strong) NSMutableArray <YKApp *>*fourSectionApps;
 
 @property (nonatomic, strong) NSMutableArray <YKApp *>*fiveSectionApps;
 
@@ -90,6 +88,8 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     [self setupRefresh];
     
     [self loadOneSectionData];
+    
+    [self loadFourSectionData];
     
     [self loadFiveSectionData];
     
@@ -174,6 +174,23 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     }];
 }
 
+- (void)loadFourSectionData {
+    __weak typeof(self) weakSelf = self;
+    
+    [self.manager GET:HOME_APP_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.fourSectionApps = [YKApp mj_objectArrayWithKeyValuesArray:responseObject[@"Result"]];
+        [weakSelf.tableView reloadData];
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        YKLog(@"rows error:%@", error);
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    }];
+}
+
 - (void)loadFiveSectionData {
     
     __weak typeof(self) weakSelf = self;
@@ -237,7 +254,6 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     if (self.homeData[indexPath.section].uiType == 1) {
         
         YKSingleRowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSingleCellID];
-        cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -301,11 +317,19 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.homeData[indexPath.section].uiType == 4) {
         YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
+        if (indexPath.section == 1) {
+            detailVC.url = self.oneSectionApps[indexPath.row].detailUrl;
+        } else if (indexPath.section == 5) {
+            detailVC.url = self.fiveSectionApps[indexPath.row].detailUrl;
+        } else if (indexPath.section == 6) {
+            detailVC.url = self.sixSectionApps[indexPath.row].detailUrl;
+        }
+        
         detailVC.hidesBottomBarWhenPushed = YES;
         
         [self.navigationController pushViewController:detailVC animated:YES];
     } else {
-        
+        return;
     }
 }
 
@@ -338,6 +362,7 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
     moreVC.navTitle = self.scrollPV.sModel[index].Desc;
     moreVC.url = self.scrollPV.sModel[index].TargetUrl;
     [self.navigationController pushViewController:moreVC animated:YES];
+    
 }
 
 //- (void)rowsTableViewCell:(YKRowsTableViewCell *)cell {
@@ -350,15 +375,9 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 
 - (void)imgViewTapIndex:(NSInteger)index {
     YKMoreViewController *moreVC = [[YKMoreViewController alloc] init];
-    moreVC.navTitle = self.cellOther.iconArray[index].name;
-    moreVC.url = self.cellOther.iconArray[index].url;
+    moreVC.navTitle = self.fourSectionApps[index].name;
+    moreVC.url = self.fourSectionApps[index].url;
     [self.navigationController pushViewController:moreVC animated:YES];
-}
-
-- (void)showAppScrollViewImageTapIndex:(NSInteger)index {
-    YKDetailViewController *detailVC = [[YKDetailViewController alloc] init];
-    detailVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 

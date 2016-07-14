@@ -48,6 +48,8 @@
 		BD5D81A51D35EDEC00A47F31 /* YKConst.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81971D35EDEC00A47F31 /* YKConst.m */; };
 		BD5D81A61D35EDEC00A47F31 /* YKModelConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81991D35EDEC00A47F31 /* YKModelConfig.m */; };
 		BD5D81A71D35EDEC00A47F31 /* YKTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D819B1D35EDEC00A47F31 /* YKTools.m */; };
+		BD5D81AD1D35FC4900A47F31 /* YKDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */; };
+		BD5D81B01D361F4800A47F31 /* YKDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81AF1D361F4800A47F31 /* YKDetailModel.m */; };
 		BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */; };
 		BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99402C1D33327500C061EE /* YKSectionHeaderView.m */; };
 		BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940341D33615A00C061EE /* YKHomeModel.m */; };
@@ -57,6 +59,7 @@
 		BDE6A3821D23C21400D477A8 /* YKChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3811D23C21400D477A8 /* YKChatViewCell.m */; };
 		BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */; };
 		BDE6A3881D23D75500D477A8 /* YKChatTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */; };
+		BDE7790A1D3768FB0066C635 /* YKDetailSingelScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE779091D3768FB0066C635 /* YKDetailSingelScrollCell.m */; };
 		BDF252951D33DD21007911CC /* YKClassifyBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF252941D33DD21007911CC /* YKClassifyBaseViewController.m */; };
 		BDF2529B1D33DDD5007911CC /* YKClassifyDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF2529A1D33DDD5007911CC /* YKClassifyDataViewController.m */; };
 		BDF2529E1D33DDF2007911CC /* YKFreeAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDF2529D1D33DDF2007911CC /* YKFreeAppsViewController.m */; };
@@ -172,6 +175,10 @@
 		BD5D81991D35EDEC00A47F31 /* YKModelConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKModelConfig.m; sourceTree = "<group>"; };
 		BD5D819A1D35EDEC00A47F31 /* YKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTools.h; sourceTree = "<group>"; };
 		BD5D819B1D35EDEC00A47F31 /* YKTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTools.m; sourceTree = "<group>"; };
+		BD5D81AB1D35FC4900A47F31 /* YKDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailHeaderView.h; sourceTree = "<group>"; };
+		BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailHeaderView.m; sourceTree = "<group>"; };
+		BD5D81AE1D361F4800A47F31 /* YKDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailModel.h; sourceTree = "<group>"; };
+		BD5D81AF1D361F4800A47F31 /* YKDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailModel.m; sourceTree = "<group>"; };
 		BD8D94FE1D33A51C00177580 /* YKSearchButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchButtons.h; sourceTree = "<group>"; };
 		BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchButtons.m; sourceTree = "<group>"; };
 		BD99402B1D33327500C061EE /* YKSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSectionHeaderView.h; sourceTree = "<group>"; };
@@ -190,6 +197,8 @@
 		BDE6A3841D23CBBD00D477A8 /* YKChatCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatCellModel.m; sourceTree = "<group>"; };
 		BDE6A3861D23D75500D477A8 /* YKChatTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKChatTwoViewController.h; sourceTree = "<group>"; };
 		BDE6A3871D23D75500D477A8 /* YKChatTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKChatTwoViewController.m; sourceTree = "<group>"; };
+		BDE779081D3768FB0066C635 /* YKDetailSingelScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailSingelScrollCell.h; sourceTree = "<group>"; };
+		BDE779091D3768FB0066C635 /* YKDetailSingelScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailSingelScrollCell.m; sourceTree = "<group>"; };
 		BDF252931D33DD21007911CC /* YKClassifyBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyBaseViewController.h; sourceTree = "<group>"; };
 		BDF252941D33DD21007911CC /* YKClassifyBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKClassifyBaseViewController.m; sourceTree = "<group>"; };
 		BDF252991D33DDD5007911CC /* YKClassifyDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKClassifyDataViewController.h; sourceTree = "<group>"; };
@@ -482,6 +491,8 @@
 			children = (
 				BD5D81791D35EC6100A47F31 /* YKApp.h */,
 				BD5D817A1D35EC6100A47F31 /* YKApp.m */,
+				BD5D81AE1D361F4800A47F31 /* YKDetailModel.h */,
+				BD5D81AF1D361F4800A47F31 /* YKDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +504,10 @@
 				9CC490281D05519D003F7F9E /* YKStarView.m */,
 				BD5D817F1D35ECB500A47F31 /* YKRowsTableViewCell.h */,
 				BD5D81801D35ECB500A47F31 /* YKRowsTableViewCell.m */,
+				BD5D81AB1D35FC4900A47F31 /* YKDetailHeaderView.h */,
+				BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */,
+				BDE779081D3768FB0066C635 /* YKDetailSingelScrollCell.h */,
+				BDE779091D3768FB0066C635 /* YKDetailSingelScrollCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -913,6 +928,7 @@
 				BDE6A3851D23CBBD00D477A8 /* YKChatCellModel.m in Sources */,
 				BD5D81A21D35EDEC00A47F31 /* XFRefreshFooter.m in Sources */,
 				BD5D81A01D35EDEC00A47F31 /* main.m in Sources */,
+				BDE7790A1D3768FB0066C635 /* YKDetailSingelScrollCell.m in Sources */,
 				BDF252A11D33DDFE007911CC /* YKLimitViewController.m in Sources */,
 				BD5D819D1D35EDEC00A47F31 /* UIImageView+XFExtension.m in Sources */,
 				9CCFECD21D01291800D1BFA1 /* YKSingleRowTableViewCell.m in Sources */,
@@ -928,6 +944,7 @@
 				BD1D44C91D3092120048190C /* YKChatThreeViewController.m in Sources */,
 				BD1BE2721D30BE2000A377A9 /* YKClassifyCell.m in Sources */,
 				BD5D81A51D35EDEC00A47F31 /* YKConst.m in Sources */,
+				BD5D81AD1D35FC4900A47F31 /* YKDetailHeaderView.m in Sources */,
 				BD5D81A31D35EDEC00A47F31 /* XFRefreshHeader.m in Sources */,
 				BD5D819F1D35EDEC00A47F31 /* AppDelegate.m in Sources */,
 				BD99403B1D33885E00C061EE /* YKAppsViewCell.m in Sources */,
@@ -953,6 +970,7 @@
 				BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */,
 				BDF252AA1D33DF1D007911CC /* YKTitleButton.m in Sources */,
 				9C0DD6EF1CFBF19A0028E515 /* YKChatViewController.m in Sources */,
+				BD5D81B01D361F4800A47F31 /* YKDetailModel.m in Sources */,
 				9C0DD6F71CFBF1BF0028E515 /* YKBaseViewController.m in Sources */,
 				BD5D817B1D35EC6100A47F31 /* YKApp.m in Sources */,
 				BD5D81811D35ECB500A47F31 /* YKRowsTableViewCell.m in Sources */,

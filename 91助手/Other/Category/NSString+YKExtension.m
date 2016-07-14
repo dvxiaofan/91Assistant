@@ -10,15 +10,15 @@
 
 @implementation NSString (YKExtension)
 
-- (CGSize)sizeWithFont:(UIFont *)font maxW:(CGFloat)maxW {
+- (CGSize)xf_sizeWithFont:(UIFont *)font maxW:(CGFloat)maxW {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[NSFontAttributeName] = font;
     CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
     return [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
 }
 
-- (CGSize)sizeWithFont:(UIFont *)font {
-    return [self sizeWithFont:font maxW:MAXFLOAT];
+- (CGSize)xf_sizeWithFont:(UIFont *)font {
+    return [self xf_sizeWithFont:font maxW:MAXFLOAT];
 }
 
 @end

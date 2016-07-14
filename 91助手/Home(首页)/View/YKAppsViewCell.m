@@ -58,7 +58,7 @@
     
     // name
     self.nameLabel.text = app.name;
-    self.nameLabel.font = YKSectionHeaderTestFont;
+    self.nameLabel.font = YKTextNormalFont;
     
     // 介绍
     self.summaryLabel.text = app.summary;
