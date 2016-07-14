@@ -160,9 +160,11 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    YKDetailViewController *datilView = [[YKDetailViewController alloc] init];
+    YKDetailViewController *detailView = [[YKDetailViewController alloc] init];
+    detailView.url = self.apps[indexPath.row].detailUrl;
+    detailView.hidesBottomBarWhenPushed = YES;
     
-    [self.navigationController pushViewController:datilView animated:YES];
+    [self.navigationController pushViewController:detailView animated:YES];
 }
 
 #pragma mark  - 事件监听

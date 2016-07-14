@@ -8,6 +8,7 @@
 
 #import "YKDetailViewController.h"
 #import "YKDetailHeaderView.h"
+#import "YKDetailModel.h"
 
 @interface YKDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -15,6 +16,9 @@
 
 /** manager */
 @property (nonatomic, strong) XFHTTPSessionManager *manager;
+
+/** m */
+@property (nonatomic, strong) YKDetailModel *detailModel;
 
 @end
 
@@ -36,38 +40,22 @@
     
     [self setupNav];
     
-    [self setupTableView];
-    
     [self loadDetailData];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setupTableView];
+    });
 }
 
 - (void)setupNav {
     
     self.view.userInteractionEnabled = YES;
     
-    
-    
-    
-    
-   
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
-    
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:1];
 }
 
 - (void)setupTableView {
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height) style:UITableViewStylePlain];
     // 去掉系统分割线
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
@@ -77,21 +65,14 @@
     
     
     // header 视图
-    YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, SCREEN.height - 150)];
-    [headerView createView];
+    YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, 320)];
+    
+    [headerView createViewWithModel:self.detailModel];
+    
+    
     
     tableView.tableHeaderView = [[UIView alloc] initWithFrame:headerView.frame];
     [tableView.tableHeaderView addSubview:headerView];
-    //// footer 视图
-    //UITextView *textView = [[UITextView alloc] init];
-    //textView.frame = CGRectMake(0, 0, SCREEN.width, 200);
-    //textView.backgroundColor = YKBaseBgColor;
-    ////textView.
-    //textView.text = @"信息/n,下载:667万次/n 分类拉进来快接啊;附近啊;卡减肥; 安家费;按键;附近啊;打飞机; 啊交电费;啊缴费单;按键;林凤娇啊; 大姐夫;啊解放军啊";
-    
-    //tableView.tableFooterView = textView;
-    
-    //[self.tableView registerClass:[YKRowsTableViewCell class] forCellReuseIdentifier:YKRowsCellID];
 }
 
 #pragma mark - 加载数据
@@ -99,9 +80,13 @@
 - (void)loadDetailData {
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
+    __weak typeof(self) weakSelf = self;
+    
     [self.manager GET:self.url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //YKLog(@"success");
+        weakSelf.detailModel = [YKDetailModel mj_objectWithKeyValues:responseObject[@"Result"]];
         
+        [weakSelf.tableView reloadData];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败,请稍候再试"];

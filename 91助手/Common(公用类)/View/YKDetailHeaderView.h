@@ -14,8 +14,11 @@
 @interface YKDetailHeaderView : UIView
 
 /** detail */
-@property (nonatomic, strong) YKDetailModel *detailModel;
+//@property (nonatomic, strong) YKDetailModel *detailModel;
 
-- (void)createView;
+/** hh */
+@property (nonatomic, assign) CGFloat headerViewHeight;
+
+- (void)createViewWithModel:(YKDetailModel *)model;
 
 @end
