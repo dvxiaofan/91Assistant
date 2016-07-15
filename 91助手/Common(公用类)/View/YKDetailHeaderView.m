@@ -10,9 +10,10 @@
 #import "YKStarView.h"
 #import "NSString+YKExtension.h"
 #import "YKDetailModel.h"
-#import "XFWebViewController.h"
-#import "YKDownViewController.h"
+#import "YKSeeBigViewController.h"
 
+
+#define kImageBaseTag 200
 
 @interface YKDetailHeaderView ()<UIScrollViewDelegate>
 
@@ -77,8 +78,17 @@
         imageView.xf_height = self.scrollView.xf_height;
         [imageView sd_setImageWithURL:[NSURL URLWithString:newImageArray[i]] placeholderImage:[UIImage imageNamed:@"detail_image_default"]];
         [self.scrollView addSubview:imageView];
+        self.scrImageView = imageView;
+        imageView.tag = kImageBaseTag + i;
+        imageView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTap)];
+        tapGR.numberOfTapsRequired = 1;       // 点击次数
+        tapGR.numberOfTouchesRequired = 1;    // 点击手指数
+        [self.scrImageView addGestureRecognizer:tapGR];
         
     }
+    
     scrollView.contentSize = CGSizeMake(newImageArray.count / 2 * SCREEN.width, self.scrollView.xf_height);
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -201,14 +211,21 @@
 
 #pragma mark - 事件监听
 
+- (void)imageTap {
+    YKSeeBigViewController *seeBigView = [[YKSeeBigViewController alloc] init];
+    seeBigView.model = self.model;
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:seeBigView animated:YES completion:nil];
+}
+
+
 - (void)downClick:(UIButton *)button {
     
     UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
     UINavigationController *nav = tbc.selectedViewController;
     
-    XFWebViewController *webVC = [[XFWebViewController alloc] init];
+    YKWebViewController *webVC = [[YKWebViewController alloc] init];
     webVC.navTitle = @"App Store";
-    webVC.url = self.model.downAct;
     [nav pushViewController:webVC animated:YES];
     
 }
@@ -218,9 +235,8 @@
     UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
     UINavigationController *nav = tbc.selectedViewController;
     
-    XFWebViewController *webVC = [[XFWebViewController alloc] init];
+    YKWebViewController *webVC = [[YKWebViewController alloc] init];
     webVC.navTitle = @"百度贴吧";
-    webVC.url = self.model.appbarUrl;
     [nav pushViewController:webVC animated:YES];
 }
 

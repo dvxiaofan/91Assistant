@@ -10,7 +10,6 @@
 #import "YKRowsTableViewCell.h"
 #import "YKDetailViewController.h"
 #import "YKApp.h"
-#import "XFWebViewController.h"
 
 @interface YKMoreViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -190,9 +189,8 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 
 - (void)downBtnClick:(UIButton *)button {
     
-    XFWebViewController *webVC = [[XFWebViewController alloc] init];
+    YKWebViewController *webVC = [[YKWebViewController alloc] init];
     webVC.navTitle = @"App Store";
-    webVC.url = kItunesUrl;
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

@@ -29,7 +29,7 @@
 #import "YKConst.h"
 #import "UIImageView+XFExtension.h"
 #import "YKTools.h"
-
+#import "YKWebViewController.h"
 
 
 

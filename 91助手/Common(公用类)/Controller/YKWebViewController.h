@@ -1,5 +1,5 @@
 //
-//  YKDownViewController.h
+//  YKWebViewController.h
 //  91助手
 //
 //  Created by xiaofans on 16/7/15.
@@ -8,9 +8,9 @@
 
 #import "YKBaseViewController.h"
 
-@interface YKDownViewController : YKBaseViewController
+@interface YKWebViewController : YKBaseViewController
 
-/** url */
-@property (nonatomic, copy) NSString *url;
+/** name */
+@property (nonatomic, copy) NSString *navTitle;
 
 @end

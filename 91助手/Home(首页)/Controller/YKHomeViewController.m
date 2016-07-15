@@ -18,7 +18,6 @@
 #import "YKHomeModel.h"
 #import "YKScrollModel.h"
 #import "YKAppsViewController.h"
-#import "XFWebViewController.h"
 
 
 
@@ -367,9 +366,8 @@ static NSString *const YKSectionHeaderViewID = @"YKSectionHeaderView";
 }
 
 - (void)downBtnClick:(UIButton *)button {
-    XFWebViewController *webVC = [[XFWebViewController alloc] init];
+    YKWebViewController *webVC = [[YKWebViewController alloc] init];
     webVC.navTitle = @"App Store";
-    webVC.url = kItunesUrl;
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

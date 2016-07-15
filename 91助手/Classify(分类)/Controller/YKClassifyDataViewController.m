@@ -10,6 +10,8 @@
 #import "YKRowsTableViewCell.h"
 #import "YKDetailViewController.h"
 #import "YKApp.h"
+#import "YKClassifyWebViewController.h"
+
 
 @interface YKClassifyDataViewController ()
 /** 任务管理者 */
@@ -160,11 +162,19 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    YKDetailViewController *detailView = [[YKDetailViewController alloc] init];
-    detailView.url = self.apps[indexPath.row].detailUrl;
-    detailView.hidesBottomBarWhenPushed = YES;
+    //YKDetailViewController *detailView = [[YKDetailViewController alloc] init];
+    //detailView.url = self.apps[indexPath.row].detailUrl;
+    //detailView.hidesBottomBarWhenPushed = YES;
     
-    [self.navigationController pushViewController:detailView animated:YES];
+    //[self.navigationController pushViewController:detailView animated:YES];
+    
+    YKClassifyWebViewController *detailVC = [[YKClassifyWebViewController alloc] init];
+    detailVC.url = self.apps[indexPath.row].detailUrl;
+    detailVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController: detailVC animated:YES];
+    
+    
 }
 
 #pragma mark  - 事件监听

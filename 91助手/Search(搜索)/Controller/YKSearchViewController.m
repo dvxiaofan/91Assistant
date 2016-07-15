@@ -58,7 +58,6 @@
     
     YKSearchButtons *btnView = [[YKSearchButtons alloc] init];
     btnView.frame = self.view.bounds;
-    //[btnView.sButton addTarget:self action:@selector(sButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:btnView];
 }
@@ -92,12 +91,6 @@
     searchBar.showsCancelButton = NO;
     [searchBar resignFirstResponder];
 }
-
-//- (void)sButtonClick:(UIButton *)button {
-//YKLogFunc
-//NSInteger tag = button.tag;
-//YKLog(@"tag = %zd", tag);
-//}
 
 
 @end
