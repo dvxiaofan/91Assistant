@@ -22,6 +22,9 @@
 /** m */
 @property (nonatomic, strong) YKDetailModel *detailModel;
 
+/** singleScrollCell */
+@property (nonatomic, strong) YKDetailSingelScrollCell *scrollCell;
+
 @end
 
 static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
@@ -133,7 +136,7 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
         YKDetailSingelScrollCell * cell = [tableView dequeueReusableCellWithIdentifier:YKSingleScrollCellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell createViewWithModel:self.detailModel];
-        
+        self.scrollCell = cell;
         return cell;
     }
     
@@ -144,7 +147,12 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;
+    
+    if (indexPath.row == 0) {
+        return 100;
+    } else {
+        return self.scrollCell.cellHeight;
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

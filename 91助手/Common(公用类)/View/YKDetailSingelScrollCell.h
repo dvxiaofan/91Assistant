@@ -13,9 +13,14 @@
 
 @interface YKDetailSingelScrollCell : UITableViewCell
 
+
+/** singleCellHeight */
+@property (nonatomic, assign) CGFloat cellHeight;
+
+
+
 - (void)createViewWithModel:(YKDetailModel *)model;
 
-/** model */
-@property (nonatomic, strong) YKDetailModel *model;
+
 
 @end

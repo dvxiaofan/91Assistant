@@ -81,11 +81,14 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     
-    
+    self.cellHeight = CGRectGetMaxY(infoLabel.frame) + scrollView.xf_height;
     
     
 }
 
+/**
+ *  设置顶部分割线
+ */
 - (void)setFrame:(CGRect)frame {
     frame.size.height -= 1;
     frame.origin.y += 1;
