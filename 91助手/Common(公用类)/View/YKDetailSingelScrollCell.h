@@ -19,7 +19,7 @@
 
 
 
-- (void)createViewWithModel:(YKDetailModel *)model;
+- (void)createCellWithModel:(YKDetailModel *)model;
 
 
 

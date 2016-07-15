@@ -35,7 +35,7 @@
     }
     return self;
 }
-- (void)createViewWithModel:(YKDetailModel *)model {
+- (void)createCellWithModel:(YKDetailModel *)model {
 //- (void)creatView {
     
     // section 标题
@@ -111,8 +111,6 @@
     
     [nav pushViewController:detailVC animated:YES];
     
-    
-    //YKLog(@"url = %@", self.appArray[tag][@"detailUrl"]);
     
 }
 

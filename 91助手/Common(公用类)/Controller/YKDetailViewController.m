@@ -132,16 +132,15 @@ static NSString *const YKSummaryCellID = @"YKDetailSummaryCell";
         
         return cell;
     } else {
-        YKDetailSingelScrollCell * cell = [tableView dequeueReusableCellWithIdentifier:YKSingleScrollCellID];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell createViewWithModel:self.detailModel];
-        self.scrollCell = cell;
-        return cell;
+        YKDetailSingelScrollCell * scrollCell = [tableView dequeueReusableCellWithIdentifier:YKSingleScrollCellID];
+        
+        scrollCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [scrollCell createCellWithModel:self.detailModel];
+        self.scrollCell = scrollCell;
+        return scrollCell;
     }
     
 }
-
-
 
 #pragma mark - Table view delegate
 
@@ -154,9 +153,9 @@ static NSString *const YKSummaryCellID = @"YKDetailSummaryCell";
     }
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    YKLogFunc
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    //YKLogFunc
+//}
 
 @end
 
