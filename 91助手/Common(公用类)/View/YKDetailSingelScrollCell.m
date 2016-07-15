@@ -40,7 +40,7 @@
     
     // section 标题
     UILabel *infoLabel = [[UILabel alloc] init];
-    infoLabel.frame = CGRectMake(YKMargin, 0, SCREEN.width - YKMargin * 2, YKMargin);
+    infoLabel.frame = CGRectMake(YKMargin, YKSmallMargin, SCREEN.width - YKMargin * 2, YKMargin);
     
     infoLabel.text = @"下载此应用的人也下载了";
     infoLabel.textColor = YKTextBlackColor;

@@ -10,6 +10,7 @@
 #import "YKDetailHeaderView.h"
 #import "YKDetailModel.h"
 #import "YKDetailSingelScrollCell.h"
+#import "YKDetailFooterView.h"
 
 @interface YKDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -55,7 +56,6 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
     
     self.view.userInteractionEnabled = YES;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor = [UIColor whiteColor];
     
 }
 
@@ -66,22 +66,28 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.backgroundColor = YKBaseBgColor;
+    tableView.backgroundColor = YKGrayColor(226);
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
     [tableView registerClass:[YKDetailSingelScrollCell class] forCellReuseIdentifier:YKSingleScrollCellID];
     
-    
     // header 视图
-    YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN.width, 320)];
-    
+    YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] init];
     [headerView createViewWithModel:self.detailModel];
-    
-    
+    headerView.frame = CGRectMake(0, 0, SCREEN.width, headerView.headerViewHeight);
     
     tableView.tableHeaderView = [[UIView alloc] initWithFrame:headerView.frame];
     [tableView.tableHeaderView addSubview:headerView];
+    
+    // footerView
+    YKDetailFooterView *footerView = [[YKDetailFooterView alloc] init];
+    [footerView createViewWithModel:self.detailModel];
+    footerView.frame = CGRectMake(0, 0, SCREEN.width, footerView.footerViewHeight);
+    
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:footerView.frame];
+    [tableView.tableFooterView addSubview:footerView];
+    
 }
 
 #pragma mark - 加载数据
@@ -138,7 +144,7 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 88;
+    return 100;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
