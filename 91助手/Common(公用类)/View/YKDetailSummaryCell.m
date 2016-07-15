@@ -16,6 +16,10 @@
 @property (nonatomic, weak) UILabel *sectionTitleLabel;
 /** summaryLavel */
 @property (nonatomic, weak) UILabel *summaryLabel;
+/** 展开 */
+@property (nonatomic, weak) UIButton *openBtn;
+/** 是否展开 */
+@property (nonatomic, assign) BOOL flag;
 
 @end
 
@@ -41,22 +45,33 @@
     [self addSubview:sectionTitleLabel];
     self.sectionTitleLabel = sectionTitleLabel;
     
-    
     // summary
     UILabel *summaryLabel = [[UILabel alloc] init];
     summaryLabel.text = model.desc;
-    //summaryLabel.text = @"这里是应用插件机捡垃圾啊辣椒粉啦打飞机 ADSL 附近连接";
     summaryLabel.textColor = YKTextGrayColor;
     summaryLabel.font = YKMidleTextFont;
     summaryLabel.numberOfLines = 0;
     summaryLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    //CGSize summaryLabelSize = [summaryLabel sizeThatFits:CGSizeMake(SCREEN.width - YKMargin * 2, MAXFLOAT)];
-    summaryLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(sectionTitleLabel.frame), SCREEN.width - YKMargin * 2, YKMargin * 2);
+    CGSize summaryLabelSize = [summaryLabel sizeThatFits:CGSizeMake(SCREEN.width - YKMargin * 2, MAXFLOAT)];
+    summaryLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(sectionTitleLabel.frame), SCREEN.width - YKMargin * 2, summaryLabelSize.height);
+    
     [self addSubview:summaryLabel];
     self.summaryLabel = summaryLabel;
     
-    //self.cellHeight = CGRectGetMaxY(summaryLabel.frame) + YKMargin;
-    self.cellHeight = CGRectGetMaxY(summaryLabel.frame) + YKMargin;
+    // 展开收起按钮
+    UIButton *openButton = [[UIButton alloc] init];
+    openButton.frame = CGRectMake(SCREEN.width - YKMargin * 4, (CGRectGetMaxY(summaryLabel.frame) + YKMargin), YKMargin * 3, 20);
+    [openButton setTitle:@"收缩" forState:UIControlStateNormal];
+    openButton.titleLabel.font = YKTextSmallFont;
+    [openButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [openButton setBackgroundImage:[UIImage imageNamed:@"button_login_n"] forState:UIControlStateNormal];
+    [openButton addTarget:self action:@selector(openBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self addSubview:openButton];
+    self.openBtn = openButton;
+    
+    self.cellHeight = CGRectGetMaxY(openButton.frame) + YKSmallMargin;
     
     
 }
@@ -68,8 +83,38 @@
     [super setFrame:frame];
 }
 
+#pragma mark - 事件监听
+
+- (void)openBtnClick:(UIButton *)button {
+    
+    YKLogFunc
+    
+    //if (self.flag == NO) {
+        //CGSize summaryLabelSize = [self.summaryLabel sizeThatFits:CGSizeMake(SCREEN.width - YKMargin * 2, MAXFLOAT)];
+        
+        //self.summaryLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(self.sectionTitleLabel.frame), SCREEN.width - YKMargin * 2, summaryLabelSize.height);
+        
+        //self.openBtn.xf_y = CGRectGetMaxY(self.summaryLabel.frame) + YKMargin;
+        
+        //self.cellHeight = CGRectGetMaxY(self.openBtn.frame) + YKSmallMargin;
+        
+        //self.flag = YES;
+    //} else {
+        //self.summaryLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(self.sectionTitleLabel.frame), SCREEN.width - YKMargin * 2, YKMargin * 2);
+        
+        //self.openBtn.xf_y = CGRectGetMaxY(self.summaryLabel.frame) + YKMargin;
+        
+        //self.cellHeight = CGRectGetMaxY(self.openBtn.frame) + YKSmallMargin;
+        
+        //self.flag = NO;
+    //}
+    
+    
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+    YKLogFunc
 }
 
 @end

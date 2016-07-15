@@ -10,6 +10,8 @@
 #import "YKStarView.h"
 #import "NSString+YKExtension.h"
 #import "YKDetailModel.h"
+#import "XFWebViewController.h"
+#import "YKDownViewController.h"
 
 
 @interface YKDetailHeaderView ()<UIScrollViewDelegate>
@@ -33,6 +35,9 @@
 /** star */
 @property (nonatomic, strong) YKStarView *starView;
 
+/** mmm */
+@property (nonatomic, strong) YKDetailModel *model;
+
 
 @end
 
@@ -50,7 +55,7 @@
 
 
 - (void)createViewWithModel:(YKDetailModel *)model {
-    
+    _model = model;
     // 滚动快照视图
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = CGRectMake(0, 0, SCREEN.width, 250);
@@ -197,11 +202,26 @@
 #pragma mark - 事件监听
 
 - (void)downClick:(UIButton *)button {
-    YKLogFunc
+    
+    UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nav = tbc.selectedViewController;
+    
+    XFWebViewController *webVC = [[XFWebViewController alloc] init];
+    webVC.navTitle = @"App Store";
+    webVC.url = self.model.downAct;
+    [nav pushViewController:webVC animated:YES];
+    
 }
 
 - (void)openBtnClick:(UIButton *)button {
-    YKLogFunc
+    
+    UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nav = tbc.selectedViewController;
+    
+    XFWebViewController *webVC = [[XFWebViewController alloc] init];
+    webVC.navTitle = @"百度贴吧";
+    webVC.url = self.model.appbarUrl;
+    [nav pushViewController:webVC animated:YES];
 }
 
 

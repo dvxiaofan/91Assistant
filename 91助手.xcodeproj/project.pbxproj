@@ -52,6 +52,9 @@
 		BD5D81A71D35EDEC00A47F31 /* YKTools.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D819B1D35EDEC00A47F31 /* YKTools.m */; };
 		BD5D81AD1D35FC4900A47F31 /* YKDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */; };
 		BD5D81B01D361F4800A47F31 /* YKDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D81AF1D361F4800A47F31 /* YKDetailModel.m */; };
+		BD8253421D38B61400F0F57A /* XFWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8253401D38B61400F0F57A /* XFWebViewController.m */; };
+		BD8253431D38B61400F0F57A /* XFWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD8253411D38B61400F0F57A /* XFWebViewController.xib */; };
+		BD8253461D38BAC900F0F57A /* YKDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8253451D38BAC900F0F57A /* YKDownViewController.m */; };
 		BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */; };
 		BD99402D1D33327500C061EE /* YKSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD99402C1D33327500C061EE /* YKSectionHeaderView.m */; };
 		BD9940351D33615A00C061EE /* YKHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940341D33615A00C061EE /* YKHomeModel.m */; };
@@ -185,6 +188,11 @@
 		BD5D81AC1D35FC4900A47F31 /* YKDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailHeaderView.m; sourceTree = "<group>"; };
 		BD5D81AE1D361F4800A47F31 /* YKDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailModel.h; sourceTree = "<group>"; };
 		BD5D81AF1D361F4800A47F31 /* YKDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailModel.m; sourceTree = "<group>"; };
+		BD82533F1D38B61400F0F57A /* XFWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XFWebViewController.h; sourceTree = "<group>"; };
+		BD8253401D38B61400F0F57A /* XFWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XFWebViewController.m; sourceTree = "<group>"; };
+		BD8253411D38B61400F0F57A /* XFWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XFWebViewController.xib; sourceTree = "<group>"; };
+		BD8253441D38BAC900F0F57A /* YKDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDownViewController.h; sourceTree = "<group>"; };
+		BD8253451D38BAC900F0F57A /* YKDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDownViewController.m; sourceTree = "<group>"; };
 		BD8D94FE1D33A51C00177580 /* YKSearchButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchButtons.h; sourceTree = "<group>"; };
 		BD8D94FF1D33A51C00177580 /* YKSearchButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchButtons.m; sourceTree = "<group>"; };
 		BD99402B1D33327500C061EE /* YKSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSectionHeaderView.h; sourceTree = "<group>"; };
@@ -488,6 +496,11 @@
 				BD5D81731D35EBE400A47F31 /* YKMoreViewController.m */,
 				BD5D81701D35EBE400A47F31 /* YKDetailViewController.h */,
 				BD5D81711D35EBE400A47F31 /* YKDetailViewController.m */,
+				BD82533F1D38B61400F0F57A /* XFWebViewController.h */,
+				BD8253401D38B61400F0F57A /* XFWebViewController.m */,
+				BD8253411D38B61400F0F57A /* XFWebViewController.xib */,
+				BD8253441D38BAC900F0F57A /* YKDownViewController.h */,
+				BD8253451D38BAC900F0F57A /* YKDownViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -782,6 +795,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8253431D38B61400F0F57A /* XFWebViewController.xib in Resources */,
 				9C40AD461CF82C5700AF23DE /* LaunchScreen.storyboard in Resources */,
 				9C40AD431CF82C5700AF23DE /* Assets.xcassets in Resources */,
 			);
@@ -931,6 +945,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8253461D38BAC900F0F57A /* YKDownViewController.m in Sources */,
 				BD5D819C1D35EDEC00A47F31 /* NSString+YKExtension.m in Sources */,
 				BD99403E1D33895A00C061EE /* YKAppsViewController.m in Sources */,
 				BD8D95001D33A51C00177580 /* YKSearchButtons.m in Sources */,
@@ -959,6 +974,7 @@
 				BD0568651D3881CA00E8F79C /* YKDetailFooterView.m in Sources */,
 				BD5D819F1D35EDEC00A47F31 /* AppDelegate.m in Sources */,
 				BD99403B1D33885E00C061EE /* YKAppsViewCell.m in Sources */,
+				BD8253421D38B61400F0F57A /* XFWebViewController.m in Sources */,
 				BDF252A71D33DE75007911CC /* YKMoneyAppsViewController.m in Sources */,
 				BD0568681D389B6E00E8F79C /* YKDetailSummaryCell.m in Sources */,
 				BD1D44CF1D309D3A0048190C /* YKGameViewController.m in Sources */,

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XFWebViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="2Tt-dw-id1" id="vi3-vP-6RP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMH-m8-DFF">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="JFt-gc-fg2"/>
+                        <barButtonItem systemItem="refresh" id="0Ok-Dp-f8B">
+                            <connections>
+                                <action selector="reload" destination="-1" id="22I-60-tEI"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Tt-dw-id1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="OSb-p9-jqE"/>
+                    </connections>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PMH-m8-DFF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IlL-4v-PZR"/>
+                <constraint firstAttribute="trailing" secondItem="PMH-m8-DFF" secondAttribute="trailing" id="JKt-Qi-x0M"/>
+                <constraint firstItem="2Tt-dw-id1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OYD-cX-FgH"/>
+                <constraint firstItem="2Tt-dw-id1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TCM-Bs-XMc"/>
+                <constraint firstItem="PMH-m8-DFF" firstAttribute="top" secondItem="2Tt-dw-id1" secondAttribute="bottom" id="TNc-do-wkV"/>
+                <constraint firstAttribute="trailing" secondItem="2Tt-dw-id1" secondAttribute="trailing" id="b60-hg-P75"/>
+                <constraint firstAttribute="bottom" secondItem="PMH-m8-DFF" secondAttribute="bottom" id="dBy-3B-DhK"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="358.5" y="386.5"/>
+        </view>
+    </objects>
+</document>

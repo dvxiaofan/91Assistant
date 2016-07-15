@@ -116,7 +116,7 @@
 // 搜索 之 聊吧/应用
 #define SEARCH_CHAT_URL @"http://applebbx.sj.91.com/soft/phone/cat.aspx?act=218&cuid=3428d2caf0eb10eeb75f39d9d3ed91cdaaf5a419&pi=1&spid=2&imei=612976FF-5EC4-4E9C-9C8F-A5689CB586C9&osv=8.4.1&dm=iPhone7,2&sv=3.1.3&nt=10&mt=1&pid=2"
 
-
+#define kItunesUrl @"https://itunes.apple.com/cn/genre/ios/id36?mt=8"
 
 #endif /* PrefixHeader_pch */
 

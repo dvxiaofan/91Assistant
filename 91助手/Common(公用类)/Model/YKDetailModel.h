@@ -20,6 +20,10 @@
 @property (nonatomic, copy) NSString *price;
 /** 介绍 */
 @property (nonatomic, copy) NSString *desc;
+/** 贴吧 url */
+@property (nonatomic, copy) NSString *appbarUrl;
+/** 下载连接 */
+@property (nonatomic, copy) NSString *downAct;
 
 /** 快照 */
 @property (nonatomic, strong) NSArray *snapshots;

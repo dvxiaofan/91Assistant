@@ -10,6 +10,7 @@
 #import "YKRowsTableViewCell.h"
 #import "YKDetailViewController.h"
 #import "YKApp.h"
+#import "XFWebViewController.h"
 
 @interface YKMoreViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -169,6 +170,7 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
     YKRowsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKRowsCellID];
     cell.app = self.apps[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     [cell.downBtn addTarget:self action:@selector(downBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
@@ -187,7 +189,11 @@ static NSString *const YKRowsCellID = @"YKRowsTableViewCell";
 }
 
 - (void)downBtnClick:(UIButton *)button {
-    YKLogFunc
+    
+    XFWebViewController *webVC = [[XFWebViewController alloc] init];
+    webVC.navTitle = @"App Store";
+    webVC.url = kItunesUrl;
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 
