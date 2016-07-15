@@ -12,9 +12,6 @@
 
 @interface YKDetailFooterView ()
 
-/** view */
-@property (nonatomic, weak) UIView *mView;
-
 /** title */
 @property (nonatomic, weak) UILabel *sectionTitleLabel;
 /** 下载次数 */
@@ -38,19 +35,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        self.backgroundColor = YKBaseBgColor;
     }
     return self;
 }
 
 - (void)createViewWithModel:(YKDetailModel *)model {
-    
-    // 主 view
-    UIView *mView = [[UIView alloc] init];
-    mView.frame = CGRectMake(0, 0, SCREEN.width, SCREEN.height);
-    mView.backgroundColor = YKBaseBgColor;
-    [self addSubview:mView];
-    self.mView = mView;
     
     CGFloat infoTextWidth = SCREEN.width - YKMargin - YKSmallSpace;
     CGFloat inofTextHeight = YKMargin;
@@ -61,7 +51,7 @@
     sectionTitleLabel.font = YKTextBoldFont;
     sectionTitleLabel.textColor = YKTextBlackColor;
     sectionTitleLabel.frame = CGRectMake(YKMargin, YKSmallSpace, infoTextWidth, inofTextHeight);
-    [mView addSubview:sectionTitleLabel];
+    [self addSubview:sectionTitleLabel];
     self.sectionTitleLabel = sectionTitleLabel;
     
     // 下载次数
@@ -70,7 +60,7 @@
     downTimesLabel.font = YKMidleTextFont;
     downTimesLabel.textColor = YKTextGrayColor;
     downTimesLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(sectionTitleLabel.frame), infoTextWidth, inofTextHeight);
-    [mView addSubview:downTimesLabel];
+    [self addSubview:downTimesLabel];
     self.downTimesLabel = downTimesLabel;
     
     // 分类
@@ -79,7 +69,7 @@
     cateNameLabel.font = YKMidleTextFont;
     cateNameLabel.textColor = YKTextGrayColor;
     cateNameLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(downTimesLabel.frame), infoTextWidth, inofTextHeight);
-    [mView addSubview:cateNameLabel];
+    [self addSubview:cateNameLabel];
     self.cateNameLabel = cateNameLabel;
     
     // 时间
@@ -88,7 +78,7 @@
     updateTimeLabel.textColor = YKTextGrayColor;
     updateTimeLabel.font = YKMidleTextFont;
     updateTimeLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(cateNameLabel.frame), infoTextWidth, inofTextHeight);
-    [mView addSubview:updateTimeLabel];
+    [self addSubview:updateTimeLabel];
     self.updateTimeLabel = updateTimeLabel;
     
     // 语言
@@ -97,7 +87,7 @@
     lanLabel.textColor = YKTextGrayColor;
     lanLabel.font = YKMidleTextFont;
     lanLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(updateTimeLabel.frame), infoTextWidth, inofTextHeight);
-    [mView addSubview:lanLabel];
+    [self addSubview:lanLabel];
     self.lanLabel = lanLabel;
     
     // 作者
@@ -106,7 +96,7 @@
     authorLabel.textColor = YKTextGrayColor;
     authorLabel.font = YKMidleTextFont;
     authorLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(lanLabel.frame), infoTextWidth, inofTextHeight);
-    [mView addSubview:authorLabel];
+    [self addSubview:authorLabel];
     self.authorLabel = authorLabel;
     
     // 兼容性
@@ -118,7 +108,7 @@
     requirementLabel.font = YKMidleTextFont;
     CGSize reqLabelize = [requirementLabel sizeThatFits:CGSizeMake(infoTextWidth, MAXFLOAT)];
     requirementLabel.frame = CGRectMake(YKMargin, CGRectGetMaxY(authorLabel.frame), infoTextWidth, reqLabelize.height);
-    [mView addSubview:requirementLabel];
+    [self addSubview:requirementLabel];
     self.requirementLabel = requirementLabel;
     
     // footerViewHeight

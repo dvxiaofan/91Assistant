@@ -11,6 +11,7 @@
 #import "YKDetailModel.h"
 #import "YKDetailSingelScrollCell.h"
 #import "YKDetailFooterView.h"
+#import "YKDetailSummaryCell.h"
 
 @interface YKDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -24,10 +25,13 @@
 
 /** singleScrollCell */
 @property (nonatomic, strong) YKDetailSingelScrollCell *scrollCell;
+/** summaryCell */
+@property (nonatomic, strong) YKDetailSummaryCell *summaryCell;
 
 @end
 
 static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
+static NSString *const YKSummaryCellID = @"YKDetailSummaryCell";
 
 @implementation YKDetailViewController
 
@@ -74,6 +78,7 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
     self.tableView = tableView;
     
     [tableView registerClass:[YKDetailSingelScrollCell class] forCellReuseIdentifier:YKSingleScrollCellID];
+    [tableView registerClass:[YKDetailSummaryCell class] forCellReuseIdentifier:YKSummaryCellID];
     
     // header 视图
     YKDetailHeaderView *headerView = [[YKDetailHeaderView alloc] init];
@@ -120,16 +125,10 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        static NSString *cellID = @"cell";
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-        
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        }
-        cell.backgroundColor = YKBaseBgColor;
+        YKDetailSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:YKSummaryCellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %zd", [self class], indexPath.row];
+        [cell createCellWithModel:self.detailModel];
+        self.summaryCell = cell;
         
         return cell;
     } else {
@@ -149,7 +148,7 @@ static NSString *const YKSingleScrollCellID = @"YKDetailSingelScrollCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        return 100;
+        return self.summaryCell.cellHeight;
     } else {
         return self.scrollCell.cellHeight;
     }

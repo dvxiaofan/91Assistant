@@ -18,6 +18,8 @@
 @property (nonatomic, copy) NSString *versionCode;
 /** 价格 */
 @property (nonatomic, copy) NSString *price;
+/** 介绍 */
+@property (nonatomic, copy) NSString *desc;
 
 /** 快照 */
 @property (nonatomic, strong) NSArray *snapshots;
@@ -30,9 +32,6 @@
 @property (nonatomic, copy) NSNumber *size;
 /** 星级评价 */
 @property (nonatomic, copy) NSNumber *star;
-
-/** 应用简介标题 */
-@property (nonatomic, copy) NSString *desc;
 
 /**  下载次数 */
 @property (nonatomic, copy) NSString *downTimes;

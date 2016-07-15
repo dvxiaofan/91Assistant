@@ -14,9 +14,6 @@
 
 @interface YKDetailHeaderView ()<UIScrollViewDelegate>
 
-/** view */
-@property (nonatomic, strong) UIView *mView;
-/** scrollView */
 @property (nonatomic, weak) UIScrollView *scrollView;
 /** 快照 */
 @property (nonatomic, weak) UIImageView *scrImageView;
@@ -46,8 +43,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.userInteractionEnabled = YES;
-        //self.backgroundColor = YKBaseBgColor;
-        //[self createView];
+        self.backgroundColor = YKBaseBgColor;
     }
     return self;
 }
@@ -55,16 +51,10 @@
 
 - (void)createViewWithModel:(YKDetailModel *)model {
     
-    UIView *mView = [[UIView alloc] init];
-    mView.frame = CGRectMake(0, 0, SCREEN.width, 350);
-    mView.backgroundColor = YKBaseBgColor;
-    [self addSubview:mView];
-    self.mView = mView;
-    
     // 滚动快照视图
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = CGRectMake(0, 0, SCREEN.width, 250);
-    [mView addSubview:scrollView];
+    [self addSubview:scrollView];
     self.scrollView = scrollView;
     
     NSArray *imageArray = model.snapshots;
@@ -97,7 +87,7 @@
     
     [iconView xf_setRectHeaderWithUrl:model.icon placeholder:@"avatar_poto_defaul140"];
     
-    [mView addSubview:iconView];
+    [self addSubview:iconView];
     self.iconView = iconView;
     
     // 名字
@@ -111,7 +101,7 @@
     nameLabel.font = [UIFont boldSystemFontOfSize:18.0];
     nameLabel.textColor = [UIColor whiteColor];
     
-    [mView addSubview:nameLabel];
+    [self addSubview:nameLabel];
     self.nameLabel = nameLabel;
     
     // 星级评价
@@ -123,7 +113,7 @@
     
     starView.showStar = [model.star intValue] * 20;
     
-    [mView addSubview:starView];
+    [self addSubview:starView];
     self.starView = starView;
     
     // 大小
@@ -139,7 +129,7 @@
     fileSizeLabel.xf_width = fileSize.width;
     fileSizeLabel.xf_height = fileSize.height;
     
-    [mView addSubview:fileSizeLabel];
+    [self addSubview:fileSizeLabel];
     self.fileSizeLabel = fileSizeLabel;
     
     // 版本
@@ -154,7 +144,7 @@
     versionLabel.xf_width = versionSize.width;
     versionLabel.xf_height = versionSize.height;
     
-    [mView addSubview:versionLabel];
+    [self addSubview:versionLabel];
     self.versionLabel = versionLabel;
     
     // 下载按钮
@@ -178,7 +168,7 @@
     downButton.titleLabel.font = YKTextNormalFont;
     [downButton addTarget:self action:@selector(downClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    [mView addSubview:downButton];
+    [self addSubview:downButton];
     self.downButton = downButton;
   
     // 打开聊吧按钮
@@ -186,15 +176,20 @@
     openChatBtn.xf_y = CGRectGetMaxY(iconView.frame) + YKMargin;
     openChatBtn.xf_width = (SCREEN.width / 3) * 2;
     openChatBtn.xf_x = SCREEN.width / 6;
+    openChatBtn.xf_height = YKMargin * 2;
+    [openChatBtn setBackgroundImage:[UIImage imageNamed:@"button_enroll_n"] forState:UIControlStateNormal];
+    [openChatBtn setBackgroundImage:[UIImage imageNamed:@"button_enroll_s"] forState:UIControlStateHighlighted];
     [openChatBtn setTitle:[NSString stringWithFormat:@"打开%@吧", model.name] forState:UIControlStateNormal];
+    openChatBtn.titleLabel.font = YKTextNormalFont;
     [openChatBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     openChatBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [openChatBtn addTarget:self action:@selector(openBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    [mView addSubview:openChatBtn];
+    [self addSubview:openChatBtn];
     self.openChatBtn = openChatBtn;
     
-    
-    self.headerViewHeight = CGRectGetMaxY(openChatBtn.frame) + YKMargin;
+    // cell高
+    self.headerViewHeight = CGRectGetMaxY(openChatBtn.frame) + YKSmallSpace;
     
 }
 
@@ -205,9 +200,11 @@
     YKLogFunc
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void)openBtnClick:(UIButton *)button {
     YKLogFunc
 }
+
+
 
 
 @end
